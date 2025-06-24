@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { useEffect, useState } from "react";
 import { ChromePicker } from "react-color";
-import { CheckIcon, XMarkIcon } from "@heroicons/react/24/solid";
+
 
 
 
@@ -43,11 +43,11 @@ export const UiPuSelectColor = ({ initcolor, onClose, onCancel, isOpen }: UiPuSe
         <div className="modal-action flex justify-center mt-4">
           <form method="dialog">
             <button className="btn btn-primary mr-2" onClick={() => onClose(color)}>
-              <CheckIcon className="h-6 w-6 mr-2" />
+              
               "OK"
             </button>
             <button className="btn btn-secondary" onClick={() => onCancel()}>
-              <XMarkIcon className="h-6 w-6 mr-2" />
+           
               "Cancel"
             </button>
           </form>

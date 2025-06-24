@@ -3,8 +3,9 @@
 
 import { useState } from "react";
 
-import { ButtonOld } from "@/libcomp/button_old";
+
 import { ThemeColors } from "@/app_front/apptheme";
+import { Button } from "../button";
 
 
 /**
@@ -56,11 +57,10 @@ export function Filter({name,disabled,onchange,placeholder,maxlen}:FilterIfc) {
             
             {/* filter button */}
             <div className="w-auto h-auto">
-                <ButtonOld
-                    btndisabled={false}
-                    callback={onFilterClick}
+                <Button                    
+                    onclick={onFilterClick}
                     operation={"filteron"}
-                    iconname={"ti-filter"}
+                    icon={"ti-filter"}
                     iconcolor={iconColor} />
             </div>
 

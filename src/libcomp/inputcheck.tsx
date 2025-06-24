@@ -1,9 +1,7 @@
-//
-
-//src\lib\xuicomp\form\inputtext.tsx
+//src\libcomp\inputcheck.tsx
 
 import { AppTheme } from "@/app_front/apptheme";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef} from "react";
 
 interface InputCheckIfc {
     name: string;
