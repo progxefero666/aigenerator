@@ -1,0 +1,13 @@
+
+Create client Fast Api Db Client folder
+
+local:
+npx openapi-typescript-codegen --input http://localhost:8000/openapi.json --output ./src/ client --client axios
+
+server:
+npx openapi-typescript-codegen --input http://164.90.225.196:8000/openapi.json --output ./src/client --client axios
+
+local and server: 
+node fix-dates.js
+
+ 

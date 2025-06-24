@@ -67,7 +67,7 @@ export class AppTheme {
 
     public static readonly BODY_STYLE: string = "w-full h-auto grid grid-cols-[17%_65%_17%]"
 
-    public static readonly BODY_MONITOR_STYLE: string = "main_monitor w-full min-h-screen rounded-lg"
+    public static readonly BODY_MAINCONTENT_STYLE: string = "main_monitor w-full min-h-screen rounded-lg"
 
     public static readonly TEXT_BASE_COLOR: string = "text-white";
     public static readonly TEXT_BASE_SIZE: string = "text-base";

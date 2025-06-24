@@ -61,7 +61,7 @@ export default function PageOutputMonitor({ section }: PageOutputMonitorProp) {
                     onclick={onClick} />
             </div>
 
-            <div className={AppTheme.BODY_MONITOR_STYLE}>
+            <div className={AppTheme.BODY_MAINCONTENT_STYLE}>
                 {renderMainContent()}
                 {(alertMessage !== AppConstants.NOT_DEF) ? renderAlert(alertMessage) : null}
             </div>
