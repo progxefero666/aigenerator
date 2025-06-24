@@ -1,0 +1,31 @@
+
+
+
+.monitor-color {
+  background-color: #2d323c;
+  border-radius: 16px;
+  box-sizing: border-box; /* ← esto es la clave */
+  padding: 2px;
+  
+}
+.icon-color-black {
+    color: var(--color-black);
+  }
+  .icon-color-white {
+    color: var(--color-white);
+  }
+  .icon-color-red {
+    color: var(--color-orange-600);
+  }        
+  .icon-color-blue {
+    color: var(--color-blue-500);
+  }
+  .icon-color-green {
+    color: var(--color-green-500);
+  }
+  .icon-color-yellow {
+    color: var(--color-yellow-350);
+  }
+  .icon-color-orange {
+    color: var(--color-orange-350);
+  }

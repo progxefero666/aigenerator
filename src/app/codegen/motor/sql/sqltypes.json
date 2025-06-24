@@ -1,0 +1,77 @@
+{
+    "fieldtypes" : {
+        "text": [
+            "CHAR(n)",
+            "CHARACTER(n)",
+            "VARCHAR(n)",
+            "CHARACTER VARYING(n)",
+            "TEXT",
+            "char"
+        ],
+        "numeric": [
+            "ENTEROS",
+            "SMALLINT",
+            "INTEGER",
+            "INT",
+            "BIGINT"
+        ],
+        "decimal": [
+            "DECIMAL",
+            "NUMERIC",
+            "MONEY",
+            "REAL",
+            "DOUBLE PRECISION",
+            "FLOAT",
+            "SERIALES (AUTO-INCREMENT)",
+            "SMALLSERIAL",
+            "SERIAL",
+            "BIGSERIAL"
+        ],
+        "date": [
+            "DATE",
+            "TIME",
+            "TIMESTAMP",
+            "INTERVAL"
+        ],
+        "boolean": [
+            "BOOLEAN"
+        ],
+        "BINARIOS": [
+            "BYTEA"
+        ],
+        "geo": [
+            "POINT",
+            "LINE",
+            "LSEG",
+            "BOX",
+            "PATH",
+            "POLYGON",
+            "CIRCLE"
+        ],
+        "net": [
+            "INET",
+            "CIDR",
+            "MACADDR",
+            "MACADDR8"
+        ],
+        "json": [
+            "JSON",
+            "JSONB"
+        ],
+        "uuid": [
+            "UUID"
+        ],
+        "range": [
+            "INT4RANGE",
+            "INT8RANGE",
+            "NUMRANGE",
+            "TSRANGE",
+            "DATERANGE"
+        ],
+        "especial": [
+            "XML",
+            "TSVECTOR",
+            "ENUM"
+        ]
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "name": "mtools",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "generate-client": "openapi-ts --input http://localhost:8000/openapi.json --output ./src/client --client axios",
+        "fix-dates": "node fix-dates.js"
+    },
+    "dependencies": {
+        "@icon/themify-icons": "^1.0.1-alpha.3",
+        "axios": "^1.10.0",
+        "date-fns": "^4.1.0",
+        "fs.promises": "^0.1.2",
+        "md-editor-rt": "^5.6.1",
+        "next": "15.2.4",
+        "progressbar.js": "^1.1.1",
+        "react": "^19.0.0",
+        "react-color": "^2.19.3",
+        "react-dom": "^19.0.0",
+        "react-json-pretty": "^2.2.0",
+        "react-json-view-lite": "^2.4.1",
+        "swr": "^2.3.3"
+    },
+    "devDependencies": {
+        "@hey-api/openapi-ts": "^0.73.0",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20.17.30",
+        "@types/progressbar.js": "^1.1.7",
+        "@types/react": "^19",
+        "@types/react-color": "^3.0.13",
+        "@types/react-dom": "^19",
+        "daisyui": "^5.0.9",
+        "gojs": "^3.0.24",
+        "openapi-typescript-codegen": "^0.29.0",
+        "raw-loader": "^4.0.2",
+        "tailwindcss": "^4",
+        "typedoc": "^0.28.5",
+        "typescript": "^5"
+    }
+}
