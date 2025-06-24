@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createRoot } from "react-dom/client";
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid';
+
 
 /*
 showUiPopupConfirm("¿Estás seguro de que deseas eliminar este elemento?").then(({ confirmed }) => {
@@ -42,7 +42,7 @@ export const UiPopupConfirm = ({ message, onClose, onCancel, isOpen }: UiPopupCo
                 onClose();
               }}
             >
-              <CheckIcon className="h-6 w-6 mr-2" />
+              
              "OK"
             </button>
 
@@ -53,7 +53,7 @@ export const UiPopupConfirm = ({ message, onClose, onCancel, isOpen }: UiPopupCo
                 onCancel();
               }}
             >
-              <XMarkIcon className="h-6 w-6 mr-2" />
+      
               "Cancel"
             </button>
 

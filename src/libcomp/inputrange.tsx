@@ -1,6 +1,6 @@
 //src\lib\xuicomp\form\inputrange.tsx
 
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 
 export interface InputRangeProps {
     disabled?:boolean;
