@@ -1,12 +1,8 @@
 //src\app\appeditor\header.tsx
 
-import { Search } from "@/libcomp/search";
-import { AppThemifyIcons } from "@/style/appthicons";
-import { ButtonOld } from "@/libcomp/button_old";
+
 import { Button } from "@/libcomp/button";
-import { AppConstants, AppTexts, AppUiConst } from "@/app_front/appconstants";
-import { AppTheme } from "@/app_front/apptheme";
-import { InputFiles } from "@/libcomp/inputfiles";
+import { AppConstants, AppUiConst } from "@/app_front/appconstants";
 import { useRef } from "react";
 import { CodeGenCfg } from "./motor/cgcfg";
 

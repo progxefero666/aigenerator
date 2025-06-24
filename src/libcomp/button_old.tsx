@@ -1,6 +1,6 @@
 //src\lib\xuicomp\base\button.tsx
 
-import { AppThemifyIcons } from "@/style/appthicons";
+
 import { AppUIButtons } from "@/style/appui";
 
 

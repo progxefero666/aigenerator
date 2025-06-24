@@ -1,6 +1,6 @@
 "use client";
 
-import { DaisyUI } from "@/style/daisyui";
+import { DaisyUI } from "@/lib/daisyui/daisyui";
 import { useEffect, useState } from "react";
 
 

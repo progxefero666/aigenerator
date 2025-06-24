@@ -2,9 +2,10 @@
 
 import { Dimension } from "@/lib/model/base/dimension";
 
-import { ThemeColors } from './apptheme';
+
 import { TechBase } from '@/lib/arquitect/tech';
 import { DeviceUtil } from "@/lib/util/devicehelper";
+import { ThemeColors } from "@/app_front/apptheme";
 
 
 

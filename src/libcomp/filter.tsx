@@ -1,10 +1,10 @@
 //src\lib\xuicomp\common\search.tsx
 
-import { AppThemifyIcons } from "@/style/appthicons";
 
 import { useState } from "react";
-import { ThemeColors } from "@/style/apptheme";
+
 import { ButtonOld } from "@/libcomp/button_old";
+import { ThemeColors } from "@/app_front/apptheme";
 
 
 /**
@@ -60,7 +60,7 @@ export function Filter({name,disabled,onchange,placeholder,maxlen}:FilterIfc) {
                     btndisabled={false}
                     callback={onFilterClick}
                     operation={"filteron"}
-                    iconname={AppThemifyIcons.TI_FILTER}
+                    iconname={"ti-filter"}
                     iconcolor={iconColor} />
             </div>
 

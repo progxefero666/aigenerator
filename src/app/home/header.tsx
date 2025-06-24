@@ -2,8 +2,6 @@
 
 
 import { Search } from "@/libcomp/search";
-import { AppThemifyIcons } from "@/style/appthicons";
-import { ButtonOld } from "@/libcomp/button_old";
 import { AppTheme } from "@/app_front/apptheme";
 
 

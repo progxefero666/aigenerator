@@ -1,7 +1,7 @@
 //src\twdaisy\twdaisymenu.tsx
 
 
-import { Option } from "@/lib/common/model/base/option";
+import { Option } from "@/lib/model/base/option";
 import { renderOption } from "@/twdaisy/twdaisycomp";
 
 /**
