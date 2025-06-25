@@ -1,7 +1,7 @@
 //src\app_front\codegen\sql\sqlprocess.ts
 
 
-import { ModelTable, ModelField, Relation } from "../model/modeltable";
+import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";
 import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
 
 // Interfaz para el contenido del JSON para mayor seguridad de tipos

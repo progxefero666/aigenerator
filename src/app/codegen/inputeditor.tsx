@@ -10,6 +10,7 @@ import { Button } from "@/libcomp/button";
 import { ModelTable } from "../../app_front/codegen/model/modeltable";
 import { CodeGenSqlProcess } from "../../app_front/codegen/sql/sqlprocess";
 import { TypeScriptsFunctions } from "@/app_front/codegen/typescript/tsfunctions";
+import { ModelUtil } from "@/app_front/codegen/util/modelutil";
 
 
 
@@ -45,12 +46,12 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
     const runProcess = () => {
         console.log("run process");       
         const tables: ModelTable[] = CodeGenSqlProcess.getEsquemaTables(code);
-        //toJsonString
         
-        //console.log(tables);        
-        const tableClassCode:string = TypeScriptsFunctions.genFileContentEntityClass(tables[1]);
-        ondataresult(tableClassCode);
-        console.log("process end");
+        const table_code:string = ModelUtil.getTableCode(tables[0]);
+        console.log(table_code);        
+        //const tableClassCode:string = TypeScriptsFunctions.genFileContentEntityClass(tables[1]);
+        //ondataresult(tableClassCode);
+        //console.log("process end");
     };
 
 

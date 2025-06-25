@@ -70,8 +70,6 @@ export class ModelTable {
         this.fields.push(...fields);
     }
 
-    public toJsonString(): string {
-        return JSON.stringify(this, null, 4);
-    }
+  
 
 }//end class
