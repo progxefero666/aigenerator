@@ -1,6 +1,6 @@
 //src\app\codegen\motor\sql\sqlcatalog.ts
 
-import {fieldtypes} from "./sqltypes.json";
+import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
 
 /**
  * class CodeGenCfg.TYPESCRIPT_FORMATS

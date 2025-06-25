@@ -2,15 +2,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-
+import { Option } from "@/lib/model/base/option";
 import { AppConstants, AppUiConst } from "@/app_front/appconstants";
-import { AppThemeLayout } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
 import { AppThemeModule } from "@/app_front/apptheme";
-
+import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 //page layout jsx components
 import PageOutputMonitor from "./outputmonitor";
-import PagePrimaryBar from "./primarybar";
-import { CodeGenCfg } from "./motor/modconfig";
+import { CodeGenCfg } from "./modconfig";
 import PageInputEditor from "./inputeditor";
 import { Button } from "@/libcomp/button";
 
@@ -96,6 +95,38 @@ function PageHeader({ value }: PageHeaderProp) {
     )
 
 }//end
+
+interface PagePrimaryBarProp {
+    section: string;
+    chargesection: (section:string) => void
+}
+function PagePrimaryBar({chargesection, section}: PagePrimaryBarProp) {
+
+    const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
+    const [sections, setSections] = useState<Option[]>(CodeGenCfg.SECTIONS);
+
+    //CodeGenCfg.TYPESCRIPT_FORMATS
+    const loadsection = (name: string): void => {
+        chargesection(name);
+        if (name === CodeGenCfg.CREATE_MODEL.name) {
+
+        }
+        else if (name === CodeGenCfg.SECTION_SERVICE.name) {
+
+        }
+    }
+
+    return (
+        <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
+            <TwDaisyMenu onselection={loadsection}
+                options={CodeGenCfg.SECTIONS}
+                optactname={CodeGenCfg.ACTIVE_SECTION.name}
+                optcolor={AppTheme.MENU_OPT_COLOR}
+                optactcolor={AppTheme.MENU_OPT_ACT_COLOR} />
+        </div>
+    )
+
+}//end comp
 
 interface PageSecondaryBarProp {
     section: string;
