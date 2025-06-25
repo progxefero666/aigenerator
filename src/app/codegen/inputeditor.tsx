@@ -47,8 +47,8 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
         console.log("run process");       
         const tables: ModelTable[] = CodeGenSqlProcess.getEsquemaTables(code);
         
-        const table_code:string = ModelUtil.getTableCode(tables[0]);
-        console.log(table_code);        
+        //const table_code:string = ModelUtil.getTableCode(tables[0]);
+        //console.log(table_code);        
         //const tableClassCode:string = TypeScriptsFunctions.genFileContentEntityClass(tables[1]);
         //ondataresult(tableClassCode);
         //console.log("process end");
