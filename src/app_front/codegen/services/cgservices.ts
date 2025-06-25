@@ -1,4 +1,8 @@
-//src\app_front\codegen\templates\temp_service_text.ts
+//src\app_front\codegen\cgservices.ts
+
+
+import { ModelTable } from "../cgmodel";
+import { CodeGenUtil } from "../codegen";
 
 export const TEMPLATE_APICLI_SERVICE = `
 import { CancelablePromise, OpenAPI } from "@/client";
@@ -150,3 +154,43 @@ export class _Table_Service {
     }
        
 }`;
+
+    /**
+     * # Class: CodeGenServices
+     * 
+     * # Info
+     *      - Author: Ignacio Sánchez Ramírez
+     *      - Date: 2023-10-01
+     *      
+     * # Description
+     *      - Generates files content for FastAapi Db 
+     */
+export class CodeGenServices {
+
+    /**
+     * # Description
+     *      - Generates FastAapi Db table client service 
+     *        for the given table model name.
+     *      - Use TEMPLATE_APICLI_SERVICE string template
+     *      - Name of the class is generated in Pascal case format:
+     *          Class (Table.name)Service
+     *      - Name of the item in api paths is generated in lower case
+     * 
+     * # Example for table user : 
+     *      - Class name: UserService in Pascal case
+     *      - Item in api paths name: user in lower case
+     * # Usage
+     *      - param tableModel The model of the table for which to generate the service.
+     *      - returns The content of the service class as a string.
+     */
+    public static genFileContentServiceClass(tableModel: ModelTable): string {
+        const className = CodeGenUtil.capitalize(tableModel.name) + "Service";
+        const pathName  = CodeGenUtil.uncapitalize(tableModel.name);
+
+        let content: string = TEMPLATE_APICLI_SERVICE;
+        content = content.replace(/_Table_/g, className);
+        content = content.replace(/_table_/g, pathName);
+        return content
+    }
+    
+}//end class
