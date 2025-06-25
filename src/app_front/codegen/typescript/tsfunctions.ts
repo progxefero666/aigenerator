@@ -22,54 +22,65 @@ export class TypeScriptsFunctions {
     //Relation
     //ModelField
 
+    public static genFileContentEntityType(tableModel: ModelTable): string {
+        let content: string = "";
+        
+        const typeName = TypeScriptsFunctions.capitalize(tableModel.name);
+        const fileName = `type_${tableModel.name.toLowerCase()}.ts`;
+        
+        content += `//${fileName}\n\n`;
+        
+        // Generate type definition
+        content += `export type ${typeName} = {\n`;
+        
+        // Generate properties
+        for (const field of tableModel.fields) {
+            const tsType = TypeScriptsFunctions.mapSqlTypeToTypeScript(field.type);
+            content += `    ${field.name}: ${tsType};\n`;
+        }
+        
+        content += `};\n`;
+        
+        return content;
+    }
+
     public static genFileContentEntityClass(tableModel: ModelTable): string {
         let content: string = "";
         
         const className = TypeScriptsFunctions.capitalize(tableModel.name);
         const fileName = `table_${tableModel.name.toLowerCase()}.ts`;
         
-        // Import statement
-        content += `//src\\app_front\\dbmodel\\${fileName}\n\n`;
-        content += `import { AppConstants } from "@/app_front/appconstants";\n\n\n`;
+        content += `//${fileName}\n\n`;
         
-        // Class documentation
+        // Class info
         content += `/**\n`;
         content += ` * Class ${className}\n`;
         content += ` * Represents a ${className} entity with various properties and methods.\n`;
         content += ` * \n`;
         content += ` * @class ${className}\n`;
         content += ` */\n`;
-        
-        // Class declaration
         content += `export class ${className} {\n\n`;
         
         // Generate properties
         for (const field of tableModel.fields) {
             const tsType = TypeScriptsFunctions.mapSqlTypeToTypeScript(field.type);
-            const defaultValue = TypeScriptsFunctions.getDefaultValue(field, tsType);
-            
+            const defaultValue = TypeScriptsFunctions.getDefaultValue(field, tsType);            
             content += `    public ${field.name}: ${tsType} = ${defaultValue};\n`;
         }
         
         // Constructor
         content += `\n    constructor(`;
-        
-        // Constructor parameters (ALL WITHOUT initialization)
         const constructorParams: string[] = [];
         for (const field of tableModel.fields) {
             const tsType = TypeScriptsFunctions.mapSqlTypeToTypeScript(field.type);
-            // ALL parameters WITHOUT initialization (no = null, no = anything)
             constructorParams.push(`${field.name}: ${tsType}`);
-        }
-        
+        }        
         content += constructorParams.join(',\n                ');
-        content += `) {\n\n`;
-        
+        content += `) {\n\n`;        
         // Constructor assignments
         for (const field of tableModel.fields) {
             content += `        this.${field.name} = ${field.name};\n`;
-        }
-        
+        }        
         content += `    }\n\n`;
         
         // Generate minlen function
@@ -183,7 +194,7 @@ export class TypeScriptsFunctions {
         }
         
         if (tsType === 'string') {
-            return 'AppConstants.NOT_DEF';
+            return 'undefined';
         }
         
         return 'null';

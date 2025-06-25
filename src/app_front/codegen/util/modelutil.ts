@@ -3,6 +3,8 @@
 import { AppDbMotor } from "../appdbmotor";
 import { ModelTable, ModelField, Relation } from "../model/modeltable";
 
+
+
 /**
  * class ModelUtil
  */
@@ -10,13 +12,8 @@ export class ModelUtil {
 
     public static getTableCode(table: ModelTable): string {
         let code: string = "";
-        
-        // Add imports using the common function
         code += AppDbMotor.generateImports();
-        
-        // Generate single table class
-        code += ModelUtil.generateSingleTableClass(table);
-        
+        code += ModelUtil.generateSingleTableClass(table);        
         return code;
     }
     
@@ -33,8 +30,7 @@ export class ModelUtil {
                 }
             }
             relationsCode += "]";
-        }
-        
+        }        
         // Generate single line field creation with proper indentation (8 spaces = 2 tabs of 4)
         return `        this.fields.push(new ModelField("${field.name}", "${field.type}", ${field.pk}, ${field.generated}, ${field.required}, ${field.minlen}, ${field.maxlen}, ${field.fk}, ${relationsCode}));\n`;
     }
@@ -45,23 +41,16 @@ export class ModelUtil {
 
     public static getTablesCode(tables: ModelTable[]): string {
         let code: string = "";
-        
-        // Add imports only once at the beginning
         code += AppDbMotor.generateImports();
-        
-        // Generate all table classes
         for (let i = 0; i < tables.length; i++) {
             const table = tables[i];
             code += ModelUtil.generateSingleTableClass(table);
-            
-            // Add extra line between classes (except for the last one)
             if (i < tables.length - 1) {
                 code += `\n`;
             }
-        }
-        
+        }        
         return code;
-    }
+    }//end
     
     /*
     private static generateImports(): string {
@@ -71,12 +60,11 @@ export class ModelUtil {
         return imports;
     }
     */
+
     private static generateSingleTableClass(table: ModelTable): string {
         let classCode = "";
-        
-        // Generate class name
-        const className = `${ModelUtil.capitalize(table.name)}Def`;
-        
+
+        const className = `${ModelUtil.capitalize(table.name)}Def`;        
         classCode += `/**\n`;
         classCode += ` * Table definition class for ${table.name}\n`;
         classCode += ` * Generated from database schema\n`;

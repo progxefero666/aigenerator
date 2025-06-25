@@ -24,9 +24,7 @@ export class AppDbMotorConfig {
 export class AppDbMotor {
 
     /*
-    let imports = "";
-    imports += `import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";\n`;
-    imports += `import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";\n\n`;
+    imports += `import { AppConstants } from "@/app_front/appconstants";\n\n\n`;
     */
 
     public static readonly CODEGEN_LIB_PATH: string = "@/app_front/codegen/model/modeltable"
