@@ -1,0 +1,17 @@
+{
+    "name": "module_template",
+    "sections": [
+        {
+           "name": "section a",
+           "title": "section a",
+           "logo": "section a",
+           "description": "section a description"
+        },
+        {
+           "name": "section b",
+           "title": "section b",
+           "logo": "section ab",
+           "description": "section b description"
+        }
+    ]
+}

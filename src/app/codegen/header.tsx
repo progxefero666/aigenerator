@@ -21,8 +21,7 @@ export default function PageHeader({ value }: PageHeaderProp) {
     const onSearchSubmit = (value:string): void => {
     }
 
-    const onButtonClick = (operation?: string) => {
-        
+    const onButtonClick = (operation?: string) => {        
     };
     
     return (
@@ -41,11 +40,9 @@ export default function PageHeader({ value }: PageHeaderProp) {
                 </div>
             </div>
 
-            {/*column center classname="hidden" */}
+            {/*column center */}
             <div className="w-full flex flex-row ">
-
                 <div className="w-[26%] flex flex-items-center" >
-
                 </div>
             </div>
 
