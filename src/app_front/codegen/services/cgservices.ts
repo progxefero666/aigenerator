@@ -155,7 +155,7 @@ export class CodeGenServices {
      *      - returns The content of the service class as a string.
      */
     public static genFileContentServiceClass(tableModel:ModelTable,includeImports:boolean): string {
-        const className = CodeGenUtil.capitalize(tableModel.name) + "Service";
+        const className = CodeGenUtil.capitalize(tableModel.name);
         const pathName  = CodeGenUtil.uncapitalize(tableModel.name);
 
         //TEMP_APICLIIMPORTS
@@ -167,9 +167,13 @@ export class CodeGenServices {
     }
     
     public static genFileContentArrayServiceClass(tableModels:ModelTable[]): string {
+        let separator: string = "\n\n";
+
         let content: string = TEMP_APICLIIMPORTS;
+        content += separator;
         for(const table of tableModels) {
            content += CodeGenServices.genFileContentServiceClass(table,false);
+           content += separator;
         }
         return content;
     }
