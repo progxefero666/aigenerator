@@ -136,11 +136,19 @@ export class AppThemeBars {
 }
 
 /**
- * AppThemeBars.BAR_BUTTONS_STYLE
+ * AppThemeMenus
  */
 export class AppThemeMenus {
     public static readonly MENU_OPT_COLOR: string = "btn-accent";
     public static readonly MENU_OPT_ACT_COLOR: string = "btn-warning";
+}//end class
+
+/**
+ * AppThemeButtons
+ */
+export class AppThemeButtons {
+    public static readonly BUTTON_COLLAPSE_COLOR:string = "btn-primary";
+    public static readonly ICON_COLLAPSE_COLOR:string = "black"; 
 }//end class
 
 
@@ -148,8 +156,6 @@ export class AppThemeMenus {
  *  App Theme
  */
 export class AppTheme {
-
-
 
     public static readonly C_CELL_STYLE = "w-full h-auto";
     public static readonly C_EDIT_STYLE: string = "input w-full bg-gray-700 rounded-md";

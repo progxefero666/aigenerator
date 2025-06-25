@@ -47,7 +47,8 @@ export class AppUiConst {
     
     public static readonly ICON_COLLAPSE_OFF:string = "ti-angle-up"; 
     public static readonly ICON_COLLAPSE_ON:string = "ti-angle-down"; 
-    public static readonly ICON_COLLAPSE_COLOR:string = "black"; 
+
+
 
     public static readonly ICON_OPEN:string = "ti-eye";
     public static readonly ICON_DELETE:string = "ti-trash";
