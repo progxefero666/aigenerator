@@ -1,5 +1,5 @@
 //src\app\module\page.tsx
-
+"use client";
 import { useRouter } from "next/router";
 import { Option } from "@/lib/model/base/option";
 
@@ -29,14 +29,19 @@ export interface PageModule_template_Prop {
     value?: string;
 }
 
-export default function PageModule_template({}: PageModule_template_Prop) {
-    
+export default function PageModule_template({ }: PageModule_template_Prop) {
+
     const chargesection = (name: string) => {
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col px-2">
-            <h1 className="text-2xl font-bold mb-4">Module Template</h1>
+        <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
+            <PageHeader />
+            <div className={AppThemeLayout.BODY_STYLE}>
+                <PagePrimaryBar />
+                <PageMainContent />
+                <PageSecondBar />
+            </div>
         </div>
     )
 
@@ -47,15 +52,15 @@ export default function PageModule_template({}: PageModule_template_Prop) {
  * Page: Header
  */
 interface PageHeaderProps {
-     ontest?: () => void;
+    ontest?: () => void;
 }
 function PageHeader({ ontest }: PageHeaderProps) {
     const maxLen: number = 50;
-    const onSearchSubmit    = (value:string): void => {}
-    const onButtonClick     = (op_name:string): void => {}
-    const executeOperation  = (op_name: string): void => { }
+    const onSearchSubmit = (value: string): void => { }
+    const onButtonClick = (op_name: string): void => { }
+    const executeOperation = (op_name: string): void => { }
     //useEffect(() => {const init = async () => {};init();}, []);
-    
+
     return (
 
         <div className={AppThemeLayout.LAYOUT_HEADER_STYLE}>
@@ -69,7 +74,7 @@ function PageHeader({ ontest }: PageHeaderProps) {
             <div className="w-full flex flex-row pl-[6px]">
                 <div className="w-[26%] flex flex-items-center" >
                     <Search placeholder="find" maxlen={maxLen}
-                               onsubmit={onSearchSubmit}/>
+                        onsubmit={onSearchSubmit} />
                 </div>
             </div>
             {/* column right */}
@@ -85,53 +90,50 @@ function PageHeader({ ontest }: PageHeaderProps) {
  * Page: Primary Bar
  */
 interface PagePrimaryBarProp {
-     section: string;
-     chargesection: (section:string) => void
- }
- function PagePrimaryBar({chargesection, section}: PagePrimaryBarProp) {
- 
-     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
-     const [sections, setSections] = useState<Option[]>(Module_template_Config.SECTIONS);
- 
-     //CodeGenCfg.TYPESCRIPT_FORMATS
-     const loadsection = (name: string): void => {
-         chargesection(name);
-         if (name === Module_template_Config.SECTION_A.name) {
- 
-         }
-         else if (name === Module_template_Config.SECTION_B.name) {
- 
-         }
-     }
- 
-     return (
-         <div className="w-full min-h-screen flex flex-col px-2 mb-2">
- 
- 
-             <TwDaisyMenu onselection={loadsection}
-                 options={Module_template_Config.SECTIONS}
-                 optactname={Module_template_Config.ACTIVE_SECTION.name}
-                 optcolor={AppTheme.MENU_OPT_COLOR}
-                 optactcolor={AppTheme.MENU_OPT_ACT_COLOR} />
-         </div>
-     )
- 
- }//end comp
+    section?: string;
+    chargesection?: (section: string) => void
+}
+function PagePrimaryBar({ chargesection, section }: PagePrimaryBarProp) {
+
+    const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
+    const [sections, setSections] = useState<Option[]>(Module_template_Config.SECTIONS);
+
+    const loadsection = (name: string): void => {
+        if (chargesection) {
+            chargesection(name);
+        }
+        if (name === Module_template_Config.SECTION_A.name) {
+        }
+        else if (name === Module_template_Config.SECTION_B.name) {
+        }
+    }
+
+    return (
+        <div className="w-full min-h-screen flex flex-col px-2 mb-2">
+            <TwDaisyMenu onselection={loadsection}
+                options={Module_template_Config.SECTIONS}
+                optactname={Module_template_Config.ACTIVE_SECTION.name}
+                optcolor={AppTheme.MENU_OPT_COLOR}
+                optactcolor={AppTheme.MENU_OPT_ACT_COLOR} />
+        </div>
+    )
+
+}//end comp
 
 /**
  * Page: Main Content
  */
 interface PageMainContentProp {
-    module?:string;
+    module?: string;
 }
-function PageMainContent({module}: PageMainContentProp) {
+function PageMainContent({ module }: PageMainContentProp) {
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
 
-    return(
+    return (
         <div className={AppThemeLayout.BODY_MAINCONTENT_STYLE}>
             <div>Main Content</div>
         </div>
-        
+
     )
 
 }//end comp
@@ -140,15 +142,15 @@ function PageMainContent({module}: PageMainContentProp) {
  * Page: Second Bar
  */
 interface PageSecondBarProp {
-    module?:string;
+    module?: string;
 }
-function PageSecondBar({module}: PageSecondBarProp) {
+function PageSecondBar({ module }: PageSecondBarProp) {
 
-    return(
+    return (
         <div className="w-full min-h-screen flex flex-col p-2">
             <div>Second Bar</div>
         </div>
-        
+
     )
 
 }//end comp

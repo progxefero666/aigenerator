@@ -93,12 +93,15 @@ function PagePrimaryBar({ defmodulename }: PagePrimaryBarProps) {
             //router.push("./aichatbot"); 
             router.push("./codegen"); 
         }
-        if (name === AppConfig.MOD_CODE_TYPESCRIPT.name) {
+        else if (name === AppConfig.MOD_CODE_TYPESCRIPT.name) {
             router.push("./codegen"); 
         }
         else if (name === AppConfig.MOD_COMPONENTS.name  ) {
             router.push("./codegen"); 
         }
+        else if (name === AppConfig.MOD_TEMPLATE.name) {
+            router.push("./module"); 
+        }        
     };
 
     const renderButton = (key: string, module: AppModule) => {
