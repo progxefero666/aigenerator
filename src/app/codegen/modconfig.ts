@@ -39,7 +39,7 @@ export class CodeGenCfg {
         
     public static readonly EDITOR_AREA_STYLE: string = "w-full h-auto flex flex-col bg-green-450";
     
-    public static  style_barbuttons: string = "h-auto mr-[6px] my-[6px] flex justify-end";
+   
 
 }//end class
 

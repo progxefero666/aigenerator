@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Option } from "@/lib/model/base/option";
 import { AppConstants, AppUiConst } from "@/app_front/appconstants";
-import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import { AppThemeModule } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 //page layout jsx components
@@ -121,8 +121,8 @@ function PagePrimaryBar({chargesection, section}: PagePrimaryBarProp) {
             <TwDaisyMenu onselection={loadsection}
                 options={CodeGenCfg.SECTIONS}
                 optactname={CodeGenCfg.ACTIVE_SECTION.name}
-                optcolor={AppTheme.MENU_OPT_COLOR}
-                optactcolor={AppTheme.MENU_OPT_ACT_COLOR} />
+                optcolor={AppThemeMenus.MENU_OPT_COLOR}
+                optactcolor={AppThemeMenus.MENU_OPT_ACT_COLOR} />
         </div>
     )
 

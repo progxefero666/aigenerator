@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { Option } from "@/lib/model/base/option";
 
 import { AppConstants } from "@/app_front/appconstants";
-import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import { Search } from "@/libcomp/search";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 
@@ -113,8 +113,8 @@ function PagePrimaryBar({ chargesection, section }: PagePrimaryBarProp) {
             <TwDaisyMenu onselection={loadsection}
                 options={Module_template_Config.SECTIONS}
                 optactname={Module_template_Config.ACTIVE_SECTION.name}
-                optcolor={AppTheme.MENU_OPT_COLOR}
-                optactcolor={AppTheme.MENU_OPT_ACT_COLOR} />
+                optcolor={AppThemeMenus.MENU_OPT_COLOR}
+                optactcolor={AppThemeMenus.MENU_OPT_ACT_COLOR} />
         </div>
     )
 

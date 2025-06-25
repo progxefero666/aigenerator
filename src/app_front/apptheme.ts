@@ -129,18 +129,26 @@ export class AppThemeModule {
 }
 
 /**
+ * AppThemeBars.BAR_BUTTONS_STYLE
+ */
+export class AppThemeBars {
+    public static  BAR_BUTTONS_STYLE: string = "h-auto mr-[6px] my-[6px] flex justify-end";
+}
+
+/**
+ * AppThemeBars.BAR_BUTTONS_STYLE
+ */
+export class AppThemeMenus {
+    public static readonly MENU_OPT_COLOR: string = "btn-accent";
+    public static readonly MENU_OPT_ACT_COLOR: string = "btn-warning";
+}//end class
+
+
+/**
  *  App Theme
  */
 export class AppTheme {
 
-    public static readonly MENU_OPT_COLOR: string = "btn-accent";
-    public static readonly MENU_OPT_ACT_COLOR: string = "btn-warning";
-
-    public static readonly LIST_IOTEXT_STYLE: string
-        = "w-full h-auto flex flex-col space-y-3 mb-4";
-
-    public static readonly GRID_IOELEMS_STYLE: string
-        = "w-full h-auto grid grid-cols-[25%_25%_25%_25%] mt-4 space-y-2";
 
 
     public static readonly C_CELL_STYLE = "w-full h-auto";
@@ -167,14 +175,23 @@ export class AppTheme {
 }//end class
 
 /**
- * App Theme Card
+ * App Theme Card AppThemeCard.ARD_HEADER_STYLE
  */
 export class AppThemeCard{
 
     //AppThemeCard.CARD_CONTAINER_STYLE
-    
-    public static readonly CARD_CONTAINER_STYLE: string
+
+    public static readonly CONTAINER_STYLE: string
         = "w-full flex flex-col bg-base-100 p-[10px] rounded-lg border border-zinc-500";   
+    
+    public static readonly HEADER_STYLE: string 
+        = "w-full h-auto flex flex-row items-center justify-between rounded-lg border border-sky-500";
+    
+    public static readonly HEADER_CONTENT_STYLE: string 
+        = "w-full h-auto flex flex-row items-center justify-between rounded-lg border border-sky-500";
+
+    public static readonly HEADER_TITLE_STYLE: string = "flex items-center flex-row ml-[12px] text-white text-lg flex-1";
+
 }
 
 /**
