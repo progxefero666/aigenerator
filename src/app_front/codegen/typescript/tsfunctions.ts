@@ -132,7 +132,22 @@ export class TypeScriptsFunctions {
         content += `        return 0;\n`;
         content += `    }\n\n`;
         
-        content += `}//end class\n`;
+        content += `}//end class\n\n`;
+        
+        // Add type definition based on the class
+        const typeName = `Type${className}`;
+        content += `/**\n`;
+        content += ` * Type definition for ${className} entity\n`;
+        content += ` */\n`;
+        content += `export type ${typeName} = {\n`;
+        
+        // Generate type properties (same as class but without defaults)
+        for (const field of tableModel.fields) {
+            const tsType = TypeScriptsFunctions.mapSqlTypeToTypeScript(field.type);
+            content += `    ${field.name}: ${tsType};\n`;
+        }
+        
+        content += `};\n`;
         
         return content;
     }

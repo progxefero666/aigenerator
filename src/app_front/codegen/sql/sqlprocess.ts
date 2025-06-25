@@ -3,16 +3,9 @@
 
 import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";
 import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
+import { fieldtypes, SqlTypes } from "@/app_front/codegen/appdbmodel";
 
-// Interfaz para el contenido del JSON para mayor seguridad de tipos
-interface SqlTypes {
-    fieldtypes: {
-        [key: string]: string[];
-    };
-}
 
-// Se asume que el JSON importado tiene la estructura de la interfaz SqlTypes
-const fieldtypes = (sqlTypesData as SqlTypes).fieldtypes;
 
 export class CodeGenSqlProcess {
 

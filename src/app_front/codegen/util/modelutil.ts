@@ -2,6 +2,7 @@
 
 import { AppDbMotor } from "../appdbmotor";
 import { ModelTable, ModelField, Relation } from "../model/modeltable";
+import { CodeGenUtil } from "./codegenutil";
 
 
 
@@ -10,14 +11,42 @@ import { ModelTable, ModelField, Relation } from "../model/modeltable";
  */
 export class ModelUtil {
 
-    public static getTableCode(table: ModelTable): string {
+    private static generateSingleTableDefClass(table: ModelTable): string {
+        let classCode = "";
+        const className = `${CodeGenUtil.capitalize(table.name)}Def`;        
+        classCode += `/**\n`;
+        classCode += ` * Table definition class for ${table.name}\n`;
+        classCode += ` * Generated from database schema\n`;
+        classCode += ` */\n`;
+        classCode += `export class ${className} {\n\n`;        
+        // Class properties
+        classCode += `    public name: string = "${table.name}";\n`;
+        classCode += `    public fields: ModelField[] = [];\n\n`;        
+        // Constructor
+        classCode += `    constructor() {\n`;        
+        // Add fields to array
+        for (const field of table.fields) {
+            classCode += ModelUtil.generateTableDefFieldLine(field);
+        }        
+        classCode += `    }\n\n`;        
+        // Add toJsonString method
+        classCode += `    public toJsonString(): string {\n`;
+        classCode += `        return JSON.stringify(this, null, 4);\n`;
+        classCode += `    }\n\n`;        
+        classCode += `}//end class\n`;
+        
+        return classCode;
+    }
+    
+    
+    public static getTableDefCode(table: ModelTable): string {
         let code: string = "";
         code += AppDbMotor.generateImports();
-        code += ModelUtil.generateSingleTableClass(table);        
+        code += ModelUtil.generateSingleTableDefClass(table);        
         return code;
     }
     
-    private static generateFieldLine(field: ModelField): string {
+    private static generateTableDefFieldLine(field: ModelField): string {
         // Generate relations array in one line if exists
         let relationsCode = "null";
         if (field.relations && field.relations.length > 0) {
@@ -35,16 +64,14 @@ export class ModelUtil {
         return `        this.fields.push(new ModelField("${field.name}", "${field.type}", ${field.pk}, ${field.generated}, ${field.required}, ${field.minlen}, ${field.maxlen}, ${field.fk}, ${relationsCode}));\n`;
     }
     
-    private static capitalize(str: string): string {
-        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-    }
 
-    public static getTablesCode(tables: ModelTable[]): string {
+
+    public static getTablesDefCode(tables: ModelTable[]): string {
         let code: string = "";
         code += AppDbMotor.generateImports();
         for (let i = 0; i < tables.length; i++) {
             const table = tables[i];
-            code += ModelUtil.generateSingleTableClass(table);
+            code += ModelUtil.generateSingleTableDefClass(table);
             if (i < tables.length - 1) {
                 code += `\n`;
             }
@@ -61,38 +88,6 @@ export class ModelUtil {
     }
     */
 
-    private static generateSingleTableClass(table: ModelTable): string {
-        let classCode = "";
 
-        const className = `${ModelUtil.capitalize(table.name)}Def`;        
-        classCode += `/**\n`;
-        classCode += ` * Table definition class for ${table.name}\n`;
-        classCode += ` * Generated from database schema\n`;
-        classCode += ` */\n`;
-        classCode += `export class ${className} {\n\n`;
-        
-        // Class properties
-        classCode += `    public name: string = "${table.name}";\n`;
-        classCode += `    public fields: ModelField[] = [];\n\n`;
-        
-        // Constructor
-        classCode += `    constructor() {\n`;
-        
-        // Add fields to array
-        for (const field of table.fields) {
-            classCode += ModelUtil.generateFieldLine(field);
-        }
-        
-        classCode += `    }\n\n`;
-        
-        // Add toJsonString method
-        classCode += `    public toJsonString(): string {\n`;
-        classCode += `        return JSON.stringify(this, null, 4);\n`;
-        classCode += `    }\n\n`;
-        
-        classCode += `}//end class\n`;
-        
-        return classCode;
-    }
 
 }//end class ModelUtil
