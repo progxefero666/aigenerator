@@ -133,7 +133,6 @@ export class AppThemeModule {
  */
 export class AppTheme {
 
-
     public static readonly MENU_OPT_COLOR: string = "btn-accent";
     public static readonly MENU_OPT_ACT_COLOR: string = "btn-warning";
 
@@ -167,6 +166,16 @@ export class AppTheme {
 
 }//end class
 
+/**
+ * App Theme Card
+ */
+export class AppThemeCard{
+
+    //AppThemeCard.CARD_CONTAINER_STYLE
+    
+    public static readonly CARD_CONTAINER_STYLE: string
+        = "w-full flex flex-col bg-base-100 p-[10px] rounded-lg border border-zinc-500";   
+}
 
 /**
  * AppThemeUtil

@@ -26,6 +26,7 @@ export default function CodeGenCard({code,execexport}: CodeGenCardProp) {
 
     return (
         <div className={style_component}>
+            
             <div className={AppCard.CARD_DATA_STYLE}>
                 <code>
                     <p>{code}</p>
