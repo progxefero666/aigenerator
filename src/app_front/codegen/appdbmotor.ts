@@ -1,7 +1,7 @@
 //src/app_front/codegen/appdbmotor.ts
 
 import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";
-import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
+import sqlTypesData from "@/app_front/codegen/model/sqltypes.json";
 
 /**
  * class App Db Motor Config
@@ -18,7 +18,7 @@ export class AppDbMotorConfig {
 export class AppDbMotor {
 
     public static readonly CODEGEN_LIB_PATH: string = "@/app_front/codegen/model/modeltable"
-    public static readonly SQLTYPES_JSON_PATH: string = "@/app_front/codegen/sql/sqltypes.json";
+    public static readonly SQLTYPES_JSON_PATH: string = "@/app_front/codegen/model/sqltypes.json";
 
     public static generateImports(): string {
         let imports: string = "";

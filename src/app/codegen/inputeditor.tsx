@@ -8,9 +8,9 @@ import { CodeGenCfg } from "./modconfig";
 import { InputFiles } from "@/libcomp/inputfiles";
 import { Button } from "@/libcomp/button";
 import { ModelTable } from "../../app_front/codegen/model/modeltable";
-import { CodeGenSqlProcess } from "../../app_front/codegen/sql/sqlprocess";
-import { TypeScriptsFunctions } from "@/app_front/codegen/typescript/tsfunctions";
-import { ModelUtil } from "@/app_front/codegen/util/modelutil";
+import { SqlGenerator } from "../../app_front/codegen/generator/sqlgenerator";
+import { TypeScriptsGenerator } from "@/app_front/codegen/typescript/tsgenerator";
+import { CodeGenFunctions } from "@/app_front/codegen/util/cgfunctions";
 
 
 
@@ -45,12 +45,12 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
     
     const runProcess = () => {
         console.log("run process");       
-        const tables: ModelTable[] = CodeGenSqlProcess.getEsquemaTables(code);
+        const tables: ModelTable[] = SqlGenerator.getEsquemaTables(code);
         
-        const table_code:string = ModelUtil.getTableDefCode(tables[0]);
+        const table_code:string = CodeGenFunctions.getTableDefCode(tables[0]);
         //console.log(table_code);        
 
-        const tablesDefCode:string = ModelUtil.getTablesDefCode(tables);
+        const tablesDefCode:string = CodeGenFunctions.getTablesDefCode(tables);
         ondataresult(tablesDefCode);
 
         //const tableClassCode:string = TypeScriptsFunctions.genFileContentEntityClass(tables[1]);

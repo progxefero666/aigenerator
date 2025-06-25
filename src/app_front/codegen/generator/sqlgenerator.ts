@@ -1,52 +1,32 @@
 //src\app_front\codegen\sql\sqlprocess.ts
 
-
 import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";
-import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
-import { SqlFieldtypes, SqlTypes } from "@/app_front/codegen/appdbmodel";
+import { CodeGenFunctions } from "@/app_front/codegen/util/cgfunctions";
 
-
-
-export class CodeGenSqlProcess {
-
-    // Mapa de tipos construido una sola vez para eficiencia.
-    public static typeMap: Map<string, string> = this.buildTypeMap();
+/**
+ * lass CodeGen Sql Process
+ *    info data sQL types:
+ *       file: src/app_front/codegen/appdbmotor.ts
+ *
+ *       import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
+ *       export interface SqlTypes {fieldtypes: {[key:string]:string[];};}
+ *       export const SqlFieldtypes = (sqlTypesData as SqlTypes).fieldtypes; 
+ */
+export class SqlGenerator {
 
     /**
-     * Construye un mapa para una búsqueda rápida de tipos de PostgreSQL a tipos de modelo genéricos.
-     */
-    public static buildTypeMap(): Map<string, string> {
-        const map = new Map<string, string>();
-        for (const genericType in SqlFieldtypes) {
-            for (const pgType of SqlFieldtypes[genericType]) {
-                const key = pgType.split('(')[0].trim().toUpperCase();
-                if (key) {
-                    map.set(key, genericType);
-                }
-            }
-        }
-        return map;
-    }
-    
-    /**
-     * Mapea un tipo de dato de PostgreSQL (ej. 'character varying(50)') a un tipo genérico del modelo (ej. 'text').
-     */
-    public static mapPgTypeToModelType(pgType: string): string {
-        const normalizedType = pgType.split('(')[0].trim().toUpperCase();
-        return this.typeMap.get(normalizedType) || 'unknown';
-    }
-
-   
-    /**
-     * Implementación de la función que parsea el script SQL.
-     * La firma de la función es exactamente la que se espera, sin parámetros adicionales.
-     * @param sqlScript El contenido del script SQL.
-     * @returns Un array de ModelTable con la estructura de la BBDD.
+     * Implementation function for parse SQL script.
+     * @param sqlScript El contenido del script de esquema d la bbdd en SQL.
+     * @returns ModelTable Array with the tables included in the script
+     *      and store in a single model clases:
+     *          Relation
+     *          ModelField
+     *          ModelTable
      */
     public static getEsquemaTables(sqlScript: string): ModelTable[] {
         const tablesMap = new Map<string, ModelTable>();
 
-        // 1. PASO 1: Parsear CREATE TABLE para obtener tablas y campos básicos
+        // 1. Step 1: Parsear CREATE TABLE para obtener tablas y campos básicos
         const createTableRegex = /CREATE TABLE public\.(\w+)\s*\(([\s\S]*?)\);/g;
         let tableMatch;
         while ((tableMatch = createTableRegex.exec(sqlScript)) !== null) {
@@ -68,7 +48,7 @@ export class CodeGenSqlProcess {
                 const fullType = fieldMatch[2];
 
                 const required = trimmedLine.toUpperCase().includes('NOT NULL');
-                const modelType = this.mapPgTypeToModelType(fullType);
+                const modelType = CodeGenFunctions.mapPgTypeToModelType(fullType);
 
                 let maxlen: number | null = null;
                 const maxlenMatch = fullType.match(/\((\d+)\)/);
@@ -88,7 +68,7 @@ export class CodeGenSqlProcess {
             tablesMap.set(tableName, table);
         }
 
-        // 2. PASO 2: Parsear PRIMARY KEYs
+        // 2. Step 2: Parsear PRIMARY KEYs
         const pkRegex = /ALTER TABLE ONLY public\.(\w+)\s+ADD CONSTRAINT \w+_pkey PRIMARY KEY \((\w+)\);/g;
         let pkMatch;
         while ((pkMatch = pkRegex.exec(sqlScript)) !== null) {
@@ -101,7 +81,7 @@ export class CodeGenSqlProcess {
             }
         }
 
-        // 3. PASO 3: Parsear campos autogenerados (GENERATED ALWAYS AS IDENTITY)
+        // 3. Step 3: Parsear campos autogenerados (GENERATED ALWAYS AS IDENTITY)
         const generatedRegex = /ALTER TABLE public\.(\w+) ALTER COLUMN (\w+) ADD GENERATED ALWAYS AS IDENTITY/g;
         let genMatch;
         while ((genMatch = generatedRegex.exec(sqlScript)) !== null) {
@@ -114,7 +94,7 @@ export class CodeGenSqlProcess {
             }
         }
 
-        // 4. PASO 4: Parsear FOREIGN KEYs y crear las relaciones
+        // 4. Step 4: Parsear FOREIGN KEYs y crear las relaciones
         const fkRegex = /ALTER TABLE ONLY public\.(\w+)\s+ADD CONSTRAINT \w+_fkey FOREIGN KEY \((\w+)\) REFERENCES public\.(\w+)\((\w+)\)/g;
         let fkMatch;
         while ((fkMatch = fkRegex.exec(sqlScript)) !== null) {
