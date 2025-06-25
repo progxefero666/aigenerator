@@ -48,7 +48,7 @@ export default function CodeGenerator() {
             <div className={CodeGenCfg.BODY_STYLE}>
                 <PagePrimaryBar     section={section} chargesection={chargeSection} />
                 <PageInputEditor    section={section} ondataresult = {onDataResult}/>                
-                <PageOutputMonitor  section={section} code={code}/>
+                <PageOutputMonitor  format={section} code={code}/>
                 <PageSecondaryBar   section={section} />                
             </div>
         </div>

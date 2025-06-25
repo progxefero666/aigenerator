@@ -9,6 +9,7 @@ import CodeGenCard from "./cards/codegencard";
 
 import { BARCFG_EXPORT, BARCFG_EXPORT_COPY } from "@/app_front/uimodel/uimodelbars";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
+import { AppEditorMessages } from "./appeditor";
 
 
 const style_header: string = "w-full h-auto flex flex-row items-center pb-1 justify-between rounded-lg border border-sky-500";
@@ -19,17 +20,29 @@ const style_header_title: string = "flex flex-row items-center pl-3 text-white t
  * Application Editor Tools
  */
 export interface PageOutputMonitorProp {
-    section?: string;
+    format?: string;
     code: string;
+    fileName?: string;
 }
-export default function PageOutputMonitor({section,code}: PageOutputMonitorProp) {
+export default function PageOutputMonitor({format,code,fileName}: PageOutputMonitorProp) {
 
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
-
-    const [barConfig, setBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT_COPY);
-    
+    const [barConfig, setBarConfig]       =  useState<BarButtonsCfg>(BARCFG_EXPORT_COPY);
+   
     const onexport = () => {
-        alert("export");
+        
+        let result = true; //CodeGenCfg.exportCode(code);
+        if(fileName && fileName !== AppConstants.NOT_DEF){
+            //result = CodeGenCfg.exportCode(code, fileName);
+        }    
+
+        if(result){
+            setAlertMessage(AppEditorMessages.MSG_EXPORT_SUCCESS);
+        }
+        else {
+            setAlertMessage(AppEditorMessages.MSG_EXPORT_ERROR);
+        }
+        setTimeout(() => setAlertMessage(AppConstants.NOT_DEF), 3000);          
     }
 
     const onClick = (opId?: string) => {
@@ -50,12 +63,12 @@ export default function PageOutputMonitor({section,code}: PageOutputMonitorProp)
 
     const renderMainContent = () => {
 
-        if (section === CodeGenCfg.CREATE_MODEL.name) {
+        if (format === CodeGenCfg.CREATE_MODEL.name) {
             return (
                 <CodeGenCard execexport={onexport} code={code} />
             );
         }
-        if (section === CodeGenCfg.SECTION_SERVICE.name) {
+        if (format === CodeGenCfg.SECTION_SERVICE.name) {
             return (
                 <CodeGenCard execexport={onexport} code={code} />
             );
@@ -67,6 +80,7 @@ export default function PageOutputMonitor({section,code}: PageOutputMonitorProp)
             <div className={style_header}>
                 <div className={style_header_title}>
                     <p className={AppThemeTexts.TEXT_H3_SIZE}>Result</p>
+                    
                 </div>
                 <BarButtons classname={AppThemeBars.BAR_BUTTONS_STYLE}
                     barconfig={barConfig}

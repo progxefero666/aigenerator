@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { TwDaisyUtil } from "./twdaisyutil";
-import { BarButtonsCfg } from "@/libcomp/model/barbuttonscfg";
+
 import { AppConstants, AppUiConst } from "@/app_front/appconstants";
+import { BarButtonsCfg } from "@/libcomp/barbutton";
 
 
 /**
