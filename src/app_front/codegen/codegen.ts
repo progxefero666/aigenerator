@@ -1,9 +1,24 @@
 //src\app_front\codegen\util\modelutil.ts
 
-import { CodeGenLibrary } from "./cgconfig";
-import { ModelTable, ModelField, Relation } from "./model/modeltable";
+import { ModelTable, ModelField, Relation } from "./model/cgmodel";
 
-import { SqlFieldtypes } from "@/app_front/codegen/cgconfig";
+
+import sqlTypesData from "@/app_front/codegen/model/sqltypes.json";
+export interface SqlTypes {fieldtypes: {[key:string]:string[];};}
+export const SqlFieldtypes = (sqlTypesData as SqlTypes).fieldtypes;
+
+/**
+ * class App Db Motor Config
+ */
+export class CodeGenLibrary {
+
+    public static readonly CODEGEN_LIB_PATH: string 
+        = "@/app_front/codegen/model/modeltable"
+
+    public static readonly SQLTYPES_JSON_PATH: string 
+        = "@/app_front/codegen/model/sqltypes.json";
+
+}//end class
 
 /**
  * class CodeGen Util
