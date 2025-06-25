@@ -28,6 +28,10 @@ export class CodeGenUtil {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }//end
 
+    public static uncapitalize(str: string): string {
+        return str.charAt(0).toLowerCase() + str.slice(1);
+    }//end  
+
     public static generateImports(): string {
         let imports: string = "";
         imports += `import { ModelTable, ModelField, Relation } from `;
