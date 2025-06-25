@@ -31,9 +31,9 @@ export class CodeGenUtil {
     public static generateImports(): string {
         let imports: string = "";
         imports += `import { ModelTable, ModelField, Relation } from `;
-        imports += `"` + CodeGenLibrary.CODEGEN_LIB_PATH + `;\n"`
+        imports += `"` + CodeGenLibrary.CODEGEN_LIB_PATH + `";\n`;
         imports += `import sqlTypesData from `;
-        imports += `"` + CodeGenLibrary.SQLTYPES_JSON_PATH + `;\n\n"`
+        imports += `"` + CodeGenLibrary.SQLTYPES_JSON_PATH + `";\n\n`;
         return imports;
     }
 
@@ -483,21 +483,29 @@ export class CodeGenTsFilesContent {
     }//end
     
     public static generateTableDefFieldLine(field: ModelField): string {
-        // Generate relations array in one line if exists
-        let relationsCode = "null";
-        if (field.relations && field.relations.length > 0) {
-            relationsCode = "[";
-            for (let i = 0; i < field.relations.length; i++) {
-                const relation = field.relations[i];
-                relationsCode += `new Relation("${relation.table}", "${relation.field}")`;
-                if (i < field.relations.length - 1) {
-                    relationsCode += ", ";
+        // Build optional parameters
+        let optionalParams = "";
+        
+        // Add fk parameter only if true
+        if (field.fk) {
+            optionalParams += `, ${field.fk}`;
+            
+            // Add relations only if they exist
+            if (field.relations && field.relations.length > 0) {
+                optionalParams += ", [";
+                for (let i = 0; i < field.relations.length; i++) {
+                    const relation = field.relations[i];
+                    optionalParams += `new Relation("${relation.table}", "${relation.field}")`;
+                    if (i < field.relations.length - 1) {
+                        optionalParams += ", ";
+                    }
                 }
+                optionalParams += "]";
             }
-            relationsCode += "]";
-        }        
+        }
+        
         // Generate single line field creation with proper indentation (8 spaces = 2 tabs of 4)
-        return `        this.fields.push(new ModelField("${field.name}", "${field.type}", ${field.pk}, ${field.generated}, ${field.required}, ${field.minlen}, ${field.maxlen}, ${field.fk}, ${relationsCode}));\n`;
+        return `        this.fields.push(new ModelField("${field.name}", "${field.type}", ${field.pk}, ${field.generated}, ${field.required}, ${field.minlen}, ${field.maxlen}${optionalParams}));\n`;
     }//end
 
     public static getTablesDefCode(tables: ModelTable[]): string {

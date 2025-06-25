@@ -42,18 +42,21 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
         
     
     const runProcess = () => {
-        console.log("run process");       
-        const tables: ModelTable[] = CodeGenSql.getEsquemaTables(code);
-        
+       
+        const tables: ModelTable[] = CodeGenSql.getEsquemaTables(code);        
+        const tablesCode:string = 
+            CodeGenTsFilesContent.genFileContentEntityArrayClass(tables);
+        ondataresult(tablesCode);
+
         //const table_code:string = CodeGenTsFilesContent.getTableDefCode(tables[0]);
         //console.log(table_code);        
 
         //const tablesDefCode:string = CodeGenTsFilesContent.getTablesDefCode(tables);
         //ondataresult(tablesDefCode);
 
-        const tableClassCode:string 
-            = CodeGenTsFilesContent.genFileContentEntityClass(tables[1]);
-        ondataresult(tableClassCode);
+        //const tableClassCode:string 
+        //    = CodeGenTsFilesContent.genFileContentEntityClass(tables[1]);
+        //ondataresult(tableClassCode);
         //console.log("process end");
     };
 
