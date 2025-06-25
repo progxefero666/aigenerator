@@ -55,19 +55,30 @@ export enum ButtonsColors {
     ERROR_CONTENT = "btn-error-content"
 }
 
-export class AppTheme {
+export class AppCard {
+    public static readonly CARD_BORDER_COLOR: string = "border-zinc-500";
+    public static readonly CARD_HEADER_BORDER_COLOR: string = "border-sky-500";
 
-    public static readonly LAYOUT_COLOR: string = "bg-gray-900";
-    public static readonly LAYOUT_STYLE: string = "w-full h-auto ".concat(AppTheme.LAYOUT_COLOR);
+    public static readonly CARD_STYLE: string
+        = "w-full flex flex-col bg-base-100 border border-zinc-500 rounded-lg p-2";
 
-    public static readonly LAYOUT_HEADER_STYLE: string
-        = "w-full h-auto grid grid-cols-[17%_65%_17%] border-b-1 mb-3 border-b-red-800 py-2";
+    public static readonly CARD_HEADER_BAR_STYLE: string
+        = "w-full h-auto grid grid-cols-2 auto-cols-max  rounded-lg border border-sky-500";
 
-    public static readonly BODY_COLOR: string = "bg-base-100";
+    public static readonly CARD_HEADER_STYLE: string =
+        "flex flex-row items-center pl-[6px] text-white text-xs"
 
-    public static readonly BODY_STYLE: string = "w-full h-auto grid grid-cols-[17%_65%_17%]"
+    public static readonly CARD_TITLE_STYLE: string
+        = "w-full flex items-center flex-row ml-[12px] text-white text-lg";
 
-    public static readonly BODY_MAINCONTENT_STYLE: string = "main_monitor w-full min-h-screen rounded-lg"
+    public static readonly CARD_DATA_STYLE: string = "w-full h-auto p-2 rounded-md";
+
+}//end class
+
+/**
+ * App Theme Texts
+ */
+export class AppThemeTexts{
 
     public static readonly TEXT_BASE_COLOR: string = "text-white";
     public static readonly TEXT_BASE_SIZE: string = "text-base";
@@ -90,25 +101,27 @@ export class AppTheme {
     public static readonly TEXT_H4_COLOR: string = "text-white";
     public static readonly TEXT_H5_COLOR: string = "text-white";
 
+}//end class
+
+export class AppThemeLayout {
+
+    public static readonly LAYOUT_COLOR: string = "bg-gray-900";
+    public static readonly LAYOUT_STYLE: string = "w-full h-auto ".concat(AppThemeLayout.LAYOUT_COLOR);
+    public static readonly LAYOUT_HEADER_STYLE: string
+        = "w-full h-auto grid grid-cols-[17%_65%_17%] border-b-1 mb-3 border-b-red-800 py-2";
+
+    public static readonly BODY_COLOR: string = "bg-base-100";
+    public static readonly BODY_STYLE: string = "w-full h-auto grid grid-cols-[17%_65%_17%]"
+    public static readonly BODY_MAINCONTENT_STYLE: string = "main_monitor w-full min-h-screen rounded-lg"
+}
+/**
+ *  App Theme
+ */
+export class AppTheme {
+
+
     public static readonly MENU_OPT_COLOR: string = "btn-accent";
     public static readonly MENU_OPT_ACT_COLOR: string = "btn-warning";
-
-    public static readonly CARD_BORDER_COLOR: string = "border-zinc-500";
-    public static readonly CARD_HEADER_BORDER_COLOR: string = "border-sky-500";
-
-    public static readonly CARD_STYLE: string
-        = "w-full flex flex-col bg-base-100 border border-zinc-500 rounded-lg p-2";
-
-    public static readonly CARD_HEADER_BAR_STYLE: string
-        = "w-full h-auto grid grid-cols-2 auto-cols-max  rounded-lg border border-sky-500";
-
-    public static readonly CARD_HEADER_STYLE: string =
-        "flex flex-row items-center pl-[6px] text-white text-xs"
-
-    public static readonly CARD_TITLE_STYLE: string
-        = "w-full flex items-center flex-row ml-[12px] text-white text-lg";
-
-    public static readonly CARD_DATA_STYLE: string = "w-full h-auto p-2 rounded-md";
 
     public static readonly LIST_IOTEXT_STYLE: string
         = "w-full h-auto flex flex-col space-y-3 mb-4";
@@ -116,8 +129,8 @@ export class AppTheme {
     public static readonly GRID_IOELEMS_STYLE: string
         = "w-full h-auto grid grid-cols-[25%_25%_25%_25%] mt-4 space-y-2";
 
-    public static readonly C_CELL_STYLE = "w-full h-auto";
 
+    public static readonly C_CELL_STYLE = "w-full h-auto";
     public static readonly C_EDIT_STYLE: string = "input w-full bg-gray-700 rounded-md";
     public static readonly C_DISABLED_STYLE: string = "input w-full bg-gray-700 rounded-md";
     public static readonly C_READONLY_STYLE: string = "input w-full bg-gray-600 rounded-md";
@@ -131,7 +144,6 @@ export class AppTheme {
     public static readonly INPUT_CHECK_STYLE: string =
         "checkbox bg-gray-700 checked:bg-amber-500 text-black text-black border border-gray-300"
 
-
     public static readonly INPUT_CHECK_DISABLED_STYLE: string =
         "checkbox bg-gray-900 checked:bg-amber-500 text-black text-black border border-gray-300"
 
@@ -141,14 +153,7 @@ export class AppTheme {
 
 }//end class
 
-/*
-        const handleOnChange = (value: boolean) => {
-            if (onchange) {
 
-            }
-        }
-
-*/
 /**
  * AppThemeUtil
  */

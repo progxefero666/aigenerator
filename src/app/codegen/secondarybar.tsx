@@ -1,7 +1,4 @@
-//src\app\appeditor\paneltools.tsx
-
-import { Option } from "@/lib/common/model/base/option";
-import { Application } from "@/client/models/Application";
+//src\app\codegen\secondarybar.tsx
 
 
 /**

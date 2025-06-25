@@ -1,7 +1,8 @@
 //src\app_front\uimodel\uimodelbars.ts
 
 import { AppConstants, AppTexts, AppUiConst } from "@/app_front/appconstants";
-import { BarButtonsCfg } from "@/libcomp/model/barbuttonscfg";
+import { BarButtonsCfg } from "@/libcomp/barbutton";
+
 
 export const BARCFG_EXPORT: BarButtonsCfg = new BarButtonsCfg(
     [AppConstants.ACT_EXPORT],

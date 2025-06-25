@@ -1,9 +1,8 @@
 //src\app\codegen\page.tsx
-
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { AppTheme } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
 
 //page layout jsx components
 import PageHeader from "./header";
@@ -40,7 +39,7 @@ export default function CodeGenerator() {
     }
 
     return (
-        <div id="cont_root" className={AppTheme.LAYOUT_STYLE} >
+        <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
 
             <div className={CodeGenCfg.BODY_STYLE}>

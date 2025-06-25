@@ -1,7 +1,7 @@
 //src\app\appeditor\cards\appcard.tsx
 
 import React, { useEffect, useRef, useState } from "react";
-import { AppTheme } from "@/app_front/apptheme";
+import { AppCard, AppTheme } from "@/app_front/apptheme";
 
 const style_component: string 
 = "w-full flex flex-col bg-base-100 p-[10px] rounded-lg border border-zinc-500";
@@ -26,7 +26,7 @@ export default function CodeGenCard({code,execexport}: CodeGenCardProp) {
 
     return (
         <div className={style_component}>
-            <div className={AppTheme.CARD_DATA_STYLE}>
+            <div className={AppCard.CARD_DATA_STYLE}>
                 <code>
                     <p>{code}</p>
                 </code>                

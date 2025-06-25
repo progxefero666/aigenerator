@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { AppConstants } from "@/app_front/appconstants";
 import { renderAlert } from "@/twdaisy/twdaisycomp";
-import { AppTheme } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
 import { CodeGenCfg } from "./motor/cgcfg";
 import CodeGenCard from "./cards/codegencard";
-import { BarButtonsCfg } from "@/libcomp/model/barbuttonscfg";
+
 import { BARCFG_EXPORT } from "@/app_front/uimodel/uimodelbars";
-import { BarButtons } from "@/libcomp/barbutton";
+import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 
 
 const style_header: string = "w-full h-auto flex flex-row items-center pb-1 justify-between rounded-lg border border-sky-500";
@@ -54,14 +54,14 @@ export default function PageOutputMonitor({ section }: PageOutputMonitorProp) {
         <div className={CodeGenCfg.EDITOR_STYLE}>
             <div className={style_header}>
                 <div className={style_header_title}>
-                    <p className={AppTheme.TEXT_H3_SIZE}>Result</p>
+                    <p className={AppThemeTexts.TEXT_H3_SIZE}>Result</p>
                 </div>
                 <BarButtons classname={CodeGenCfg.style_barbuttons}
                     barconfig={barConfig}
                     onclick={onClick} />
             </div>
 
-            <div className={AppTheme.BODY_MAINCONTENT_STYLE}>
+            <div className={AppThemeLayout.BODY_MAINCONTENT_STYLE}>
                 {renderMainContent()}
                 {(alertMessage !== AppConstants.NOT_DEF) ? renderAlert(alertMessage) : null}
             </div>

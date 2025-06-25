@@ -1,4 +1,4 @@
-//src\app\appeditor\primarybar.tsx
+//src\app\codegen\primarybar.tsx
 
 import { useRef, useState } from "react";
 import { Option } from "@/lib/model/base/option";

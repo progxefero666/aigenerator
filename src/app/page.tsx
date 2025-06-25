@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AppModule } from "@/lib/arquitect/model/appmodule";
 import { AppConfig } from "@/app_front/appconfig";
-import { AppTheme } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
 import { Search } from "@/libcomp/search";
 import { AppConstants } from "@/app_front/appconstants";
 
@@ -19,9 +19,9 @@ export default function Index() {
     //useEffect(() => {const init = async () => {};init();}, []);
 
     return (
-        <div id="cont_root" className={AppTheme.LAYOUT_STYLE} >
+        <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader  />
-            <div className = {AppTheme.BODY_STYLE}>
+            <div className = {AppThemeLayout.BODY_STYLE}>
                 <PagePrimaryBar />
                 <PageMainContent />
                 <PageSecondBar />
@@ -43,9 +43,10 @@ function PageHeader({ ontest }: PageHeaderProps) {
     const onButtonClick     = (op_name:string): void => {}
     const executeOperation  = (op_name: string): void => { }
     //useEffect(() => {const init = async () => {};init();}, []);
+    
     return (
 
-        <div className={AppTheme.LAYOUT_HEADER_STYLE}>
+        <div className={AppThemeLayout.LAYOUT_HEADER_STYLE}>
             {/*column left */}
             <div className="w-full flex flex-row items-center px-2 top-2">
                 <div className="flex-1 flex items-center text-white text-2xl translate-y-[-4px]">
@@ -138,7 +139,7 @@ function PageMainContent({module}: PageMainContentProp) {
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
 
     return(
-        <div className={AppTheme.BODY_MAINCONTENT_STYLE}>
+        <div className={AppThemeLayout.BODY_MAINCONTENT_STYLE}>
             <div>Main Content</div>
         </div>
         
