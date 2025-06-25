@@ -121,12 +121,15 @@ function PagePrimaryBar({ defmodulename }: PagePrimaryBarProps) {
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col px-2 mb-2">
+        <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
+
+            { /* menu options */}
             <div className="w-full h-auto  flex flex-col px-2 py-[10px] space-y-3 ">
                 {modules.map((module, index) => (
                     renderButton(index.toString(), module)
                 ))}
             </div>
+
         </div>
     )
 
@@ -161,7 +164,7 @@ interface PageSecondBarProp {
 function PageSecondBar({module}: PageSecondBarProp) {
 
     return(
-        <div className="w-full min-h-screen flex flex-col p-2">
+        <div className = {AppThemeLayout.LAYOUT_SECONDARY_BAR}>
             <div>Second Bar</div>
         </div>
         

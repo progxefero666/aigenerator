@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AppConstants } from "@/app_front/appconstants";
 import { renderAlert } from "@/twdaisy/twdaisycomp";
 import { AppTheme, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
-import { CodeGenCfg } from "./motor/cgcfg";
+import { CodeGenCfg } from "./motor/modconfig";
 import CodeGenCard from "./cards/codegencard";
 
 import { BARCFG_EXPORT } from "@/app_front/uimodel/uimodelbars";

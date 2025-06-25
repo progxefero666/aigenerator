@@ -2,9 +2,9 @@
 
 import { useRef, useState } from "react";
 import { Option } from "@/lib/model/base/option";
-import { CodeGenCfg } from "./motor/cgcfg";
+import { CodeGenCfg } from "./motor/modconfig";
 import { AppConstants } from "@/app_front/appconstants";
-import { AppTheme } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 
 /**
@@ -32,9 +32,7 @@ export default function PagePrimaryBar({chargesection, section}: PagePrimaryBarP
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col px-2 mb-2">
-
-
+        <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
             <TwDaisyMenu onselection={loadsection}
                 options={CodeGenCfg.SECTIONS}
                 optactname={CodeGenCfg.ACTIVE_SECTION.name}

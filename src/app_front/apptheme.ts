@@ -103,6 +103,7 @@ export class AppThemeTexts{
 
 }//end class
 
+//AppThemeLayout.LAYOUT_SECONDARY_BAR
 export class AppThemeLayout {
 
     public static readonly LAYOUT_COLOR: string = "bg-gray-900";
@@ -110,10 +111,23 @@ export class AppThemeLayout {
     public static readonly LAYOUT_HEADER_STYLE: string
         = "w-full h-auto grid grid-cols-[17%_65%_17%] border-b-1 mb-3 border-b-red-800 py-2";
 
+    public static readonly LAYOUT_PRIMARY_BAR: string =
+        "w-full min-h-screen flex flex-col px-2 mb-2";
+
+    public static readonly LAYOUT_SECONDARY_BAR: string =        
+        "w-full min-h-screen flex flex-col p-2"
+
     public static readonly BODY_COLOR: string = "bg-base-100";
     public static readonly BODY_STYLE: string = "w-full h-auto grid grid-cols-[17%_65%_17%]"
     public static readonly BODY_MAINCONTENT_STYLE: string = "main_monitor w-full min-h-screen rounded-lg"
 }
+
+export class AppThemeModule {
+
+    public static readonly MODULE_HEADER_STYLE: string
+       = "w-full h-auto grid grid-cols-[14%_41%_41%_4%] border-b-1 mb-3 border-b-red-800 py-2";
+}
+
 /**
  *  App Theme
  */

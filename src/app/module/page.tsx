@@ -1,11 +1,11 @@
 //src\app\module\page.tsx
 "use client";
+
 import { useRouter } from "next/router";
 import { Option } from "@/lib/model/base/option";
 
 import { AppConstants } from "@/app_front/appconstants";
 import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
-import { AppModule } from "@/lib/arquitect/model/appmodule";
 import { Search } from "@/libcomp/search";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 
@@ -109,7 +109,7 @@ function PagePrimaryBar({ chargesection, section }: PagePrimaryBarProp) {
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col px-2 mb-2">
+        <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
             <TwDaisyMenu onselection={loadsection}
                 options={Module_template_Config.SECTIONS}
                 optactname={Module_template_Config.ACTIVE_SECTION.name}
@@ -147,7 +147,7 @@ interface PageSecondBarProp {
 function PageSecondBar({ module }: PageSecondBarProp) {
 
     return (
-        <div className="w-full min-h-screen flex flex-col p-2">
+        <div className = {AppThemeLayout.LAYOUT_SECONDARY_BAR}>
             <div>Second Bar</div>
         </div>
 

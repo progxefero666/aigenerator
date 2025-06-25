@@ -2,15 +2,17 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
+
+import { AppConstants, AppUiConst } from "@/app_front/appconstants";
+import { AppThemeLayout } from "@/app_front/apptheme";
+import { AppThemeModule } from "@/app_front/apptheme";
 
 //page layout jsx components
-import PageHeader from "./header";
 import PageOutputMonitor from "./outputmonitor";
 import PagePrimaryBar from "./primarybar";
-import PageSecondaryBar from "./secondarybar";
-import { CodeGenCfg } from "./motor/cgcfg";
+import { CodeGenCfg } from "./motor/modconfig";
 import PageInputEditor from "./inputeditor";
+import { Button } from "@/libcomp/button";
 
 /**
  * Page Index JSX Client
@@ -52,3 +54,58 @@ export default function CodeGenerator() {
     );
 
 }//end 
+
+interface PageHeaderProp {
+    value?:string;
+     //onfileloaded?: (file: File) => void;
+}
+function PageHeader({ value }: PageHeaderProp) {
+
+    const maxLen: number = 50;
+    const onSearchSubmit = (value:string): void => { }
+    const onButtonClick = (operation?: string) => { };
+    
+    return (
+
+        <div className={AppThemeModule.MODULE_HEADER_STYLE}>
+
+            {/*column left */}
+            <div className="w-full h-auto flex flex-row items-center px-4 top-2">
+                <div className="flex-1 flex items-center text-white text-2xl translate-y-[-4px]">
+                    Code Gen
+                </div>
+                <div>                   
+                    <Button icon={AppUiConst.ICON_RUN}
+                            operation={AppConstants.NAV_BACK}                            
+                            onclick={onButtonClick}  />                           
+                </div>
+            </div>
+
+            {/*column center */}
+            <div className="w-full h-auto flex flex-row ">
+                <div className="w-[26%] flex flex-items-center" >
+                </div>
+            </div>
+
+            {/* column right */}
+            <div className="w-full h-auto flex flex-row">
+                right
+            </div>
+
+        </div>
+    )
+
+}//end
+
+interface PageSecondaryBarProp {
+    section: string;
+}
+function PageSecondaryBar({ section }: PageSecondaryBarProp) {
+
+    return (
+        <div className = {AppThemeLayout.LAYOUT_SECONDARY_BAR}>
+            Editor Tools
+        </div>
+    )
+
+}//end comp
