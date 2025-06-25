@@ -33,9 +33,12 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(({
         }
 
         const renderReadComp = () => {
+            let compText:string = "output filename";
+            if(placeholder)  {compText = placeholder;}            
+            if(defaultvalue) {compText = defaultvalue; }            
             return (
                 <div className={AppTheme.C_READONLY_STYLE}>
-                    <p>{defaultvalue}</p>
+                    <p>{compText}</p>
                 </div>          
             )  
         }
