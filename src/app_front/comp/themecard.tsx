@@ -1,12 +1,11 @@
 //src\app_front\comp\themecard.tsx
 
-
 import React, { forwardRef, useEffect, useRef, useState } from "react";
-import { AppCard, AppThemeBars, AppThemeButtons, AppThemeCard, AppThemeTexts } from "@/app_front/apptheme";
 import { Button } from "@/libcomp/button";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
-import { AppConstants, AppUiConst } from "../appconstants";
-
+import { AppUiConst } from "@/app_front//appconstants";
+import { AppCard, AppThemeBars, AppThemeButtons, AppThemeCard, AppThemeTexts }
+    from "@/app_front/apptheme";
 
 /**
  * JSX Theme Card Component Base
@@ -15,17 +14,24 @@ export interface ThemeCardProp {
     name?: string;
     title?: string;
     data?: string;
+    children?: React.ReactNode;
     barconfig?: BarButtonsCfg;
     operation?: string,
-    exec: (operation?:string) => void,
+    exec: (operation: string | null, name: string | null) => void,
 }
 
-export const ThemeCard = forwardRef<HTMLSelectElement, ThemeCardProp>(
-    ({ name, data, title, barconfig, exec }, ref) => {
+export const ThemeCard = forwardRef<HTMLDivElement, ThemeCardProp>(
+    ({ name, children, data, title, barconfig, exec }, ref) => {
 
     const [collapse, setCollapse] = useState<boolean>(false);
     const [collapseIcon, setCollapseIcon] = useState<string>(AppUiConst.ICON_COLLAPSE_OFF);
 
+    /*
+    useEffect(() => {
+        const init=():void=>{} 
+        init();        
+    }, []) 
+    */
     const onCollapse = () => {
         const new_collapse = !collapse;
         setCollapse(new_collapse)
@@ -34,11 +40,12 @@ export const ThemeCard = forwardRef<HTMLSelectElement, ThemeCardProp>(
     };
 
     const onBarExecute = (opId: string) => {
-        exec(opId);
+        if (name) { exec(opId, name); }
+        else { exec(opId, null); }
     };
 
     const onExecute = (opId: string) => {
-        exec(opId);
+        exec(opId, null);
     };
 
     const renderHeader = () => {
@@ -61,23 +68,31 @@ export const ThemeCard = forwardRef<HTMLSelectElement, ThemeCardProp>(
         )
     }
 
-    const renderBody = () => {
-        return (
-            <div className={AppCard.CARD_DATA_STYLE}>
-                {data}
-            </div>            
-        )
+     const renderMainContent = () => {
+        if (children) {
+            return children;
+        }
+        else {
+            return (
+                <>
+                    {data ?
+                        <div className={AppCard.CARD_DATA_STYLE}>
+                            {data}
+                        </div>
+                        : 
+                        <div className={AppCard.CARD_DATA_STYLE}>
+                            No data available
+                        </div>
+                    }
+                </>
+            )
+        }
     }
 
     return (
         <div className={AppThemeCard.CONTAINER_STYLE}>
             {renderHeader()}
-            {data ?
-                renderBody() :
-                <div className={AppCard.CARD_DATA_STYLE}>
-                    {AppConstants.NOT_DEF}
-                </div>
-            }        
+            {collapse ? null : renderMainContent()}
         </div>
     )
 

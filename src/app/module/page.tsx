@@ -9,8 +9,9 @@ import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import { Search } from "@/libcomp/search";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Module_template_Config } from "./modconfig";
+import { ThemeCard } from "@/app_front/comp/themecard";
 
 /**
  * author: ignacio sánchez ramírez
@@ -129,11 +130,24 @@ interface PageMainContentProp {
 function PageMainContent({ module }: PageMainContentProp) {
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
 
+    const cardRef = useRef<HTMLDivElement>(null);    
+    const execCardAction = (operation:string|null,name:string|null) => {                
+    }
+
+    const cardTitle = "Main Content Card";
+    const cardData:string = "Main Content Data line 1\n" +
+        "Main Content Data line 2\n" +      
+        "Main Content Data line 3\n" +
+        "Main Content Data line 4\n" ;
+
     return (
         <div className={AppThemeLayout.BODY_MAINCONTENT_STYLE}>
             <div>Main Content</div>
+            <ThemeCard ref={cardRef}
+                       title={cardTitle}
+                       data={cardData}
+                       exec={execCardAction} />
         </div>
-
     )
 
 }//end comp
