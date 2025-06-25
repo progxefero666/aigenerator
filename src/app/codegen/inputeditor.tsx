@@ -45,15 +45,15 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
         console.log("run process");       
         const tables: ModelTable[] = CodeGenSql.getEsquemaTables(code);
         
-        const table_code:string = CodeGenTsFilesContent.getTableDefCode(tables[0]);
+        //const table_code:string = CodeGenTsFilesContent.getTableDefCode(tables[0]);
         //console.log(table_code);        
 
-        const tablesDefCode:string = CodeGenTsFilesContent.getTablesDefCode(tables);
-        ondataresult(tablesDefCode);
+        //const tablesDefCode:string = CodeGenTsFilesContent.getTablesDefCode(tables);
+        //ondataresult(tablesDefCode);
 
         const tableClassCode:string 
             = CodeGenTsFilesContent.genFileContentEntityClass(tables[1]);
-        //ondataresult(tableClassCode);
+        ondataresult(tableClassCode);
         //console.log("process end");
     };
 
