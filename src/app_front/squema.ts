@@ -1,3 +1,5 @@
+//src\app_front\squema.ts
+
 import { ModelTable, ModelField, Relation } from "@/app_front/codegen/cgmodel";
 import sqlTypesData from "@/app_front/codegen/sqltypes.json";
 
@@ -11,20 +13,20 @@ export class AgentDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, true, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("agtype", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("application", "text", false, false, true, null, 150, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, true, null, 255, false, null));
-        this.fields.push(new ModelField("config", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("motor", "text", false, false, true, null, 100, false, null));
-        this.fields.push(new ModelField("username", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("userpassword", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("port", "text", false, false, true, null, 10, false, null));
-        this.fields.push(new ModelField("url", "text", false, false, true, null, 250, false, null));
-        this.fields.push(new ModelField("scriptstart", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("scriptstop", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("scriptscheck", "text", false, false, true, null, null, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, true, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("agtype", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("application", "text", false, false, true, null, 150));
+        this.fields.push(new ModelField("description", "text", false, false, true, null, 255));
+        this.fields.push(new ModelField("config", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("motor", "text", false, false, true, null, 100));
+        this.fields.push(new ModelField("username", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("userpassword", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("port", "text", false, false, true, null, 10));
+        this.fields.push(new ModelField("url", "text", false, false, true, null, 250));
+        this.fields.push(new ModelField("scriptstart", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("scriptstop", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("scriptscheck", "text", false, false, true, null, null));
     }
 
     public toJsonString(): string {
@@ -44,19 +46,19 @@ export class AgentDef {
 export class Agent {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public agtype: string = undefined;
-    public application: string = undefined;
-    public description: string = undefined;
-    public config: string = undefined;
-    public motor: string = undefined;
-    public username: string = undefined;
-    public userpassword: string = undefined;
-    public port: string = undefined;
-    public url: string = undefined;
-    public scriptstart: string = undefined;
-    public scriptstop: string = undefined;
-    public scriptscheck: string = undefined;
+    public name: string = "undefined";
+    public agtype: string = "undefined";
+    public application: string = "undefined";
+    public description: string = "undefined";
+    public config: string = "undefined";
+    public motor: string = "undefined";
+    public username: string = "undefined";
+    public userpassword: string = "undefined";
+    public port: string = "undefined";
+    public url: string = "undefined";
+    public scriptstart: string = "undefined";
+    public scriptstop: string = "undefined";
+    public scriptscheck: string = "undefined";
 
     constructor(id: number | null,
                 name: string,
@@ -182,28 +184,28 @@ export class ApplicationDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("reference", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("author", "text", false, false, true, null, 100, false, null));
-        this.fields.push(new ModelField("apptype", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("proglanguage", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("osystem", "text", false, false, true, null, 100, false, null));
-        this.fields.push(new ModelField("appurl", "text", false, false, true, null, 500, false, null));
-        this.fields.push(new ModelField("apppath", "text", false, false, true, null, 500, false, null));
-        this.fields.push(new ModelField("localdev", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("usedocker", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("creationdate", "date", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("updatedate", "date", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, true, null, 255, false, null));
-        this.fields.push(new ModelField("controlusers", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("useui", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("useagents", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("consumedb", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("consumeapi", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("consumeai", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("exposedb", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("exposeapi", "boolean", false, false, true, null, null, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("reference", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("author", "text", false, false, true, null, 100));
+        this.fields.push(new ModelField("apptype", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("proglanguage", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("osystem", "text", false, false, true, null, 100));
+        this.fields.push(new ModelField("appurl", "text", false, false, true, null, 500));
+        this.fields.push(new ModelField("apppath", "text", false, false, true, null, 500));
+        this.fields.push(new ModelField("localdev", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("usedocker", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("creationdate", "date", false, false, true, null, null));
+        this.fields.push(new ModelField("updatedate", "date", false, false, true, null, null));
+        this.fields.push(new ModelField("description", "text", false, false, true, null, 255));
+        this.fields.push(new ModelField("controlusers", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("useui", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("useagents", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("consumedb", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("consumeapi", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("consumeai", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("exposedb", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("exposeapi", "boolean", false, false, true, null, null));
     }
 
     public toJsonString(): string {
@@ -223,19 +225,19 @@ export class ApplicationDef {
 export class Application {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public reference: string = undefined;
-    public author: string = undefined;
-    public apptype: string = undefined;
-    public proglanguage: string = undefined;
-    public osystem: string = undefined;
-    public appurl: string = undefined;
-    public apppath: string = undefined;
+    public name: string = "undefined";
+    public reference: string = "undefined";
+    public author: string = "undefined";
+    public apptype: string = "undefined";
+    public proglanguage: string = "undefined";
+    public osystem: string = "undefined";
+    public appurl: string = "undefined";
+    public apppath: string = "undefined";
     public localdev: boolean = false;
     public usedocker: boolean = false;
     public creationdate: Date = new Date();
     public updatedate: Date = new Date();
-    public description: string = undefined;
+    public description: string = "undefined";
     public controlusers: boolean = false;
     public useui: boolean = false;
     public useagents: boolean = false;
@@ -381,9 +383,9 @@ export class ApptypesDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, true, null, 255, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("description", "text", false, false, true, null, 255));
     }
 
     public toJsonString(): string {
@@ -403,8 +405,8 @@ export class ApptypesDef {
 export class Apptypes {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public description: string = undefined;
+    public name: string = "undefined";
+    public description: string = "undefined";
 
     constructor(id: number | null,
                 name: string,
@@ -464,9 +466,9 @@ export class DoccategoryDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, true, null, 255, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("description", "text", false, false, true, null, 255));
     }
 
     public toJsonString(): string {
@@ -486,8 +488,8 @@ export class DoccategoryDef {
 export class Doccategory {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public description: string = undefined;
+    public name: string = "undefined";
+    public description: string = "undefined";
 
     constructor(id: number | null,
                 name: string,
@@ -547,14 +549,14 @@ export class DocprojanalisisDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
-        this.fields.push(new ModelField("project", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("updatedate", "date", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("dtype", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("dcategory", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("content", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("durl", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("dpath", "text", false, false, true, null, 50, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
+        this.fields.push(new ModelField("project", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("updatedate", "date", false, false, true, null, null));
+        this.fields.push(new ModelField("dtype", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("dcategory", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("content", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("durl", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("dpath", "text", false, false, true, null, 50));
     }
 
     public toJsonString(): string {
@@ -574,13 +576,13 @@ export class DocprojanalisisDef {
 export class Docprojanalisis {
 
     public id: number | null = null;
-    public project: string = undefined;
+    public project: string = "undefined";
     public updatedate: Date = new Date();
-    public dtype: string = undefined;
-    public dcategory: string = undefined;
-    public content: string = undefined;
-    public durl: string = undefined;
-    public dpath: string = undefined;
+    public dtype: string = "undefined";
+    public dcategory: string = "undefined";
+    public content: string = "undefined";
+    public durl: string = "undefined";
+    public dpath: string = "undefined";
 
     constructor(id: number | null,
                 project: string,
@@ -667,10 +669,10 @@ export class DoctypeDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("dataformat", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, true, null, 255, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("dataformat", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("description", "text", false, false, true, null, 255));
     }
 
     public toJsonString(): string {
@@ -690,9 +692,9 @@ export class DoctypeDef {
 export class Doctype {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public dataformat: string = undefined;
-    public description: string = undefined;
+    public name: string = "undefined";
+    public dataformat: string = "undefined";
+    public description: string = "undefined";
 
     constructor(id: number | null,
                 name: string,
@@ -758,9 +760,9 @@ export class ProglanguageDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, true, null, 255, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("description", "text", false, false, true, null, 255));
     }
 
     public toJsonString(): string {
@@ -780,8 +782,8 @@ export class ProglanguageDef {
 export class Proglanguage {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public description: string = undefined;
+    public name: string = "undefined";
+    public description: string = "undefined";
 
     constructor(id: number | null,
                 name: string,
@@ -841,25 +843,25 @@ export class ServerDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, true, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("srvtype", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, true, null, 255, false, null));
-        this.fields.push(new ModelField("config", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("usedocker", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("useclaude", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("motor", "text", false, false, true, null, 100, false, null));
-        this.fields.push(new ModelField("username", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("userpassword", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("application", "text", false, false, true, null, 150, false, null));
-        this.fields.push(new ModelField("dbversion", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("port", "text", false, false, true, null, 10, false, null));
-        this.fields.push(new ModelField("url", "text", false, false, true, null, 250, false, null));
-        this.fields.push(new ModelField("exposedb", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("exposeapi", "boolean", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("scriptstart", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("scriptstop", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("scriptscheck", "text", false, false, true, null, null, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, true, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("srvtype", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("description", "text", false, false, true, null, 255));
+        this.fields.push(new ModelField("config", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("usedocker", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("useclaude", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("motor", "text", false, false, true, null, 100));
+        this.fields.push(new ModelField("username", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("userpassword", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("application", "text", false, false, true, null, 150));
+        this.fields.push(new ModelField("dbversion", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("port", "text", false, false, true, null, 10));
+        this.fields.push(new ModelField("url", "text", false, false, true, null, 250));
+        this.fields.push(new ModelField("exposedb", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("exposeapi", "boolean", false, false, true, null, null));
+        this.fields.push(new ModelField("scriptstart", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("scriptstop", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("scriptscheck", "text", false, false, true, null, null));
     }
 
     public toJsonString(): string {
@@ -879,24 +881,24 @@ export class ServerDef {
 export class Server {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public srvtype: string = undefined;
-    public description: string = undefined;
-    public config: string = undefined;
+    public name: string = "undefined";
+    public srvtype: string = "undefined";
+    public description: string = "undefined";
+    public config: string = "undefined";
     public usedocker: boolean = false;
     public useclaude: boolean = false;
-    public motor: string = undefined;
-    public username: string = undefined;
-    public userpassword: string = undefined;
-    public application: string = undefined;
-    public dbversion: string = undefined;
-    public port: string = undefined;
-    public url: string = undefined;
+    public motor: string = "undefined";
+    public username: string = "undefined";
+    public userpassword: string = "undefined";
+    public application: string = "undefined";
+    public dbversion: string = "undefined";
+    public port: string = "undefined";
+    public url: string = "undefined";
     public exposedb: boolean = false;
     public exposeapi: boolean = false;
-    public scriptstart: string = undefined;
-    public scriptstop: string = undefined;
-    public scriptscheck: string = undefined;
+    public scriptstart: string = "undefined";
+    public scriptstop: string = "undefined";
+    public scriptscheck: string = "undefined";
 
     constructor(id: number | null,
                 name: string,
@@ -1040,21 +1042,21 @@ export class ServiceDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", false, true, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("stype", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("application", "text", false, false, true, null, 150, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, true, null, 255, false, null));
-        this.fields.push(new ModelField("config", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("motor", "text", false, false, true, null, 100, false, null));
-        this.fields.push(new ModelField("dbversion", "text", false, false, true, null, 10, false, null));
-        this.fields.push(new ModelField("username", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("userpassword", "text", false, false, true, null, 50, false, null));
-        this.fields.push(new ModelField("port", "text", false, false, true, null, 10, false, null));
-        this.fields.push(new ModelField("url", "text", false, false, true, null, 250, false, null));
-        this.fields.push(new ModelField("scriptstart", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("scriptstop", "text", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("scriptscheck", "text", false, false, true, null, null, false, null));
+        this.fields.push(new ModelField("id", "numeric", false, true, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("stype", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("application", "text", false, false, true, null, 150));
+        this.fields.push(new ModelField("description", "text", false, false, true, null, 255));
+        this.fields.push(new ModelField("config", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("motor", "text", false, false, true, null, 100));
+        this.fields.push(new ModelField("dbversion", "text", false, false, true, null, 10));
+        this.fields.push(new ModelField("username", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("userpassword", "text", false, false, true, null, 50));
+        this.fields.push(new ModelField("port", "text", false, false, true, null, 10));
+        this.fields.push(new ModelField("url", "text", false, false, true, null, 250));
+        this.fields.push(new ModelField("scriptstart", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("scriptstop", "text", false, false, true, null, null));
+        this.fields.push(new ModelField("scriptscheck", "text", false, false, true, null, null));
     }
 
     public toJsonString(): string {
@@ -1074,20 +1076,20 @@ export class ServiceDef {
 export class Service {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public stype: string = undefined;
-    public application: string = undefined;
-    public description: string = undefined;
-    public config: string = undefined;
-    public motor: string = undefined;
-    public dbversion: string = undefined;
-    public username: string = undefined;
-    public userpassword: string = undefined;
-    public port: string = undefined;
-    public url: string = undefined;
-    public scriptstart: string = undefined;
-    public scriptstop: string = undefined;
-    public scriptscheck: string = undefined;
+    public name: string = "undefined";
+    public stype: string = "undefined";
+    public application: string = "undefined";
+    public description: string = "undefined";
+    public config: string = "undefined";
+    public motor: string = "undefined";
+    public dbversion: string = "undefined";
+    public username: string = "undefined";
+    public userpassword: string = "undefined";
+    public port: string = "undefined";
+    public url: string = "undefined";
+    public scriptstart: string = "undefined";
+    public scriptstop: string = "undefined";
+    public scriptscheck: string = "undefined";
 
     constructor(id: number | null,
                 name: string,
@@ -1219,9 +1221,9 @@ export class TasktypeDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 100, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, false, null, null, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 100));
+        this.fields.push(new ModelField("description", "text", false, false, false, null, null));
     }
 
     public toJsonString(): string {
@@ -1241,8 +1243,8 @@ export class TasktypeDef {
 export class Tasktype {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public description: string = undefined;
+    public name: string = "undefined";
+    public description: string = "undefined";
 
     constructor(id: number | null,
                 name: string,
@@ -1302,15 +1304,15 @@ export class TaskDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
         this.fields.push(new ModelField("workflow_id", "numeric", false, false, false, null, null, true, [new Relation("workflow", "id")]));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 255, false, null));
-        this.fields.push(new ModelField("wtype", "text", false, false, true, null, 100, false, null));
-        this.fields.push(new ModelField("description", "text", false, false, false, null, null, false, null));
-        this.fields.push(new ModelField("files", "text", false, false, false, null, null, false, null));
-        this.fields.push(new ModelField("folders", "text", false, false, false, null, null, false, null));
-        this.fields.push(new ModelField("task_order", "numeric", false, false, true, null, null, false, null));
-        this.fields.push(new ModelField("is_final_task", "boolean", false, false, false, null, null, false, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 255));
+        this.fields.push(new ModelField("wtype", "text", false, false, true, null, 100));
+        this.fields.push(new ModelField("description", "text", false, false, false, null, null));
+        this.fields.push(new ModelField("files", "text", false, false, false, null, null));
+        this.fields.push(new ModelField("folders", "text", false, false, false, null, null));
+        this.fields.push(new ModelField("task_order", "numeric", false, false, true, null, null));
+        this.fields.push(new ModelField("is_final_task", "boolean", false, false, false, null, null));
     }
 
     public toJsonString(): string {
@@ -1331,11 +1333,11 @@ export class Task {
 
     public id: number | null = null;
     public workflow_id: number | null = null;
-    public name: string = undefined;
-    public wtype: string = undefined;
-    public description: string = undefined;
-    public files: string = undefined;
-    public folders: string = undefined;
+    public name: string = "undefined";
+    public wtype: string = "undefined";
+    public description: string = "undefined";
+    public files: string = "undefined";
+    public folders: string = "undefined";
     public task_order: number | null = null;
     public is_final_task: boolean = false;
 
@@ -1430,15 +1432,15 @@ export class WorkflowDef {
     public fields: ModelField[] = [];
 
     constructor() {
-        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null, false, null));
-        this.fields.push(new ModelField("name", "text", false, false, true, null, 255, false, null));
-        this.fields.push(new ModelField("context_codelang", "text", false, false, false, null, 50, false, null));
-        this.fields.push(new ModelField("context_main", "text", false, false, false, null, 255, false, null));
-        this.fields.push(new ModelField("context_app", "text", false, false, false, null, 255, false, null));
-        this.fields.push(new ModelField("context_folder", "text", false, false, false, null, 255, false, null));
-        this.fields.push(new ModelField("context_libs", "text", false, false, false, null, null, false, null));
-        this.fields.push(new ModelField("created_at", "unknown", false, false, false, null, null, false, null));
-        this.fields.push(new ModelField("updated_at", "unknown", false, false, false, null, null, false, null));
+        this.fields.push(new ModelField("id", "numeric", true, false, true, null, null));
+        this.fields.push(new ModelField("name", "text", false, false, true, null, 255));
+        this.fields.push(new ModelField("context_codelang", "text", false, false, false, null, 50));
+        this.fields.push(new ModelField("context_main", "text", false, false, false, null, 255));
+        this.fields.push(new ModelField("context_app", "text", false, false, false, null, 255));
+        this.fields.push(new ModelField("context_folder", "text", false, false, false, null, 255));
+        this.fields.push(new ModelField("context_libs", "text", false, false, false, null, null));
+        this.fields.push(new ModelField("created_at", "unknown", false, false, false, null, null));
+        this.fields.push(new ModelField("updated_at", "unknown", false, false, false, null, null));
     }
 
     public toJsonString(): string {
@@ -1458,14 +1460,14 @@ export class WorkflowDef {
 export class Workflow {
 
     public id: number | null = null;
-    public name: string = undefined;
-    public context_codelang: string = undefined;
-    public context_main: string = undefined;
-    public context_app: string = undefined;
-    public context_folder: string = undefined;
-    public context_libs: string = undefined;
-    public created_at: string = undefined;
-    public updated_at: string = undefined;
+    public name: string = "undefined";
+    public context_codelang: string = "undefined";
+    public context_main: string = "undefined";
+    public context_app: string = "undefined";
+    public context_folder: string = "undefined";
+    public context_libs: string = "undefined";
+    public created_at: string = "undefined";
+    public updated_at: string = "undefined";
 
     constructor(id: number | null,
                 name: string,

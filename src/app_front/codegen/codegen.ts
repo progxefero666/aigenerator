@@ -429,7 +429,7 @@ export class CodeGenTsFilesContent {
         
         if (tsType === 'boolean') {return 'false';}        
         if (tsType === 'Date')    {return 'new Date()';}
-        if (tsType === 'string')  {return 'undefined'; }        
+        if (tsType === 'string')  {return '"undefined"'; }        
         return 'null';
     }//end
 
