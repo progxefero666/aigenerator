@@ -9,8 +9,8 @@ import { InputFiles } from "@/libcomp/inputfiles";
 import { Button } from "@/libcomp/button";
 import { ModelTable } from "../../app_front/codegen/model/modeltable";
 import { SqlGenerator } from "../../app_front/codegen/generator/sqlgenerator";
-import { TypeScriptsGenerator } from "@/app_front/codegen/typescript/tsgenerator";
-import { CodeGenFunctions } from "@/app_front/codegen/util/cgfunctions";
+import { TypeScriptsGenerator } from "@/app_front/codegen/generator/tsgenerator";
+import { CodeGenFunctions } from "@/app_front/codegen/cgfunctions";
 
 
 

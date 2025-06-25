@@ -1,11 +1,12 @@
 //src\app_front\codegen\util\modelutil.ts
 
-import { AppDbMotor } from "../appdbmotor";
-import { ModelTable, ModelField, Relation } from "../model/modeltable";
-import { SqlFieldtypes } from "@/app_front/codegen/appdbmodel";
+import { CodeGenDbMotor } from "./cgdbmotor";
+import { ModelTable, ModelField, Relation } from "./model/modeltable";
+import { SqlFieldtypes } from "@/app_front/codegen/cgdbmotor";
+
 
 /**
- * class ModelUtil.genClassTypeContent
+ * class CodeGenFunctions
  */
 export class CodeGenFunctions {
 
@@ -157,7 +158,7 @@ export class CodeGenFunctions {
     
     public static getTableDefCode(table: ModelTable): string {
         let code: string = "";
-        code += AppDbMotor.generateImports();
+        code += CodeGenDbMotor.generateImports();
         code += CodeGenFunctions.generateSingleTableDefClass(table);        
         return code;
     }
@@ -184,7 +185,7 @@ export class CodeGenFunctions {
 
     public static getTablesDefCode(tables: ModelTable[]): string {
         let code: string = "";
-        code += AppDbMotor.generateImports();
+        code += CodeGenDbMotor.generateImports();
         for (let i = 0; i < tables.length; i++) {
             const table = tables[i];
             code += CodeGenFunctions.generateSingleTableDefClass(table);

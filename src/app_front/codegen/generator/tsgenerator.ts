@@ -1,7 +1,7 @@
 //src\app_front\codegen\typescript\tsfunctions.ts
 
 import { ModelTable, ModelField } from "../model/modeltable";
-import { CodeGenFunctions } from "@/app_front/codegen/util/cgfunctions";
+import { CodeGenFunctions } from "@/app_front/codegen/cgfunctions";
 
 
 /**

@@ -1,7 +1,7 @@
 //src\app_front\codegen\sql\sqlprocess.ts
 
 import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";
-import { CodeGenFunctions } from "@/app_front/codegen/util/cgfunctions";
+import { CodeGenFunctions } from "@/app_front/codegen/cgfunctions";
 
 /**
  * lass CodeGen Sql Process
