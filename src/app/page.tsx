@@ -4,10 +4,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AppModule } from "@/lib/arquitect/model/appmodule";
-import { AppConfig } from "@/app_front/appconfig";
+
 import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
 import { Search } from "@/libcomp/search";
 import { AppConstants } from "@/app_front/appconstants";
+import { Module_template_Config } from "./module/modconfig";
+import { AppConfig } from "@/app_front/appconfig";
 
 
 /**

@@ -21,5 +21,6 @@ export class Module_template_Config {
         Module_template_Config.SECTION_A
     ];
 
+    public static readonly ACTIVE_SECTION: Option = Module_template_Config.SECTIONS[0];
 
 }//end class Module_template_Config
