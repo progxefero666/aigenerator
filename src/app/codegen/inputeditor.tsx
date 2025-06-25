@@ -7,7 +7,7 @@ import { AppTheme } from "@/app_front/apptheme";
 import { CodeGenCfg } from "./modconfig";
 import { InputFiles } from "@/libcomp/inputfiles";
 import { Button } from "@/libcomp/button";
-import { ModelTable } from "../../app_front/codegen/sql/sqlmodel";
+import { ModelTable } from "../../app_front/codegen/model/modeltable";
 import { CodeGenSqlProcess } from "../../app_front/codegen/sql/sqlprocess";
 import { TypeScriptsFunctions } from "@/app_front/codegen/typescript/tsfunctions";
 
@@ -44,7 +44,9 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
     
     const runProcess = () => {
         console.log("run process");       
-        const tables: ModelTable[] = CodeGenSqlProcess.getEsquemaTables(code)
+        const tables: ModelTable[] = CodeGenSqlProcess.getEsquemaTables(code);
+        //toJsonString
+        
         //console.log(tables);        
         const tableClassCode:string = TypeScriptsFunctions.genFileContentEntityClass(tables[1]);
         ondataresult(tableClassCode);

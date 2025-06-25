@@ -1,7 +1,7 @@
 //src\app\module\model\table_template_.ts
 
 
-import { ModelTable, ModelField, Relation } from "@/app_front/codegen/sql/sqlmodel";
+import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";
 import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
 
 

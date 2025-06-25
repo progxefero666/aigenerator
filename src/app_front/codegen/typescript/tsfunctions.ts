@@ -1,6 +1,6 @@
 //src\app_front\codegen\typescript\tsfunctions.ts
 
-import { ModelTable, ModelField } from "../sql/sqlmodel";
+import { ModelTable, ModelField } from "../model/modeltable";
 import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
 
 
