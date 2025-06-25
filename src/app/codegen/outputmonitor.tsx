@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AppConstants } from "@/app_front/appconstants";
 import { renderAlert } from "@/twdaisy/twdaisycomp";
-import { AppTheme, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
+import { AppTheme, AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
 import { CodeGenCfg } from "./modconfig";
 import CodeGenCard from "./cards/codegencard";
 
@@ -19,15 +19,15 @@ const style_header_title: string = "flex flex-row items-center pl-3 text-white t
  * Application Editor Tools
  */
 export interface PageOutputMonitorProp {
-    section: string;
+    section?: string;
+    code: string;
 }
-export default function PageOutputMonitor({ section }: PageOutputMonitorProp) {
+export default function PageOutputMonitor({section,code}: PageOutputMonitorProp) {
 
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
 
     const [barConfig, setBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT);
-    const [code, setCode] = useState<string>(AppConstants.NOT_DEF);
-
+    
     const onexport = () => {
         alert("export");
     }
@@ -56,7 +56,7 @@ export default function PageOutputMonitor({ section }: PageOutputMonitorProp) {
                 <div className={style_header_title}>
                     <p className={AppThemeTexts.TEXT_H3_SIZE}>Result</p>
                 </div>
-                <BarButtons classname={CodeGenCfg.style_barbuttons}
+                <BarButtons classname={AppThemeBars.BAR_BUTTONS_STYLE}
                     barconfig={barConfig}
                     onclick={onClick} />
             </div>

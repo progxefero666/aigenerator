@@ -9,6 +9,7 @@ import { InputFiles } from "@/libcomp/inputfiles";
 import { Button } from "@/libcomp/button";
 import { ModelTable } from "../../app_front/codegen/sql/sqlmodel";
 import { CodeGenSqlProcess } from "../../app_front/codegen/sql/sqlprocess";
+import { TypeScriptsFunctions } from "@/app_front/codegen/typescript/tsfunctions";
 
 
 
@@ -18,9 +19,9 @@ import { CodeGenSqlProcess } from "../../app_front/codegen/sql/sqlprocess";
  */
 export interface PageInputEditorProp {
     section:string;
-    onfileloaded: (file: File) => void;
+    ondataresult: (data:string) => void;
 }
-export default function PageInputEditor({ section,onfileloaded }: PageInputEditorProp) {
+export default function PageInputEditor({ section,ondataresult }: PageInputEditorProp) {
     
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
     const inputFilesRef = useRef<HTMLInputElement>(null);
@@ -33,18 +34,21 @@ export default function PageInputEditor({ section,onfileloaded }: PageInputEdito
             const reader = new FileReader();
                 reader.onload = (e) => {
                 const text = reader.result!.toString().trim();
-                console.log(text);
+                //console.log(text);
                 setCode(text);
             }
             reader.readAsText(code_file);           
         }
     }
         
+    
     const runProcess = () => {
-        alert("run process");       
+        console.log("run process");       
         const tables: ModelTable[] = CodeGenSqlProcess.getEsquemaTables(code)
-        console.log(tables);
-        alert("process end");
+        //console.log(tables);        
+        const tableClassCode:string = TypeScriptsFunctions.genFileContentEntityClass(tables[1]);
+        ondataresult(tableClassCode);
+        console.log("process end");
     };
 
 

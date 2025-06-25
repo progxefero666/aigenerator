@@ -28,15 +28,17 @@ export const CODEGEN_PATH: string = "./codegen";
 export default function CodeGenerator() {
 
     const [section, setSection] = useState<string>(CodeGenCfg.CREATE_MODEL.name);
+    const [code, setCode] = useState<string>(AppConstants.NOT_DEF);
+
     const chargeSection = (section: string): void => { setSection(section); }
 
     /*
     useEffect(() => {const init=():void=>{} init();}, []);
     */
 
-    const onfileloaded = async (file: File) => {        
-        const file_content = await file.arrayBuffer();
-        console.log(file_content);
+    const onDataResult = (data:string) => {        
+        setCode(data);
+        console.log(data);
     }
 
     return (
@@ -45,8 +47,8 @@ export default function CodeGenerator() {
 
             <div className={CodeGenCfg.BODY_STYLE}>
                 <PagePrimaryBar     section={section} chargesection={chargeSection} />
-                <PageInputEditor    section={section} onfileloaded = {onfileloaded}/>                
-                <PageOutputMonitor  section={section} />
+                <PageInputEditor    section={section} ondataresult = {onDataResult}/>                
+                <PageOutputMonitor  section={section} code={code}/>
                 <PageSecondaryBar   section={section} />                
             </div>
         </div>

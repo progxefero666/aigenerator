@@ -1,6 +1,6 @@
 //src\app_front\comp\themecard.tsx
 
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { Button } from "@/libcomp/button";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 import { AppUiConst } from "@/app_front//appconstants";
