@@ -14,4 +14,4 @@ export interface SqlTypes {
     };
 }
 
-export const fieldtypes = (sqlTypesData as SqlTypes).fieldtypes;
+export const SqlFieldtypes = (sqlTypesData as SqlTypes).fieldtypes;

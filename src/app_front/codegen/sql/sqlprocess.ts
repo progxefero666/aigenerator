@@ -3,7 +3,7 @@
 
 import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";
 import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";
-import { fieldtypes, SqlTypes } from "@/app_front/codegen/appdbmodel";
+import { SqlFieldtypes, SqlTypes } from "@/app_front/codegen/appdbmodel";
 
 
 
@@ -17,8 +17,8 @@ export class CodeGenSqlProcess {
      */
     public static buildTypeMap(): Map<string, string> {
         const map = new Map<string, string>();
-        for (const genericType in fieldtypes) {
-            for (const pgType of fieldtypes[genericType]) {
+        for (const genericType in SqlFieldtypes) {
+            for (const pgType of SqlFieldtypes[genericType]) {
                 const key = pgType.split('(')[0].trim().toUpperCase();
                 if (key) {
                     map.set(key, genericType);
