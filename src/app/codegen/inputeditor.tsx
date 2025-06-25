@@ -8,10 +8,8 @@ import { CodeGenCfg } from "./modconfig";
 import { InputFiles } from "@/libcomp/inputfiles";
 import { Button } from "@/libcomp/button";
 import { ModelTable } from "../../app_front/codegen/model/modeltable";
-import { SqlGenerator } from "../../app_front/codegen/generator/sqlgenerator";
-import { TypeScriptsGenerator } from "@/app_front/codegen/generator/tsgenerator";
-import { CodeGenFunctions } from "@/app_front/codegen/cgfunctions";
 
+import { CodeGenTsFilesContent, CodeGenSql } from "@/app_front/codegen/cgfunctions";
 
 
 /**
@@ -45,15 +43,16 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
     
     const runProcess = () => {
         console.log("run process");       
-        const tables: ModelTable[] = SqlGenerator.getEsquemaTables(code);
+        const tables: ModelTable[] = CodeGenSql.getEsquemaTables(code);
         
-        const table_code:string = CodeGenFunctions.getTableDefCode(tables[0]);
+        const table_code:string = CodeGenTsFilesContent.getTableDefCode(tables[0]);
         //console.log(table_code);        
 
-        const tablesDefCode:string = CodeGenFunctions.getTablesDefCode(tables);
+        const tablesDefCode:string = CodeGenTsFilesContent.getTablesDefCode(tables);
         ondataresult(tablesDefCode);
 
-        //const tableClassCode:string = TypeScriptsFunctions.genFileContentEntityClass(tables[1]);
+        const tableClassCode:string 
+            = CodeGenTsFilesContent.genFileContentEntityClass(tables[1]);
         //ondataresult(tableClassCode);
         //console.log("process end");
     };

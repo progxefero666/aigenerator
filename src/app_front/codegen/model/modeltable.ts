@@ -70,6 +70,4 @@ export class ModelTable {
         this.fields.push(...fields);
     }
 
-  
-
 }//end class
