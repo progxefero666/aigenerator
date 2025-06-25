@@ -7,7 +7,7 @@ import { AppTheme, AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_fro
 import { CodeGenCfg } from "./modconfig";
 import CodeGenCard from "./cards/codegencard";
 
-import { BARCFG_EXPORT } from "@/app_front/uimodel/uimodelbars";
+import { BARCFG_EXPORT, BARCFG_EXPORT_COPY } from "@/app_front/uimodel/uimodelbars";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 
 
@@ -26,7 +26,7 @@ export default function PageOutputMonitor({section,code}: PageOutputMonitorProp)
 
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
 
-    const [barConfig, setBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT);
+    const [barConfig, setBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT_COPY);
     
     const onexport = () => {
         alert("export");

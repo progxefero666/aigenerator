@@ -1,7 +1,8 @@
 //src\app_front\appconstants.ts
 
 /**
- * class AppConstants.ICON_RUN
+ * class AppConstants.ACT_COPY
+ * AppTexts.COPY
  */
 export class AppConstants {
 
@@ -13,6 +14,7 @@ export class AppConstants {
     public static readonly ACT_OPEN:string = "open";
     public static readonly ACT_SAVE:string = "save";
     public static readonly ACT_EXPORT:string = "export";
+    public static readonly ACT_COPY:string = "copy";
 
     public static readonly MODE_INSERT:string = "insert";
     public static readonly MODE_EDITION:string = "edit";
@@ -33,7 +35,7 @@ export class AppConstants {
 }//end class
 
 /**
- * class AppUiConst.ICON_COLLAPSE_COLOR
+ * class AppUiConst.COLOR_COPY
  */
 export class AppUiConst {
 
@@ -43,12 +45,10 @@ export class AppUiConst {
     public static readonly COLOR_ACT_SAVE:string     = "btn-warning";
     public static readonly COLOR_EXPORT:string     = "btn-info";
     public static readonly COLOR_RUN:string     = "btn-info";
-
+    public static readonly COLOR_COPY:string     = "btn-primary";
     
     public static readonly ICON_COLLAPSE_OFF:string = "ti-angle-up"; 
     public static readonly ICON_COLLAPSE_ON:string = "ti-angle-down"; 
-
-
 
     public static readonly ICON_OPEN:string = "ti-eye";
     public static readonly ICON_DELETE:string = "ti-trash";
@@ -56,12 +56,12 @@ export class AppUiConst {
     public static readonly ICON_ACT_SAVE:string = "ti-save";
     public static readonly ICON_RUN:string = "ti-control-play";
     public static readonly ICON_EXPORT:string = "ti-export";
-    
+    public static readonly ICON_COPY:string = "ti-file";
 
 }//end class
 
 /**
- * AppTexts.SAVE
+ * AppTexts.COPY
  */
 export class AppTexts {
     
@@ -69,5 +69,7 @@ export class AppTexts {
     public static readonly SAVE : string = "Save";
     public static readonly RUN : string = "Run";
     public static readonly EXPORT: string = "Export";   
+
+    public static readonly COPY: string = "copy";  
 
 }//end class
