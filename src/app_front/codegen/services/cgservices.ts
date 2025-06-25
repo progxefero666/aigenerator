@@ -1,23 +1,18 @@
 //src\app_front\codegen\cgservices.ts
 
 
-import { ModelTable } from "../cgmodel";
-import { CodeGenUtil } from "../codegen";
-
-export const TEMP_APICLISERVICE = `
+export const TEMP_APICLIIMPORTS = `
 import { CancelablePromise, OpenAPI } from "@/client";
 import { request as __request } from '@/client/core/request';
-import { HttpConst } from "@/app_front/httpconstants";
+import { HttpConst } from "@/app_front/httpconstants";`;
+ 
+export const TEMP_APICLISERVICE = `
+import { _Table_ } from "@/client/models/_Table_";
 
-/** 
- # Use app class HttpConst { (all public)
-    - static readonly HTTP_GET = "GET";
-    - static readonly HTTP_POST = "POST";
-    - static readonly HTTP_PUT = "PUT";
-    - static readonly HTTP_DELETE = "DELETE";
-    - static readonly CONTENT_TYPE_JSON: string = "application/json";
-*/
-
+/**
+ * class FastApi Client Db Table Service 
+ *  Based on OpenAPI generated code
+ */
 export class _Table_Service {
 
     /**
@@ -128,16 +123,19 @@ export class _Table_Service {
        
 }`;
 
-    /**
-     * # Class: CodeGenServices
-     * 
-     * # Info
-     *      - Author: Ignacio Sánchez Ramírez
-     *      - Date: 2023-10-01
-     *      
-     * # Description
-     *      - Generates files content for FastAapi Db 
-     */
+/**
+ * # Class: CodeGenServices
+ * 
+ * # Info
+ *      - Author: Ignacio Sánchez Ramírez
+ *      - Date: 2023-10-01
+ *      
+ * # Description
+ *      - Generates files content for FastAapi Db 
+ */
+import { ModelTable } from "@/app_front/codegen/cgmodel";
+import { CodeGenUtil } from "../codegen";
+
 export class CodeGenServices {
 
     /**
@@ -156,14 +154,24 @@ export class CodeGenServices {
      *      - param tableModel The model of the table for which to generate the service.
      *      - returns The content of the service class as a string.
      */
-    public static genFileContentServiceClass(tableModel: ModelTable): string {
+    public static genFileContentServiceClass(tableModel:ModelTable,includeImports:boolean): string {
         const className = CodeGenUtil.capitalize(tableModel.name) + "Service";
         const pathName  = CodeGenUtil.uncapitalize(tableModel.name);
 
-        let content: string = TEMP_APICLISERVICE;
+        //TEMP_APICLIIMPORTS
+        let content: string = includeImports ? TEMP_APICLIIMPORTS : "";
+        content += TEMP_APICLISERVICE;
         content = content.replace(/_Table_/g, className);
         content = content.replace(/_table_/g, pathName);
         return content
     }
     
+    public static genFileContentArrayServiceClass(tableModels:ModelTable[]): string {
+        let content: string = TEMP_APICLIIMPORTS;
+        for(const table of tableModels) {
+           content += CodeGenServices.genFileContentServiceClass(table,false);
+        }
+        return content;
+    }
+
 }//end class

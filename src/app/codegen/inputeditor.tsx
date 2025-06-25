@@ -10,6 +10,7 @@ import { CodeGenTsFilesContent,
 import { renderAlert }  from "@/twdaisy/twdaisycomp";
 import { InputFiles }   from "@/libcomp/inputfiles";
 import { Button }       from "@/libcomp/button";
+import { CodeGenServices } from "@/app_front/codegen/services/cgservices";
 //import { AppTheme } from "@/app_front/apptheme";
 
 
@@ -45,9 +46,13 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
     const runProcess = () => {
        
         const tables: ModelTable[] = CodeGenSql.getEsquemaTables(code);        
-        const tablesCode:string = 
-            CodeGenTsFilesContent.genFileContentEntityArrayClass(tables);
-        ondataresult(tablesCode);
+        
+        //const tablesCode:string = 
+        //    CodeGenTsFilesContent.genFileContentEntityArrayClass(tables);
+        //ondataresult(tablesCode);
+
+        const services:string = CodeGenServices.genFileContentArrayServiceClass(tables);
+        ondataresult(services);
 
         //const table_code:string = CodeGenTsFilesContent.getTableDefCode(tables[0]);
         //console.log(table_code);        
