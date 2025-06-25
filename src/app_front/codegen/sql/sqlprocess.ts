@@ -43,6 +43,7 @@ export class CodeGenSqlProcess {
         return this.typeMap.get(normalizedType) || 'unknown';
     }
 
+   
     /**
      * Implementación de la función que parsea el script SQL.
      * La firma de la función es exactamente la que se espera, sin parámetros adicionales.

@@ -33,7 +33,19 @@ export default function PageOutputMonitor({section,code}: PageOutputMonitorProp)
     }
 
     const onClick = (opId?: string) => {
-
+        if(opId){
+            switch (opId) {
+                case AppConstants.ACT_EXPORT:
+                    onexport();
+                    break;
+                case AppConstants.ACT_COPY:
+                    navigator.clipboard.writeText(code);
+                    setAlertMessage("Code copied to clipboard");
+                    break;
+                default:
+                    setAlertMessage("Operation not defined");
+            }
+        }
     };
 
     const renderMainContent = () => {

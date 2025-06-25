@@ -1,5 +1,6 @@
 //src\app_front\codegen\util\modelutil.ts
 
+import { AppDbMotor } from "../appdbmotor";
 import { ModelTable, ModelField, Relation } from "../model/modeltable";
 
 /**
@@ -11,7 +12,7 @@ export class ModelUtil {
         let code: string = "";
         
         // Add imports using the common function
-        code += ModelUtil.generateImports();
+        code += AppDbMotor.generateImports();
         
         // Generate single table class
         code += ModelUtil.generateSingleTableClass(table);
@@ -46,7 +47,7 @@ export class ModelUtil {
         let code: string = "";
         
         // Add imports only once at the beginning
-        code += ModelUtil.generateImports();
+        code += AppDbMotor.generateImports();
         
         // Generate all table classes
         for (let i = 0; i < tables.length; i++) {
@@ -62,13 +63,14 @@ export class ModelUtil {
         return code;
     }
     
+    /*
     private static generateImports(): string {
         let imports = "";
         imports += `import { ModelTable, ModelField, Relation } from "@/app_front/codegen/model/modeltable";\n`;
         imports += `import sqlTypesData from "@/app_front/codegen/sql/sqltypes.json";\n\n`;
         return imports;
     }
-    
+    */
     private static generateSingleTableClass(table: ModelTable): string {
         let classCode = "";
         
