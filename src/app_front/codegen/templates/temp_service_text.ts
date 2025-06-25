@@ -1,7 +1,9 @@
+//src\app_front\codegen\templates\temp_service_text.ts
+
+export const TEMPLATE_APICLI_SERVICE = `
 import { CancelablePromise, OpenAPI } from "@/client";
 import { request as __request } from '@/client/core/request';
 import { HttpConst } from "@/app_front/httpconstants";
-
 
 /** 
  # info:
@@ -65,7 +67,7 @@ export class _Table_Service {
             url: '/api/_table_/',
             body: requestBody,
             mediaType: HttpConst.CONTENT_TYPE_JSON,
-            errors: {422: `Validation Error`}
+            errors: {422: \`Validation Error\`}
         });
     }
 
@@ -83,7 +85,7 @@ export class _Table_Service {
             path: {'id': id},
             body: requestBody,
             mediaType: HttpConst.CONTENT_TYPE_JSON,
-            errors: {422: `Validation Error`}
+            errors: {422: \`Validation Error\`}
         });
     }
 
@@ -98,7 +100,7 @@ export class _Table_Service {
             method: HttpConst.HTTP_DELETE,
             url: '/api/_table_/{id}',
             path: {'id': id},
-            errors: {422: `Validation Error`}
+            errors: {422: \`Validation Error\`}
         });
     }
 
@@ -113,12 +115,12 @@ export class _Table_Service {
             method: HttpConst.HTTP_GET,
             url: '/api/_table_/{id}',
             path: {'id': id},
-            errors: {422: `Validation Error`}
+            errors: {422: \`Validation Error\`}
         });
     }
 
     /**
-     * Get by other name
+     * Get by name
      * @param name
      * @returns Task Successful Response
      * @throws ApiError
@@ -128,7 +130,7 @@ export class _Table_Service {
             method: HttpConst.HTTP_GET,
             url: '/api/_table_/name/{name}',
             path: {'name':name},
-            errors: {422: `Validation Error`}
+            errors: {422: \`Validation Error\`}
         });
     }
         
@@ -143,9 +145,8 @@ export class _Table_Service {
             method: HttpConst.HTTP_GET,
             url: '/api/_table_/other/{other}',
             path: {'other':other},
-            errors: {422: `Validation Error`}
+            errors: {422: \`Validation Error\`}
         });
     }
-    
-    
-}//end service
+       
+}`;
