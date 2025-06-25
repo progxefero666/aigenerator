@@ -1,15 +1,16 @@
 //src\app\appeditor\primarybar.tsx
 
 import { useRef, useState } from "react";
-import { AppConstants, AppUiConst } from "@/app_front/appconstants";
-import { renderAlert } from "@/twdaisy/twdaisycomp";
-import { AppTheme } from "@/app_front/apptheme";
-import { CodeGenCfg } from "./modconfig";
-import { InputFiles } from "@/libcomp/inputfiles";
-import { Button } from "@/libcomp/button";
-import { ModelTable } from "../../app_front/codegen/cgmodel";
-
-import { CodeGenTsFilesContent, CodeGenSql } from "@/app_front/codegen/codegen";
+import { AppConstants, 
+         AppUiConst }   from "@/app_front/appconstants";
+import { ModelTable }   from "@/app_front/codegen/cgmodel";
+import { CodeGenCfg }   from "@/app/codegen/modconfig";
+import { CodeGenTsFilesContent, 
+        CodeGenSql }    from "@/app_front/codegen/codegen";
+import { renderAlert }  from "@/twdaisy/twdaisycomp";
+import { InputFiles }   from "@/libcomp/inputfiles";
+import { Button }       from "@/libcomp/button";
+//import { AppTheme } from "@/app_front/apptheme";
 
 
 /**
