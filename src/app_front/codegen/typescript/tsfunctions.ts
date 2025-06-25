@@ -71,6 +71,56 @@ export class TypeScriptsFunctions {
         }
         
         content += `    }\n\n`;
+        
+        // Generate minlen function
+        content += `    /**\n`;
+        content += `     * Returns the minimum length of the field.\n`;
+        content += `     * @param fieldName The name of the field.\n`;
+        content += `     * @returns The minimum length of the field or null if not applicable.\n`;
+        content += `     */\n`;
+        content += `    public minlen(fieldName: string): number | null {\n`;
+        
+        for (const field of tableModel.fields) {
+            if (field.minlen !== null) {
+                content += `        if (fieldName === "${field.name}") {\n`;
+                content += `            return ${field.minlen};\n`;
+                content += `        }\n`;
+            }
+        }
+        content += `        return 0;\n`;
+        content += `    }\n\n`;
+        
+        // Generate maxlen function
+        content += `    /**\n`;
+        content += `     * Returns the max length of the field.\n`;
+        content += `     * Returns -1 if has unlimited length.\n`;
+        content += `     * @param fieldName The name of the field.\n`;
+        content += `     * @returns The maximum length of the field or null if not applicable.\n`;
+        content += `     */\n`;
+        content += `    public maxlen(fieldName: string): number | null {\n`;
+        
+        for (const field of tableModel.fields) {
+            if (field.maxlen !== null) {
+                // Campo con longitud específica definida
+                content += `        if (fieldName === "${field.name}") {\n`;
+                content += `            return ${field.maxlen};\n`;
+                content += `        }\n`;
+            } else if (field.type.toLowerCase().includes('text') && field.maxlen === null) {
+                // Campos TEXT sin límite específico
+                content += `        if (fieldName === "${field.name}") {\n`;
+                content += `            return -1; // unlimited length\n`;
+                content += `        }\n`;
+            } else if (TypeScriptsFunctions.isNumericType(field.type)) {
+                // Campos numéricos: calcular dígitos máximos según el tipo
+                const maxDigits = TypeScriptsFunctions.getMaxDigitsForNumericType(field.type);
+                content += `        if (fieldName === "${field.name}") {\n`;
+                content += `            return ${maxDigits}; // max digits for ${field.type}\n`;
+                content += `        }\n`;
+            }
+        }
+        content += `        return 0;\n`;
+        content += `    }\n\n`;
+        
         content += `}//end class\n`;
         
         return content;
@@ -137,6 +187,60 @@ export class TypeScriptsFunctions {
         }
         
         return 'null';
+    }
+    
+    private static isNumericType(sqlType: string): boolean {
+        const type = sqlType.toLowerCase();
+        return type.includes('integer') || type.includes('int') || type.includes('serial') ||
+               type.includes('decimal') || type.includes('numeric') || type.includes('real') ||
+               type.includes('float') || type.includes('double');
+    }
+    
+    private static getMaxDigitsForNumericType(sqlType: string): number {
+        const type = sqlType.toLowerCase();
+        
+        // SMALLINT: -32,768 to 32,767 → 5 dígitos
+        if (type.includes('smallint')) {
+            return 5;
+        }
+        
+        // INTEGER/INT: -2,147,483,648 to 2,147,483,647 → 10 dígitos
+        if (type.includes('integer') || type === 'int') {
+            return 10;
+        }
+        
+        // BIGINT: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 → 19 dígitos
+        if (type.includes('bigint')) {
+            return 19;
+        }
+        
+        // SERIAL (INTEGER): mismo que INTEGER → 10 dígitos
+        if (type.includes('serial') && !type.includes('big')) {
+            return 10;
+        }
+        
+        // BIGSERIAL: mismo que BIGINT → 19 dígitos
+        if (type.includes('bigserial')) {
+            return 19;
+        }
+        
+        // DECIMAL/NUMERIC: depende de la precisión, por defecto 15 dígitos
+        if (type.includes('decimal') || type.includes('numeric')) {
+            return 15;
+        }
+        
+        // REAL: ~7 dígitos significativos
+        if (type.includes('real')) {
+            return 7;
+        }
+        
+        // DOUBLE PRECISION/FLOAT: ~15 dígitos significativos
+        if (type.includes('double') || type.includes('float')) {
+            return 15;
+        }
+        
+        // Por defecto
+        return 10;
     }
 
 }//end class TsFunctions
