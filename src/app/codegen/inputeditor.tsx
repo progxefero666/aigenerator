@@ -7,7 +7,7 @@ import { AppTheme } from "@/app_front/apptheme";
 import { CodeGenCfg } from "./modconfig";
 import { InputFiles } from "@/libcomp/inputfiles";
 import { Button } from "@/libcomp/button";
-import { ModelTable } from "../../app_front/codegen/model/cgmodel";
+import { ModelTable } from "../../app_front/codegen/cgmodel";
 
 import { CodeGenTsFilesContent, CodeGenSql } from "@/app_front/codegen/codegen";
 

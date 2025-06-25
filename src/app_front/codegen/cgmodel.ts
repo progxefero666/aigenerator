@@ -1,19 +1,15 @@
-//src\app\codegen\motor\model\relation.ts
-
+//src\app_front\codegen\cgmodel.ts
 
 /**
  * class Field
  */
 export class Relation {
-
     public table: string = "undefined";
-    public field: string = "undefined";
-    
+    public field: string = "undefined";    
     constructor(table: string, field: string) {
         this.table = table;
         this.field = field;
     }
-
 }//end 
 
 
@@ -21,7 +17,6 @@ export class Relation {
  * class Field
  */
 export class ModelField {
-
     public name: string;
     public type: string;
     public required: boolean;
@@ -30,7 +25,6 @@ export class ModelField {
     public fk: boolean;
     public minlen: number | null;
     public maxlen: number | null;
-
     public relations: Relation[] | null = null;
 
     constructor(name: string, type: string,
@@ -47,14 +41,11 @@ export class ModelField {
         this.fk = fk ?? false;
         this.relations = relations ?? null;
     }
-
 }//end 
 
 export class ModelTable {
-
     public name: string;
     public fields: ModelField[];
-
     constructor(name: string, fields?: ModelField[]) {
         this.name = name;
         this.fields = fields ?? [];
