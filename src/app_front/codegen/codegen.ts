@@ -294,7 +294,10 @@ export class CodeGenTsFilesContent {
      * @param tableModel 
      */    
     public static genFileContentEntityClass(tableModel: ModelTable): string {
-        let content: string = "";        
+        let content: string = "";      
+        
+        content +=  CodeGenTsFilesContent.genFileContentTableDef(tableModel);
+
         const className = CodeGenUtil.capitalize(tableModel.name);
         const fileName = `table_${tableModel.name.toLowerCase()}.ts`;        
         content += `//${fileName}\n\n`;
@@ -380,6 +383,46 @@ export class CodeGenTsFilesContent {
         return content;
     }
     
+    public static genFileContentEntityArrayClass(tableModel: ModelTable[]): string {
+        let content: string = "";
+        
+        // 1. Imports una sola vez al principio
+        content += CodeGenUtil.generateImports();
+        
+        // 2. Para cada tabla, los 3 bloques
+        for (let i = 0; i < tableModel.length; i++) {
+            const table = tableModel[i];
+            
+            // Bloque 1: Clase Def (sin imports)
+            content += CodeGenTsFilesContent.generateSingleTableDefClass(table);
+            content += `\n`;
+            
+            // Bloque 2: Clase normal (extraer solo la parte sin imports ni Def)
+            const fullClassContent = CodeGenTsFilesContent.genFileContentEntityClass(table);
+            // Quitar la parte de imports y Def, quedarnos solo con la clase y tipo
+            const lines = fullClassContent.split('\n');
+            let startIndex = -1;
+            for (let j = 0; j < lines.length; j++) {
+                if (lines[j].includes('//table_')) {
+                    startIndex = j;
+                    break;
+                }
+            }
+            if (startIndex >= 0) {
+                const classAndTypeContent = lines.slice(startIndex).join('\n');
+                content += classAndTypeContent;
+            }
+            
+            // Separador entre tablas (excepto la última)
+            if (i < tableModel.length - 1) {
+                content += `\n`;
+            }
+        }
+        
+        return content;
+    }
+
+
     public static getDefaultValue(field: ModelField, tsType: string): string {    
         if (field.pk || field.name.toLowerCase() === 'id') {return 'null';}        
         if (tsType.includes('number')) {return 'null';}
@@ -402,7 +445,7 @@ export class CodeGenTsFilesContent {
             content += `    ${field.name}: ${tsType};\n`;
         }        
         content += `};\n`;        
-        return "";
+        return content;
     }//end
 
     public static generateSingleTableDefClass(table: ModelTable): string {
@@ -432,7 +475,7 @@ export class CodeGenTsFilesContent {
         return classCode;
     }//end
       
-    public static getTableDefCode(table: ModelTable): string {
+    public static genFileContentTableDef(table: ModelTable): string {
         let code: string = "";
         code += CodeGenUtil.generateImports();
         code += CodeGenTsFilesContent.generateSingleTableDefClass(table);        
