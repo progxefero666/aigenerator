@@ -28,8 +28,13 @@ export default function CodeGenCard({code,execexport}: CodeGenCardProp) {
         <div className={style_component}>
             
             <div className={AppCard.CARD_DATA_STYLE}>
-                <code>
-                    <p>{code}</p>
+                <code style={{ 
+                    whiteSpace: 'pre-wrap',
+                    fontFamily: 'monospace',
+                    fontSize: '14px',
+                    lineHeight: '1.4'
+                }}>
+                    {code}
                 </code>                
             </div>
         </div>
