@@ -1,6 +1,7 @@
 //
 
 import { AppConfig } from "@/app_front/appconfig";
+import { AppMessages } from "@/app_front/appconstants";
 import { AppThemeLayout } from "@/app_front/apptheme";
 import { AppModule } from "@/lib/arquitect/model/appmodule";
 import { useRouter } from "next/navigation";
@@ -22,19 +23,13 @@ export function PagePrimaryBar({ modules,chargemodule, actmodule }: PagePrimaryB
     }, []);
 
     const onModuleSelected = (name: string) => {
-        if (name === AppConfig.INDEX.name) {
-            router.push("./"); 
+        let navigationPath: string|null = AppConfig. getModulePath(name);
+        if(navigationPath!== null){
+            router.push(navigationPath);
         }
-        if (name === AppConfig.MOD_DBMODEL_TOOLS.name) {
-            //router.push("./aichatbot"); 
-            router.push("./codegen"); 
+        else {
+            alert(AppMessages.ERROR_MODULE_NOTFOUND.concat(name));
         }
-        else if (name === AppConfig.MOD_APP_FOLDERS.name  ) {
-            router.push("./motors"); 
-        }
-        else if (name === AppConfig.MOD_CREATE_COMP.name) {
-            router.push("./components"); 
-        }        
     };
 
     const renderButton = (key:string,moduleName:string,moduleTitle:string) => {

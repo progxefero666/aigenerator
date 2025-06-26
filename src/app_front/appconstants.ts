@@ -73,3 +73,13 @@ export class AppTexts {
     public static readonly COPY: string = "copy";  
 
 }//end class
+
+/**
+ * AppMessages.ERROR_MODULE_NOTFOUND
+ */
+export class AppMessages {
+    
+    public static readonly ERROR_MODULE_NOTFOUND : string = "Module not found";
+
+}//end class
+

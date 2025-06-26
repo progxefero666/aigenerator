@@ -8,12 +8,15 @@ import { ArquitectConstants } from "../arqconstants";
  */
 export class AppModule {
 
+    public path: string;
     public name: string;
     public title: string;
     public logo: string;
     public description: string;
 
-    constructor(name: string, title: string,description?:string,logo?:string) {
+    constructor(path:string,name:string,title:string,
+                description?:string,logo?:string) {
+        this.path = path;
         this.name = name;
         this.title = title;
         this.logo = logo ?? ArquitectConstants.NOT_DEF;
