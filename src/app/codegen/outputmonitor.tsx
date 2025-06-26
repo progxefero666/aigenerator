@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { AppConstants } from "@/app_front/appconstants";
 import { renderAlert } from "@/twdaisy/twdaisycomp";
 import { AppTheme, AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
-import { CodeGenCfg } from "./modconfig";
+import { CodeGenStyle } from "../../app_front/codegen/cgstyle";
 import CodeGenCard from "./cards/codegencard";
 
 import { BARCFG_EXPORT, BARCFG_COPY } from "@/app_front/uimodel/uimodelbars";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 import { AppEditorMessages } from "./appeditor";
 import { InputText } from "@/libcomp/inputtext";
+import { CodeGenControl } from "@/app_front/codegen/cgcontroller";
 
 
 const style_header: string = "w-full h-auto flex flex-row items-center pb-1 justify-between rounded-lg border border-sky-500";
@@ -91,12 +92,12 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
     };
 
     const renderMainContent = () => {
-        if (format === CodeGenCfg.CREATE_MODEL.name) {
+        if (format === CodeGenControl.OPT_CREATE_MODELS.name) {
             return (
                 <CodeGenCard execexport={onFileExport} code={code!} />
             );
         }
-        if (format === CodeGenCfg.SECTION_SERVICE.name) {
+        if (format === CodeGenControl.OPT_CREATES_SERVICES.name) {
             return (
                 <CodeGenCard execexport={onFileExport} code={code!} />
             );
@@ -123,7 +124,7 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
     }
 
     return (
-        <div className={CodeGenCfg.EDITOR_STYLE}>
+        <div className={CodeGenStyle.EDITOR_STYLE}>
 
             <div className={style_header}>
                 <div className={style_header_title}>

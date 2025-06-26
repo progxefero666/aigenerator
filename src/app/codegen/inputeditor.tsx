@@ -4,41 +4,18 @@ import { useRef, useState } from "react";
 import { AppConstants, 
          AppUiConst }   from "@/app_front/appconstants";
 import { ModelTable }   from "@/app_front/codegen/cgmodel";
-import { CodeGenCfg }   from "@/app/codegen/modconfig";
+import { CodeGenStyle }   from "@/app_front/codegen/cgstyle";
 import { CodeGenTsFilesContent, 
         CodeGenSql }    from "@/app_front/codegen/codegen";
 import { renderAlert }  from "@/twdaisy/twdaisycomp";
 import { InputFiles }   from "@/libcomp/inputfiles";
 import { Button }       from "@/libcomp/button";
 import { CodeGenServices } from "@/app_front/codegen/services/cgservices";
+import { CodeGenControl } from "@/app_front/codegen/cgcontroller";
 //import { AppTheme } from "@/app_front/apptheme";
 
 
-/*
-## Operations 
 
-### Operation Base
-    _desc:_ get all ModelTables  from sql script squema
-    _function:_  ModelTable[] = CodeGenSql.getEsquemaTables(inputCode);
-
-### Operation Esquemas
-
-    1. *** all complete squema *** 
-        _desc:_ Generate all typescriopt class in only one file _.ts_ from sql script squema
-        _3 elements included by table_  
-                - Class Definition
-                - Class Table
-                - Type Table
-        _function:_ CodeGenTsFilesContent.genFileContentEntityArrayClass(tables);
-        
-    2. *** all table defs *** 
-        _desc:_ generate all table defs in the same file
-        _function:_ CodeGenTsFilesContent.getTablesDefCode(tables);
-        
-    3. *** all table api client services *** 
-        _desc:_ generate all table api client services in the same file
-        _function:_CodeGenServices.genFileContentArrayServiceClass(tables);		
-*/
 
 /**
  * JSX Component layout secondary column
@@ -46,9 +23,9 @@ import { CodeGenServices } from "@/app_front/codegen/services/cgservices";
  */
 export interface PageInputEditorProp {
     section:string;
-    ondataresult: (data:string) => void;
+    run: (data:string) => void;
 }
-export default function PageInputEditor({ section,ondataresult }: PageInputEditorProp) {
+export default function PageInputEditor({section,run}: PageInputEditorProp) {
     
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
     const [inputCode, setInputCode]       = useState<string>(AppConstants.NOT_DEF);
@@ -68,31 +45,26 @@ export default function PageInputEditor({ section,ondataresult }: PageInputEdito
         }
     }
         
-
-    const runProcess = () => {       
+    const onButtonRun = () => {       
         //const tables: ModelTable[] = CodeGenSql.getEsquemaTables(inputCode);        
-
     };
 
-    const onexport = () => {
-        alert("export");
-    }
 
     return (
-        <div className={CodeGenCfg.EDITOR_STYLE}>
-            <div className={CodeGenCfg.EDITOR_HEADER_STYLE}>
+        <div className={CodeGenStyle.EDITOR_STYLE}>
+            <div className={CodeGenStyle.EDITOR_HEADER_STYLE}>
                     <Button text="run"
                             icon={AppUiConst.ICON_RUN}
-                            onclick={runProcess} />    
+                            onclick={onButtonRun} />    
 
                 <InputFiles name="codefile"
                             ref={inputFilesRef}                            
-                            formats={CodeGenCfg.SQL_FORMATS}
+                            formats={CodeGenControl.SQL_FORMATS}
                             multiple={false}
                             onchange={onFileLoaded} />
             </div>
             
-            <div className={CodeGenCfg.EDITOR_AREA_STYLE}>
+            <div className={CodeGenStyle.EDITOR_AREA_STYLE}>
                 <textarea  key={inputCode} 
                            className="textarea textarea-primary w-full min-h-screen "
                            placeholder="(not def)" defaultValue={inputCode} />
