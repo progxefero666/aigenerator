@@ -4,7 +4,7 @@ import { Option } from "@/lib/model/base/option";
 /**
  * CodeGen Main App Controller
  */
-export class CodeGenControl {
+export class CodeGenSections {
     
     public static readonly TYPESCRIPT_FORMATS:string = ".ts,.tsx"
 
@@ -23,22 +23,38 @@ export class CodeGenControl {
         ("create_folders", "Entity Folder", "create folders");
 
     public static readonly MENU: Option[]=[
-        CodeGenControl.OPT_CREATE_MODELS,
-        CodeGenControl.OPT_CREATES_SERVICES,
-        CodeGenControl.OPT_MODEL_CARDS,
-        CodeGenControl.OPT_MODEL_FOLDER,
+        CodeGenSections.OPT_CREATE_MODELS,
+        CodeGenSections.OPT_CREATES_SERVICES,
+        CodeGenSections.OPT_MODEL_CARDS,
+        CodeGenSections.OPT_MODEL_FOLDER,
     ];
 
-    public static readonly MENU_ACT_OPTION: Option = CodeGenControl.MENU[0];
+    public static readonly MENU_ACT_OPTION: Option = CodeGenSections.MENU[0];
     public static test(): void {
         return ;
     }
 
 }//end class
 
+/**
+ * class CodeGen Messages
+ */
 export class CodeGenMessages {
 
     public static readonly MSG_EXPORT_SUCCESS: string = "!! export file success. !!";
 
+}//end class
+
+/**
+ * class CodeGen Control
+ */
+export class CodeGenControl {
+
+    public sections: Option[] = CodeGenSections.MENU;
+    public currentSection: string;
+
+    constructor(initSection?: string ) {
+        this.currentSection = initSection ? initSection : CodeGenSections.MENU_ACT_OPTION.name;
+    }
 
 }//end class

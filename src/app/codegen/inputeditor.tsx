@@ -11,7 +11,7 @@ import { renderAlert }  from "@/twdaisy/twdaisycomp";
 import { InputFiles }   from "@/libcomp/inputfiles";
 import { Button }       from "@/libcomp/button";
 import { CodeGenServices } from "@/app_front/codegen/services/cgservices";
-import { CodeGenControl } from "@/app_front/codegen/cgcontroller";
+import { CodeGenSections } from "@/app_front/codegen/cgcontroller";
 //import { AppTheme } from "@/app_front/apptheme";
 
 
@@ -59,7 +59,7 @@ export default function PageInputEditor({section,run}: PageInputEditorProp) {
 
                 <InputFiles name="codefile"
                             ref={inputFilesRef}                            
-                            formats={CodeGenControl.SQL_FORMATS}
+                            formats={CodeGenSections.SQL_FORMATS}
                             multiple={false}
                             onchange={onFileLoaded} />
             </div>

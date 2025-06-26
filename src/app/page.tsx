@@ -12,7 +12,8 @@ import PageOutputMonitor from "./codegen/outputmonitor";
 import { CodeGenStyle } from "../app_front/codegen/cgstyle";
 import PageInputEditor from "./codegen/inputeditor";
 import { Button } from "@/libcomp/button";
-import { CodeGenControl } from "@/app_front/codegen/cgcontroller";
+import { CodeGenControl, CodeGenSections } from "@/app_front/codegen/cgcontroller";
+import { PagePrimaryBar } from "./codegen/primarybar";
 
 /**
  * Page Index JSX Client
@@ -25,14 +26,15 @@ import { CodeGenControl } from "@/app_front/codegen/cgcontroller";
  */
 export const CODEGEN_PATH: string = "./codegen";
 
+const codeGenControl: CodeGenControl = new CodeGenControl();
 
 export default function CodeGenerator() {
 
-    const [section, setSection] = useState<string>(CodeGenControl.OPT_CREATE_MODELS.name);
-    const [code, setCode] = useState<string|null>(null);
+    const [section, setSection] = useState<string>(codeGenControl.currentSection);
     const chargeSection = (section: string): void => { setSection(section); }
 
-    //useEffect(() => {const init=():void=>{} init();}, []);
+    const [code, setCode] = useState<string|null>(null);
+    
 
     const runGeneration = (data:string) => {        
         setCode(data);
@@ -42,9 +44,12 @@ export default function CodeGenerator() {
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
             <div className={CodeGenStyle.BODY_STYLE}>
-                <PagePrimaryBar     section={section} chargesection={chargeSection} />
+                <PagePrimaryBar     sections={codeGenControl.sections}
+                                    actsection={section} chargesection={chargeSection} />
+
                 <PageInputEditor    section={section} run = {runGeneration}/>                
                 <PageOutputMonitor  key={code} format={section} code={code} />
+                
                 <PageSecondaryBar   section={section} />                
             </div>
         </div>
@@ -94,37 +99,6 @@ function PageHeader({ value }: PageHeaderProp) {
 
 }//end
 
-interface PagePrimaryBarProp {
-    section: string;
-    chargesection: (section:string) => void
-}
-function PagePrimaryBar({chargesection, section}: PagePrimaryBarProp) {
-
-    const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
-    const [sections, setSections] = useState<Option[]>(CodeGenControl.MENU);
-
-    //CodeGenCfg.TYPESCRIPT_FORMATS
-    const loadsection = (name: string): void => {
-        chargesection(name);
-        if (name === CodeGenControl.OPT_CREATE_MODELS.name) {
-
-        }
-        else if (name === CodeGenControl.OPT_CREATES_SERVICES.name) {
-
-        }
-    }
-
-    return (
-        <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
-            <TwDaisyMenu onselection={loadsection}
-                options={CodeGenControl.MENU}
-                optactname={CodeGenControl.MENU_ACT_OPTION.name}
-                optcolor={AppThemeMenus.MENU_OPT_COLOR}
-                optactcolor={AppThemeMenus.MENU_OPT_ACT_COLOR} />
-        </div>
-    )
-
-}//end comp
 
 interface PageSecondaryBarProp {
     section: string;
