@@ -12,6 +12,7 @@ import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 import { useState, useEffect, useRef } from "react";
 import { Module_template_Config } from "./modconfig";
 import { ThemeCard } from "@/app_front/comp/themecard";
+import { PagePrimaryBarProps } from "@/app_front/apptypes";
 
 /**
  * author: ignacio sánchez ramírez
@@ -39,7 +40,7 @@ export default function PageModule_template({ }: PageModule_template_Prop) {
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
             <div className={AppThemeLayout.BODY_STYLE}>
-                <PagePrimaryBar />
+                <PagePrimaryBar actsection="undefined" sections={[]} chargesection={chargesection} />
                 <PageMainContent />
                 <PageSecondBar />
             </div>
@@ -90,11 +91,8 @@ function PageHeader({ ontest }: PageHeaderProps) {
 /**
  * Page: Primary Bar
  */
-interface PagePrimaryBarProp {
-    section?: string;
-    chargesection?: (section: string) => void
-}
-function PagePrimaryBar({ chargesection, section }: PagePrimaryBarProp) {
+
+function PagePrimaryBar({ chargesection, actsection }: PagePrimaryBarProps) {
 
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
     const [sections, setSections] = useState<Option[]>(Module_template_Config.SECTIONS);

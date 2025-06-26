@@ -7,7 +7,7 @@ import { AppConstants, AppUiConst } from "@/app_front/appconstants";
 import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import { AppThemeModule } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
-
+import { PagePrimaryBarProps } from "@/app_front/apptypes";
 import PageOutputMonitor from "./outputmonitor";
 import { CodeGenStyle } from "../../app_front/codegen/cgstyle";
 import PageInputEditor from "./inputeditor";
@@ -138,12 +138,8 @@ function PageHeader({ value }: PageHeaderProp) {
 
 }//end
 
-interface PagePrimaryBarProp {
-    sections: Option[];
-    actsection: string;
-    chargesection: (section:string) => void
-}
-function PagePrimaryBar({sections,chargesection,actsection}: PagePrimaryBarProp) {
+
+function PagePrimaryBar({sections,chargesection,actsection}: PagePrimaryBarProps) {
 
     return (
         <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>

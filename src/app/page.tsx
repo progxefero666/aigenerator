@@ -11,7 +11,7 @@ import { Search } from "@/libcomp/search";
 import { AppConstants, AppMessages } from "@/app_front/appconstants";
 import { AppConfig } from "@/app_front/appconfig";
 
-
+import { PagePrimaryBarProps } from "@/app_front/apptypes";
 
 /**
  *  Index Page JSX
@@ -36,9 +36,9 @@ export default function Index() {
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader  />
             <div className = {AppThemeLayout.BODY_STYLE}>
-                <PagePrimaryBar  modules={AppConfig.getModulesMenu()} 
-                                 actmodule={AppConfig.INDEX.name}
-                                 chargemodule={chargeModule}/>
+                <PagePrimaryBar  sections={AppConfig.getModulesMenu()} 
+                                 actsection={AppConfig.INDEX.name}
+                                 chargesection={chargeModule}/>
                 <PageMainContent />
                 <PageSecondBar />
             </div>
@@ -85,12 +85,7 @@ function PageHeader({ ontest }: PageHeaderProps) {
 }//end
 
 
-interface PagePrimaryBarProps {
-    modules: Option[];
-    actmodule: string;
-    chargemodule: (name: string) => void
-}
-function PagePrimaryBar({ modules,chargemodule, actmodule }: PagePrimaryBarProps) {
+function PagePrimaryBar({ sections: modules,chargesection: chargemodule, actsection: actmodule }: PagePrimaryBarProps) {
     //useEffect(() => {}, []);
     return (
         <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>

@@ -10,13 +10,10 @@ import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 import { DbModelToolsControl, ModuleDbModelToolsConfig } from "@/app_front/codegen/cgcontroller";
 import { CodeGenStyle } from "@/app_front/codegen/cgstyle";
 import { AppModule } from "@/lib/arquitect/model/appmodule";
+import { PagePrimaryBarProps } from "@/app_front/apptypes";
 
-interface PagePrimaryBarProp {
-    sections: Option[];
-    actsection: string;
-    chargesection: (section:string) => void
-}
-export function PagePrimaryBar({sections,chargesection,actsection}: PagePrimaryBarProp) {
+
+export function PagePrimaryBar({sections,chargesection,actsection}: PagePrimaryBarProps) {
 
     return (
         <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>

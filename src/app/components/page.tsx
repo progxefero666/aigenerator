@@ -1,5 +1,7 @@
-//
+//src\app\components\page.tsx
 
+import { Option } from "@/lib/model/base/option";
+import { PagePrimaryBarProps } from "@/app_front/apptypes";
 import { AppThemeLayout } from "@/app_front/apptheme";
 
 
