@@ -28,7 +28,7 @@ export const CODEGEN_PATH: string = "./codegen";
 
 const codeGenControl: CodeGenControl = new CodeGenControl();
 
-export default function CodeGenerator() {
+export default function PageDbModelTools() {
 
     const [section, setSection] = useState<string>(codeGenControl.currentSection);
     const chargeSection = (section: string): void => { setSection(section); }
