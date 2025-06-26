@@ -1,4 +1,4 @@
-//src\app\motors\page.tsx
+//src\app\projects\page.tsx
 
 "use client";
 
@@ -11,15 +11,13 @@ import { AppConstants } from "@/app_front/appconstants";
 
 
 /**
- * Module: Motors 
- * Main JSX module page component
- * @returns 
+ * Main View JSX module: AI Applications
  */
-export default function PageMotors() {
+export default function PageAiApplications() {
     const router = useRouter();   
-    
-    const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
 
+    const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
+    
     const execNavToIndex = () => { 
         router.push(AppConfig.INDEX.path);
     }

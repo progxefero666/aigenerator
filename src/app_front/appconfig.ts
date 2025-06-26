@@ -2,6 +2,8 @@
 
 import { AppModule } from "@/lib/arquitect/model/appmodule";
 import { Option } from "@/lib/model/base/option";
+
+
 /**
  * AppConfig.getModulesMenu
  */
@@ -12,8 +14,8 @@ export class AppConfig {
     public static readonly MOD_DBMODEL_TOOLS: AppModule 
         = new AppModule("./dbmodeltools","ts_models_tools","Db Model Tools");
 
-    public static readonly MOD_CREATE_APPS_FOLDER: AppModule 
-        = new AppModule("./applications","create_applications","App. Generator");
+    public static readonly MOD_CREATE_PROJECTS: AppModule 
+        = new AppModule("./projects","create_applications","App. Generator");
 
     public static readonly MOD_APP_MOTORS: AppModule 
         = new AppModule("./motors","create_motors_folders","App. Modules");
@@ -24,7 +26,7 @@ export class AppConfig {
     public static readonly MODULES: AppModule[] = [
         AppConfig.INDEX,
         AppConfig.MOD_DBMODEL_TOOLS,
-        AppConfig.MOD_CREATE_APPS_FOLDER,
+        AppConfig.MOD_CREATE_PROJECTS,
         AppConfig.MOD_APP_MOTORS,
         AppConfig.MOD_CREATE_COMP
     ]
@@ -47,8 +49,8 @@ export class AppConfig {
         if (name === AppConfig.MOD_DBMODEL_TOOLS.name) {
             navigationPath = AppConfig.MOD_DBMODEL_TOOLS.path;
         }
-        else if (name === AppConfig.MOD_CREATE_APPS_FOLDER.name) {
-            navigationPath = AppConfig.MOD_CREATE_APPS_FOLDER.path;
+        else if (name === AppConfig.MOD_CREATE_PROJECTS.name) {
+            navigationPath = AppConfig.MOD_CREATE_PROJECTS.path;
         }
         else if (name === AppConfig.MOD_APP_MOTORS.name  ) {
             navigationPath = AppConfig.MOD_APP_MOTORS.path;

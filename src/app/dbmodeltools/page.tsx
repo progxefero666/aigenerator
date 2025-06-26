@@ -14,6 +14,8 @@ import PageInputEditor from "./inputeditor";
 import { Button } from "@/libcomp/button";
 import { DbModelToolsControl, ModuleDbModelToolsConfig } from "@/app_front/codegen/cgcontroller";
 import { CodeFormats } from "@/app_front/codegen/cgconstants";
+import { useRouter } from "next/navigation";
+import { AppConfig } from "@/app_front/appconfig";
 
 
 /**
@@ -30,14 +32,18 @@ export const CODEGEN_PATH: string = "./codegen";
 //const codeGenControl: DbModelToolsControl = new DbModelToolsControl();
 
 export default function PageDbModelTools() {
-
+    const router = useRouter();   
+    
+    const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
     const [outputFormat, setOutputFormat] = useState<string>(CodeFormats.TYPESCRIPT);
-
-    const moduleControl = useRef<DbModelToolsControl>(null);    
-
     const [code, setCode] = useState<string|null>(null);
     const [section, setSection] = useState<string>(ModuleDbModelToolsConfig.MENU_ACT_OPTION.name);
-    
+    const moduleControl = useRef<DbModelToolsControl>(null); 
+
+    const execNavToIndex = () => { 
+        router.push(AppConfig.INDEX.path);
+    }
+
     useEffect(() => {
         const init=():void=>{
               moduleControl.current = 

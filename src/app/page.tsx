@@ -1,13 +1,15 @@
 //src\app\module\aiprojects\manproyect\page.tsx
+
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AppThemeLayout } from "@/app_front/apptheme";
+import { Option } from "@/lib/model/base/option";
+import { AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
+import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 import { Search } from "@/libcomp/search";
 import { AppConstants, AppMessages } from "@/app_front/appconstants";
 import { AppConfig } from "@/app_front/appconfig";
-import { PagePrimaryBar } from "@/app/desktop/primarybar";
 
 
 
@@ -17,18 +19,19 @@ import { PagePrimaryBar } from "@/app/desktop/primarybar";
  */
 export default function Index() {
 
-    const router = useRouter();
-    
+    /**
+     * charge ApplicationModule
+     */
+    const router = useRouter();    
     const chargeModule = (name: string): void => {        
-        let navigationPath: string|null = AppConfig. getModulePath(name);
-        if(navigationPath!== null){
-            router.push(navigationPath);
-        }
-        else {
-            alert(AppMessages.ERROR_MODULE_NOTFOUND.concat(name));
-        }
+        let navigationPath: string|null = AppConfig.getModulePath(name);
+        if(navigationPath!== null){ router.push(navigationPath);}
+        else {alert(AppMessages.ERROR_MODULE_NOTFOUND.concat(name));}
     }
 
+    /**
+     * View JSX
+     */    
     return (
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader  />
@@ -82,6 +85,24 @@ function PageHeader({ ontest }: PageHeaderProps) {
 }//end
 
 
+interface PagePrimaryBarProps {
+    modules: Option[];
+    actmodule: string;
+    chargemodule: (name: string) => void
+}
+function PagePrimaryBar({ modules,chargemodule, actmodule }: PagePrimaryBarProps) {
+    //useEffect(() => {}, []);
+    return (
+        <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
+            <TwDaisyMenu onselection={chargemodule}
+                options={modules}
+                optactname={actmodule}
+                optcolor={AppThemeMenus.MENU_OPT_COLOR}
+                optactcolor={AppThemeMenus.MENU_OPT_ACT_COLOR} />
+        </div>
+    )
+   
+}//end
 
 
 
