@@ -4,7 +4,7 @@
 export const TEMP_APICLIIMPORTS = `
 import { CancelablePromise, OpenAPI } from "@/client";
 import { request as __request } from '@/client/core/request';
-import { HttpConst } from "@/app_front/httpconstants";`;
+import { HttpConst } from "@/codegen/httpconstants";`;
  
 export const TEMP_APICLISERVICE = `
 import { _Table_ } from "@/client/models/_Table_";
@@ -133,7 +133,7 @@ export class _Table_Service {
  * # Description
  *      - Generates files content for FastAapi Db 
  */
-import { ModelTable } from "@/app_front/codegen/cgmodel";
+import { ModelTable } from "@/codegen/cgmodel";
 import { CodeGenUtil } from "../codegen";
 
 export class CodeGenServices {

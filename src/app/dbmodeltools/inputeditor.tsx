@@ -3,14 +3,14 @@
 import { useRef, useState } from "react";
 import { AppConstants, 
          AppUiConst }   from "@/app_front/appconstants";
-import { ModelTable }   from "@/app_front/codegen/cgmodel";
+import { ModelTable }   from "@/codegen/cgmodel";
 import { CodeGenStyle }   from "@/codegen/cgstyle";
 import { CodeGenTsFilesContent, 
-        CodeGenSql }    from "@/app_front/codegen/codegen";
+        CodeGenSql }    from "@/codegen/codegen";
 import { renderAlert }  from "@/twdaisy/twdaisycomp";
 import { InputFiles }   from "@/libcomp/inputfiles";
 import { Button }       from "@/libcomp/button";
-import { CodeGenServices } from "@/app_front/codegen/services/cgservices";
+import { CodeGenServices } from "@/codegen/services/cgservices";
 import { ModuleDbModelToolsConfig } from "@/app_front/mod_dbmodtools/mod_config";
 //import { AppTheme } from "@/app_front/apptheme";
 

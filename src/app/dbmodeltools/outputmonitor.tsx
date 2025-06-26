@@ -9,7 +9,7 @@ import CardOutputCode from "../../app_front/comp/codegencard";
 import { BARCFG_EXPORT, BARCFG_COPY } from "@/app_front/appbars";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 import { InputText } from "@/libcomp/inputtext";
-import { CodeFormats } from "@/app_front/codegen/cgconstants";
+import { CodeFormats } from "@/codegen/cgconstants";
 
 
 /**

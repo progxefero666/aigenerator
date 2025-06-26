@@ -13,7 +13,7 @@ import { CodeGenStyle } from "../../codegen/cgstyle";
 import PageInputEditor from "./inputeditor";
 import { Button } from "@/libcomp/button";
 import { ModuleDbModelToolsConfig } from "@/app_front/mod_dbmodtools/mod_config";
-import { CodeFormats } from "@/app_front/codegen/cgconstants";
+import { CodeFormats } from "@/codegen/cgconstants";
 import { useRouter } from "next/navigation";
 import { AppConfig } from "@/app_front/home/appconfig";
 

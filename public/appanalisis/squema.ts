@@ -1,6 +1,6 @@
 //src\app_front\squema.ts
 
-import { ModelTable, ModelField, Relation } from "@/app_front/codegen/cgmodel";
+import { ModelTable, ModelField, Relation } from "@/codegen/cgmodel";
 import sqlTypesData from "@/app_front/codegen/sqltypes.json";
 
 /**
