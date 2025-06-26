@@ -16,13 +16,19 @@ import { InputText } from "@/libcomp/inputtext";
 const style_header: string = "w-full h-auto flex flex-row items-center pb-1 justify-between rounded-lg border border-sky-500";
 const style_header_title: string = "flex flex-row items-center pl-3 pr-1 text-white text-xs flex-1";
 
+
+const style_monitor_header: string 
+    = "w-full h-auto flex flex-row items-center pb-1 justify-between rounded-lg border border-neutral-800";
+
+const style_monitor_header_title: string = "flex flex-row items-center pl-3 pr-1 text-white text-xs flex-1";
+
 /**
  * JSX Component layout secondary column
  * Application Editor Tools
  */
 export interface PageOutputMonitorProp {
     format?: string;
-    code: string;
+    code: string|null;
     fileName?: string;
 }
 export default function PageOutputMonitor({ format, code, fileName }: PageOutputMonitorProp) {
@@ -34,6 +40,11 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
     const expNameRef = useRef<HTMLInputElement>(null);
     const [expInputReadOnly, setExpInputReadOnly] = useState<boolean>(true);
     const expFileName: string = fileName ?? AppConstants.NOT_DEF;
+
+    let codeCharged: boolean = false;
+    if(code!==null) {
+        codeCharged = true;
+    }
 
     const onexport = () => {
 
@@ -52,13 +63,16 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
     }
 
     const onClick = (opId?: string) => {
+
+        if(!codeCharged) {return;}
+
         if (opId) {
             switch (opId) {
                 case AppConstants.ACT_EXPORT:
                     onexport();
                     break;
                 case AppConstants.ACT_COPY:
-                    navigator.clipboard.writeText(code);
+                    navigator.clipboard.writeText(code!);
                     setAlertMessage("Code copied to clipboard");
                     break;
                 default:
@@ -68,22 +82,21 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
     };
 
     const renderMainContent = () => {
-
         if (format === CodeGenCfg.CREATE_MODEL.name) {
             return (
-                <CodeGenCard execexport={onexport} code={code} />
+                <CodeGenCard execexport={onexport} code={code!} />
             );
         }
         if (format === CodeGenCfg.SECTION_SERVICE.name) {
             return (
-                <CodeGenCard execexport={onexport} code={code} />
+                <CodeGenCard execexport={onexport} code={code!} />
             );
         }
     };
 
     const renderOutPutBar = () => {
         return (
-            <div className={style_header}>
+            <div className={style_monitor_header}>
 
                 <div className={style_header_title}>
                     <div className="w-full mr-2 pl-1">
@@ -128,8 +141,13 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
             </div>
 
             <div className={AppThemeLayout.BODY_MAINCONTENT_STYLE}>
-                {renderOutPutBar()}
-                {renderMainContent()}
+                {codeCharged ?
+                    <>
+                        {renderOutPutBar()}
+                        {renderMainContent()}        
+                    </> 
+                :null}
+              
                 {(alertMessage !== AppConstants.NOT_DEF) ? renderAlert(alertMessage) : null}
             </div>
 

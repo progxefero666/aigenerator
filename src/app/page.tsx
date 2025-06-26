@@ -28,7 +28,7 @@ export const CODEGEN_PATH: string = "./codegen";
 export default function CodeGenerator() {
 
     const [section, setSection] = useState<string>(CodeGenCfg.CREATE_MODEL.name);
-    const [code, setCode] = useState<string>(AppConstants.NOT_DEF);
+    const [code, setCode] = useState<string|null>(null);
 
     const chargeSection = (section: string): void => { setSection(section); }
 
@@ -48,7 +48,7 @@ export default function CodeGenerator() {
             <div className={CodeGenCfg.BODY_STYLE}>
                 <PagePrimaryBar     section={section} chargesection={chargeSection} />
                 <PageInputEditor    section={section} ondataresult = {onDataResult}/>                
-                <PageOutputMonitor  format={section} code={code}/>
+                <PageOutputMonitor  format={section} code={code} />
                 <PageSecondaryBar   section={section} />                
             </div>
         </div>
