@@ -1,37 +1,30 @@
-//
+//src\app\desktop\primarybar.tsx
 
-import { AppConfig } from "@/app_front/appconfig";
-import { AppMessages } from "@/app_front/appconstants";
-import { AppThemeLayout } from "@/app_front/apptheme";
-import { AppModule } from "@/lib/arquitect/model/appmodule";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+
+import { AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
+import { Option } from "@/lib/model/base/option";
+import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 
 /**
- * Page: Primary Bar
- * AppConfig.MODULES
+ * Page Index: Primary Bar
  */
 interface PagePrimaryBarProps {
-    modules: AppModule[];
-    actmodule?: string;
+    modules: Option[];
+    actmodule: string;
     chargemodule: (name: string) => void
 }
 export function PagePrimaryBar({ modules,chargemodule, actmodule }: PagePrimaryBarProps) {
-    const router = useRouter();
-
-    useEffect(() => {
-    }, []);
-
-    const onModuleSelected = (name: string) => {
-        let navigationPath: string|null = AppConfig. getModulePath(name);
-        if(navigationPath!== null){
-            router.push(navigationPath);
-        }
-        else {
-            alert(AppMessages.ERROR_MODULE_NOTFOUND.concat(name));
-        }
-    };
-
+    //useEffect(() => {}, []);
+    return (
+        <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
+            <TwDaisyMenu onselection={chargemodule}
+                options={modules}
+                optactname={actmodule}
+                optcolor={AppThemeMenus.MENU_OPT_COLOR}
+                optactcolor={AppThemeMenus.MENU_OPT_ACT_COLOR} />
+        </div>
+    )
+    /*
     const renderButton = (key:string,moduleName:string,moduleTitle:string) => {
         let buttonColor: string = "btn-primary";
         if (actmodule === moduleName) { buttonColor = "btn-warning"; }
@@ -40,7 +33,7 @@ export function PagePrimaryBar({ modules,chargemodule, actmodule }: PagePrimaryB
         return (
             <button key={key}
                 className={buttonStyle}
-                onClick={() => onModuleSelected(moduleName)}>
+                onClick={() => chargemodule(moduleName)}>
                 {moduleTitle}
             </button>
         )
@@ -48,15 +41,13 @@ export function PagePrimaryBar({ modules,chargemodule, actmodule }: PagePrimaryB
 
     return (
         <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
-
-            { /* menu options */}
             <div className="w-full h-auto  flex flex-col px-2 py-[10px] space-y-3 ">
                 {modules.map((module, index) => (
                     renderButton(index.toString(), module.name, module.title)
                 ))}
             </div>
-
         </div>
     )
-
+    */
+   
 }//end

@@ -1,9 +1,9 @@
 //src\app_front\appconfig.ts
 
 import { AppModule } from "@/lib/arquitect/model/appmodule";
-
+import { Option } from "@/lib/model/base/option";
 /**
- * AppConfig. getModulePath
+ * AppConfig.getModulesMenu
  */
 export class AppConfig {
     
@@ -28,6 +28,16 @@ export class AppConfig {
         AppConfig.MOD_APP_MOTORS,
         AppConfig.MOD_CREATE_COMP
     ]
+
+    public static getModulesMenu():Option[]  {
+        let options: Option[] = [];
+        for(let idx = 0; idx < AppConfig.MODULES.length; idx++) {
+            options.push(new Option(
+                AppConfig.MODULES[idx].name,
+                AppConfig.MODULES[idx].title));
+        }
+        return options;
+    }
 
     public static getModulePath(name: string):string|null  {
         let navigationPath: string|null =null;

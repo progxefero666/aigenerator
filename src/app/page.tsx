@@ -1,14 +1,11 @@
 //src\app\module\aiprojects\manproyect\page.tsx
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AppModule } from "@/lib/arquitect/model/appmodule";
-
-import { AppTheme, AppThemeLayout } from "@/app_front/apptheme";
+import { AppThemeLayout } from "@/app_front/apptheme";
 import { Search } from "@/libcomp/search";
-import { AppConstants } from "@/app_front/appconstants";
-import { Module_template_Config } from "./module/modconfig";
+import { AppConstants, AppMessages } from "@/app_front/appconstants";
 import { AppConfig } from "@/app_front/appconfig";
 import { PagePrimaryBar } from "@/app/desktop/primarybar";
 
@@ -16,19 +13,27 @@ import { PagePrimaryBar } from "@/app/desktop/primarybar";
 
 /**
  *  Index Page JSX
+ *  
  */
 export default function Index() {
 
     const router = useRouter();
-    //useEffect(() => {const init = async () => {};init();}, []);
-
-    const chargeModule = (name: string): void => {
+    
+    const chargeModule = (name: string): void => {        
+        let navigationPath: string|null = AppConfig. getModulePath(name);
+        if(navigationPath!== null){
+            router.push(navigationPath);
+        }
+        else {
+            alert(AppMessages.ERROR_MODULE_NOTFOUND.concat(name));
+        }
     }
+
     return (
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader  />
             <div className = {AppThemeLayout.BODY_STYLE}>
-                <PagePrimaryBar  modules={AppConfig.MODULES} 
+                <PagePrimaryBar  modules={AppConfig.getModulesMenu()} 
                                  actmodule={AppConfig.INDEX.name}
                                  chargemodule={chargeModule}/>
                 <PageMainContent />
