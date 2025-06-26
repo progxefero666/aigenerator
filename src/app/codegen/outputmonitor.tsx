@@ -1,6 +1,6 @@
 //src\app\appeditor\primarybar.tsx
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AppConstants } from "@/app_front/appconstants";
 import { renderAlert } from "@/twdaisy/twdaisycomp";
 import { AppTheme, AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
@@ -36,23 +36,31 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
     const [mainBarConfig, setMainBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT);
     const [monitorBarConfig, setMonitorBarConfig] = useState<BarButtonsCfg>(BARCFG_COPY);
+    const [codeCharged, setCodeCharged] = useState<boolean>(false);
 
     const expNameRef = useRef<HTMLInputElement>(null);
     const [expInputReadOnly, setExpInputReadOnly] = useState<boolean>(true);
     const expFileName: string = fileName ?? AppConstants.NOT_DEF;
 
-    let codeCharged: boolean = false;
-    if(code!==null) {
-        codeCharged = true;
-    }
 
-    const onexport = () => {
+    useEffect(() => {
+        const init=():void=>{
+            if(code && code!==null) {
+                setCodeCharged(true);
+                setExpInputReadOnly(false);
+            }
+        } 
+        init();
+    }, []);
+
+    const onFileExport = () => {
 
         let result = true; //CodeGenCfg.exportCode(code);
         if (fileName && fileName !== AppConstants.NOT_DEF) {
             //result = CodeGenCfg.exportCode(code, fileName);
         }
 
+        /*
         if (result) {
             setAlertMessage(AppEditorMessages.MSG_EXPORT_SUCCESS);
         }
@@ -60,6 +68,7 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
             setAlertMessage(AppEditorMessages.MSG_EXPORT_ERROR);
         }
         setTimeout(() => setAlertMessage(AppConstants.NOT_DEF), 3000);
+        */
     }
 
     const onClick = (opId?: string) => {
@@ -69,7 +78,7 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
         if (opId) {
             switch (opId) {
                 case AppConstants.ACT_EXPORT:
-                    onexport();
+                    onFileExport();
                     break;
                 case AppConstants.ACT_COPY:
                     navigator.clipboard.writeText(code!);
@@ -84,12 +93,12 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
     const renderMainContent = () => {
         if (format === CodeGenCfg.CREATE_MODEL.name) {
             return (
-                <CodeGenCard execexport={onexport} code={code!} />
+                <CodeGenCard execexport={onFileExport} code={code!} />
             );
         }
         if (format === CodeGenCfg.SECTION_SERVICE.name) {
             return (
-                <CodeGenCard execexport={onexport} code={code!} />
+                <CodeGenCard execexport={onFileExport} code={code!} />
             );
         }
     };

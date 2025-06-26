@@ -29,26 +29,21 @@ export default function CodeGenerator() {
 
     const [section, setSection] = useState<string>(CodeGenCfg.CREATE_MODEL.name);
     const [code, setCode] = useState<string|null>(null);
-
     const chargeSection = (section: string): void => { setSection(section); }
 
-    /*
-    useEffect(() => {const init=():void=>{} init();}, []);
-    */
+    //useEffect(() => {const init=():void=>{} init();}, []);
 
     const onDataResult = (data:string) => {        
         setCode(data);
-        console.log(data);
     }
 
     return (
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
-
             <div className={CodeGenCfg.BODY_STYLE}>
                 <PagePrimaryBar     section={section} chargesection={chargeSection} />
                 <PageInputEditor    section={section} ondataresult = {onDataResult}/>                
-                <PageOutputMonitor  format={section} code={code} />
+                <PageOutputMonitor  key={code} format={section} code={code} />
                 <PageSecondaryBar   section={section} />                
             </div>
         </div>
