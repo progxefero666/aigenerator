@@ -13,13 +13,13 @@ export const BARCFG_EXPORT: BarButtonsCfg = new BarButtonsCfg(
     [true]
 );
 
-export const BARCFG_EXPORT_COPY: BarButtonsCfg = new BarButtonsCfg(
-    [AppConstants.ACT_COPY,AppConstants.ACT_EXPORT],
-    [AppTexts.COPY,AppTexts.EXPORT],
-    [AppUiConst.COLOR_COPY,AppUiConst.COLOR_EXPORT],
-    [AppUiConst.ICON_COPY,AppUiConst.ICON_EXPORT],
-    [false,false],
-    [false,true]
+export const BARCFG_COPY: BarButtonsCfg = new BarButtonsCfg(
+    [AppConstants.ACT_COPY],
+    [AppTexts.COPY],
+    [AppUiConst.COLOR_COPY],
+    [AppUiConst.ICON_COPY],
+    [false],
+    [true]
 );
 
 export const BARCFG_DELETE_OPEN: BarButtonsCfg = new BarButtonsCfg(

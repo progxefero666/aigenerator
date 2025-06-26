@@ -76,9 +76,16 @@ export class AppCard {
 }//end class
 
 /**
- * App Theme Texts
+ * AppThemeTexts.TEXT_SEC_STYLE
  */
 export class AppThemeTexts{
+
+    public static readonly TEXT_SEC_COLOR: string = "text-gray-400";
+    public static readonly TEXT_SEC_SIZE: string = "text-sm";
+
+    public static readonly TEXT_SEC_STYLE: string = 
+        AppThemeTexts.TEXT_SEC_SIZE.concat(" ")
+        .concat(AppThemeTexts.TEXT_SEC_COLOR);
 
     public static readonly TEXT_BASE_COLOR: string = "text-white";
     public static readonly TEXT_BASE_SIZE: string = "text-base";
@@ -115,11 +122,11 @@ export class AppThemeLayout {
         "w-full min-h-screen flex flex-col px-2 mb-2";
 
     public static readonly LAYOUT_SECONDARY_BAR: string =        
-        "w-full min-h-screen flex flex-col p-2"
+        "w-full min-h-screen flex flex-col p-2";
 
     public static readonly BODY_COLOR: string = "bg-base-100";
-    public static readonly BODY_STYLE: string = "w-full h-auto grid grid-cols-[17%_65%_17%]"
-    public static readonly BODY_MAINCONTENT_STYLE: string = "main_monitor w-full min-h-screen rounded-lg"
+    public static readonly BODY_STYLE: string = "w-full h-auto grid grid-cols-[17%_65%_17%]";
+    public static readonly BODY_MAINCONTENT_STYLE: string = "main_monitor w-full min-h-screen rounded-lg";
 }
 
 export class AppThemeModule {
@@ -201,7 +208,7 @@ export class AppThemeCard{
 }
 
 /**
- * AppThemeUtil
+ * AppThemeUtil.addSpace
  */
 export class AppThemeUtil {
 

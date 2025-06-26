@@ -7,7 +7,7 @@ import { AppTheme, AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_fro
 import { CodeGenCfg } from "./modconfig";
 import CodeGenCard from "./cards/codegencard";
 
-import { BARCFG_EXPORT, BARCFG_EXPORT_COPY } from "@/app_front/uimodel/uimodelbars";
+import { BARCFG_EXPORT, BARCFG_COPY } from "@/app_front/uimodel/uimodelbars";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 import { AppEditorMessages } from "./appeditor";
 import { InputText } from "@/libcomp/inputtext";
@@ -28,7 +28,8 @@ export interface PageOutputMonitorProp {
 export default function PageOutputMonitor({ format, code, fileName }: PageOutputMonitorProp) {
 
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
-    const [barConfig, setBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT_COPY);
+    const [mainBarConfig, setMainBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT);
+    const [monitorBarConfig, setMonitorBarConfig] = useState<BarButtonsCfg>(BARCFG_COPY);
 
     const expNameRef = useRef<HTMLInputElement>(null);
     const [expInputReadOnly, setExpInputReadOnly] = useState<boolean>(true);
@@ -80,12 +81,31 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
         }
     };
 
+    const renderOutPutBar = () => {
+        return (
+            <div className={style_header}>
+
+                <div className={style_header_title}>
+                    <div className="w-full mr-2 pl-1">
+                        <p className={AppThemeTexts.TEXT_SMALL_SIZE}>
+                            generated code
+                        </p>
+                    </div>
+
+                    <BarButtons classname={AppThemeBars.BAR_BUTTONS_STYLE}
+                        barconfig={monitorBarConfig}
+                        onclick={onClick} />
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className={CodeGenCfg.EDITOR_STYLE}>
 
             <div className={style_header}>
                 <div className={style_header_title}>
-                    <div className = "w-full mr-2 pl-1">
+                    <div className="w-full mr-2 pl-1">
                         {(expFileName == AppConstants.NOT_DEF) ?
                             <InputText name="expFileName"
                                 ref={expNameRef}
@@ -98,20 +118,21 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
                                 defaultvalue={expFileName}
                                 readonly={expInputReadOnly}
                                 inline={true} maxlen={50} />
-                        }                        
+                        }
                     </div>
 
                     <BarButtons classname={AppThemeBars.BAR_BUTTONS_STYLE}
-                        barconfig={barConfig}
+                        barconfig={mainBarConfig}
                         onclick={onClick} />
-                    </div>
+                </div>
             </div>
 
             <div className={AppThemeLayout.BODY_MAINCONTENT_STYLE}>
+                {renderOutPutBar()}
                 {renderMainContent()}
                 {(alertMessage !== AppConstants.NOT_DEF) ? renderAlert(alertMessage) : null}
             </div>
-            
+
         </div>
 
     )

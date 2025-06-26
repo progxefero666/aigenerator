@@ -45,7 +45,7 @@ export class AppUiConst {
     public static readonly COLOR_ACT_SAVE:string     = "btn-warning";
     public static readonly COLOR_EXPORT:string     = "btn-info";
     public static readonly COLOR_RUN:string     = "btn-info";
-    public static readonly COLOR_COPY:string     = "btn-primary";
+    public static readonly COLOR_COPY:string     = "btn-soft btn-info";
     
     public static readonly ICON_COLLAPSE_OFF:string = "ti-angle-up"; 
     public static readonly ICON_COLLAPSE_ON:string = "ti-angle-down"; 
