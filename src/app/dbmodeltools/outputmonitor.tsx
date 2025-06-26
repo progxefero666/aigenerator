@@ -9,6 +9,7 @@ import CardOutputCode from "../../app_front/comp/codegencard";
 import { BARCFG_EXPORT, BARCFG_COPY } from "@/app_front/uimodel/uimodelbars";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 import { InputText } from "@/libcomp/inputtext";
+import { CodeFormats } from "@/app_front/codegen/cgconstants";
 
 
 /**
@@ -16,11 +17,12 @@ import { InputText } from "@/libcomp/inputtext";
  * Application Editor Tools
  */
 export interface PageOutputMonitorProp {
-    format?: string;
-    code: string|null;
+    onexport: (fileName:string,code:string) => void
     fileName?: string;
+    format: string;
+    code: string|null;    
 }
-export default function PageOutputMonitor({ format, code, fileName }: PageOutputMonitorProp) {
+export default function PageOutputMonitor({onexport,fileName,format,code}: PageOutputMonitorProp) {
 
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
     const [mainBarConfig, setMainBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT);
@@ -31,9 +33,22 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
     const [expInputReadOnly, setExpInputReadOnly] = useState<boolean>(true);
     const expFileName: string = fileName ?? AppConstants.NOT_DEF;
 
+    const prepareOutput = () => {
+        if(code ==CodeFormats.TYPESCRIPT) {
+        }
+        else if(code == CodeFormats.SQL) {}
+        else if(code == CodeFormats.PYTHON) {}
+        else if(code == CodeFormats.JAVASCRIPT) {}
+        else if(code == CodeFormats.JSON) {}
+        else if(code == CodeFormats.MD) {}
+        else if(code == CodeFormats.CSS) {}
+        else if(code == CodeFormats.HTML) {}    
+    }
+
     useEffect(() => {
         const init=():void=>{
             if(code && code!==null) {
+                prepareOutput();
                 setCodeCharged(true);
                 setExpInputReadOnly(false);
             }

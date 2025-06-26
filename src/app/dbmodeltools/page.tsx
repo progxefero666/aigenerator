@@ -13,6 +13,7 @@ import { CodeGenStyle } from "../../app_front/codegen/cgstyle";
 import PageInputEditor from "./inputeditor";
 import { Button } from "@/libcomp/button";
 import { DbModelToolsControl, ModuleDbModelToolsConfig } from "@/app_front/codegen/cgcontroller";
+import { CodeFormats } from "@/app_front/codegen/cgconstants";
 
 
 /**
@@ -30,7 +31,7 @@ export const CODEGEN_PATH: string = "./codegen";
 
 export default function PageDbModelTools() {
 
-    const [outputFormat, setOutputFormat] = useState<string>("typescript");
+    const [outputFormat, setOutputFormat] = useState<string>(CodeFormats.TYPESCRIPT);
 
     const moduleControl = useRef<DbModelToolsControl>(null);    
 
@@ -61,17 +62,26 @@ export default function PageDbModelTools() {
         setCode(data);
     }
 
+    const exportFileCode = (fileName:string,code:string) => {        
+        console.log("Export file: " + fileName + " with code: " + code);
+
+    }
+
     return (
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
             <div className={CodeGenStyle.BODY_STYLE}>
+                
                 <PagePrimaryBar    
                     sections={ModuleDbModelToolsConfig.MENU}
                     chargesection={chargeSection}
                     actsection={section}  />
 
-                <PageInputEditor    section={section} run = {runGeneration}/>                
-                <PageOutputMonitor  key={code} format={section} code={code} />
+                <PageInputEditor    section={section} run = {runGeneration}/>      
+
+                <PageOutputMonitor  key={code} 
+                                    onexport={exportFileCode}       
+                                    format={outputFormat} code={code} />
                 
                 <PageSecondaryBar   section={section} />                
             </div>
