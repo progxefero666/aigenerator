@@ -4,7 +4,7 @@
 import { useRouter } from "next/router";
 import { Option } from "@/lib/model/base/option";
 
-import { AppConstants } from "@/app_front/appconstants";
+import { AppConstants, AppLayoutConst } from "@/app_front/appconstants";
 import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import { Search } from "@/libcomp/search";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
@@ -37,7 +37,7 @@ export default function PageModule_template({ }: PageModule_template_Prop) {
     }
 
     return (
-        <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
+        <div id = {AppLayoutConst.ROOT_CONTAINER} className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
             <div className={AppThemeLayout.BODY_STYLE}>
                 <PagePrimaryBar actsection="undefined" sections={[]} chargesection={chargesection} />

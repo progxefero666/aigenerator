@@ -3,7 +3,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Option } from "@/lib/model/base/option";
-import { AppConstants, AppUiConst } from "@/app_front/appconstants";
+import { AppConstants, AppLayoutConst, AppUiConst } from "@/app_front/appconstants";
 import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import { AppThemeModule } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
@@ -33,16 +33,16 @@ export const CODEGEN_PATH: string = "./codegen";
 
 export default function PageDbModelTools() {
     const router = useRouter();   
-    
+    const execNavToIndex = () => { 
+        router.push(AppConfig.INDEX.path);
+    }
+
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
     const [outputFormat, setOutputFormat] = useState<string>(CodeFormats.TYPESCRIPT);
     const [code, setCode] = useState<string|null>(null);
     const [section, setSection] = useState<string>(ModuleDbModelToolsConfig.MENU_ACT_OPTION.name);
     const moduleControl = useRef<DbModelToolsControl>(null); 
 
-    const execNavToIndex = () => { 
-        router.push(AppConfig.INDEX.path);
-    }
 
     useEffect(() => {
         const init=():void=>{
@@ -74,7 +74,7 @@ export default function PageDbModelTools() {
     }
 
     return (
-        <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
+        <div id = {AppLayoutConst.ROOT_CONTAINER} className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
             <div className={CodeGenStyle.BODY_STYLE}>
                 
@@ -89,7 +89,7 @@ export default function PageDbModelTools() {
                                     onexport={exportFileCode}       
                                     format={outputFormat} code={code} />
                 
-                <PageSecondaryBar   section={section} />                
+                <PageSecondaryBar   actsection={section} />                
             </div>
         </div>
     );
@@ -101,7 +101,10 @@ interface PageHeaderProp {
      //onfileloaded?: (file: File) => void;
 }
 function PageHeader({ value }: PageHeaderProp) {
-
+    const router = useRouter(); 
+    const execNavToIndex = () => { 
+        router.push(AppConfig.INDEX.path);
+    }
     const maxLen: number = 50;
     const onSearchSubmit = (value:string): void => { }
     const onButtonClick = (operation?: string) => { };
@@ -140,7 +143,6 @@ function PageHeader({ value }: PageHeaderProp) {
 
 
 function PagePrimaryBar({sections,chargesection,actsection}: PagePrimaryBarProps) {
-
     return (
         <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
             <TwDaisyMenu onselection={chargesection}
@@ -154,9 +156,9 @@ function PagePrimaryBar({sections,chargesection,actsection}: PagePrimaryBarProps
 }//end comp
 
 interface PageSecondaryBarProp {
-    section: string;
+    actsection: string;
 }
-function PageSecondaryBar({ section }: PageSecondaryBarProp) {
+function PageSecondaryBar({ actsection }: PageSecondaryBarProp) {
 
     return (
         <div className = {AppThemeLayout.LAYOUT_SECONDARY_BAR}>

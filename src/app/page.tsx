@@ -4,14 +4,13 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Option } from "@/lib/model/base/option";
 import { AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 import { Search } from "@/libcomp/search";
-import { AppConstants, AppMessages } from "@/app_front/appconstants";
+import { AppConstants, AppMessages, AppLayoutConst } from "@/app_front/appconstants";
 import { AppConfig } from "@/app_front/appconfig";
 
-import { PagePrimaryBarProps } from "@/app_front/apptypes";
+import { PagePrimaryBarProps,PageSecondaryBarProps } from "@/app_front/apptypes";
 
 /**
  *  Index Page JSX
@@ -33,14 +32,14 @@ export default function Index() {
      * View JSX
      */    
     return (
-        <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
+        <div id = {AppLayoutConst.ROOT_CONTAINER} className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader  />
             <div className = {AppThemeLayout.BODY_STYLE}>
                 <PagePrimaryBar  sections={AppConfig.getModulesMenu()} 
                                  actsection={AppConfig.INDEX.name}
                                  chargesection={chargeModule}/>
                 <PageMainContent />
-                <PageSecondBar />
+                <PageSecondBar actsection={AppConfig.INDEX.name}/>
             </div>
         </div>
     );
@@ -122,11 +121,7 @@ function PageMainContent({module}: PageMainContentProp) {
 /**
  * Page: Second Bar
  */
-interface PageSecondBarProp {
-    module?:string;
-}
-function PageSecondBar({module}: PageSecondBarProp) {
-
+function PageSecondBar({actsection}: PageSecondaryBarProps) {
     return(
         <div className = {AppThemeLayout.LAYOUT_SECONDARY_BAR}>
             <div>Second Bar</div>

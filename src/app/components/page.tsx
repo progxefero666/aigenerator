@@ -3,6 +3,9 @@
 import { Option } from "@/lib/model/base/option";
 import { PagePrimaryBarProps } from "@/app_front/apptypes";
 import { AppThemeLayout } from "@/app_front/apptheme";
+import { useRouter } from "next/navigation";
+import { AppConfig } from "@/app_front/appconfig";
+import { AppLayoutConst } from "@/app_front/appconstants";
 
 
 /**
@@ -13,11 +16,12 @@ import { AppThemeLayout } from "@/app_front/apptheme";
  */
 export default function PageComponents() {
 
-    const test = () => {        
+    const router = useRouter(); 
+    const execNavToIndex = () => { 
+        router.push(AppConfig.INDEX.path);
     }
-
     return (
-        <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
+        <div id = {AppLayoutConst.ROOT_CONTAINER} className={AppThemeLayout.LAYOUT_STYLE} >
             motors
         </div>
     );

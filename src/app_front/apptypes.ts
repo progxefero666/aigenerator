@@ -7,3 +7,7 @@ export interface PagePrimaryBarProps {
     actsection: string;
     chargesection: (section:string) => void
 }
+
+export interface PageSecondaryBarProps {
+    actsection: string;
+}

@@ -35,6 +35,13 @@ export class AppConstants {
 }//end class
 
 /**
+ * class AppLayoutConst.ROOT_CONTAINER
+ */
+export class AppLayoutConst {
+    public static readonly ROOT_CONTAINER:string = "cont_root"
+}//end class
+
+/**
  * class AppUiConst.COLOR_COPY
  */
 export class AppUiConst {

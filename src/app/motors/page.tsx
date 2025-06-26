@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { Option } from "@/lib/model/base/option";
 import { AppThemeLayout } from "@/app_front/apptheme";
 import { AppConfig } from "@/app_front/appconfig";
-import { AppConstants } from "@/app_front/appconstants";
+import { AppConstants, AppLayoutConst } from "@/app_front/appconstants";
 
 
 /**
@@ -17,15 +17,14 @@ import { AppConstants } from "@/app_front/appconstants";
  */
 export default function PageMotors() {
     const router = useRouter();   
-    
-    const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
-
     const execNavToIndex = () => { 
         router.push(AppConfig.INDEX.path);
     }
 
+    const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
+
     return (
-        <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
+        <div id = {AppLayoutConst.ROOT_CONTAINER} className={AppThemeLayout.LAYOUT_STYLE} >
             motors
         </div>
     );
