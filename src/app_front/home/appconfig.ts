@@ -12,23 +12,23 @@ export class AppConfig {
     public static readonly INDEX: AppModule = new AppModule("./","desktop","Home");
 
     public static readonly MOD_DBMODEL_TOOLS: AppModule 
-        = new AppModule("./dbmodeltools","ts_models_tools","Db Model Tools");
+        = new AppModule("./dbmodeltools","create_dbmodels","Db Model Tools");
 
-    public static readonly MOD_CREATE_PROJECTS: AppModule 
-        = new AppModule("./projects","create_applications","App. Generator");
+    public static readonly MOD_APPLICATIONS_TOOLS: AppModule 
+        = new AppModule("./applications","create_applications","App. Generator");
 
-    public static readonly MOD_APP_MOTORS: AppModule 
-        = new AppModule("./motors","create_motors_folders","App. Modules");
+    public static readonly MOD_MOTORS_TOOLS: AppModule 
+        = new AppModule("./motors","create_motors","App. Motors");
 
-    public static readonly MOD_CREATE_COMP: AppModule 
+    public static readonly MOD_COMP_TOOLS: AppModule 
         = new AppModule("./components","create_components","Comp. Creator");
   
     public static readonly MODULES: AppModule[] = [
         AppConfig.INDEX,
         AppConfig.MOD_DBMODEL_TOOLS,
-        AppConfig.MOD_CREATE_PROJECTS,
-        AppConfig.MOD_APP_MOTORS,
-        AppConfig.MOD_CREATE_COMP
+        AppConfig.MOD_APPLICATIONS_TOOLS,
+        AppConfig.MOD_MOTORS_TOOLS,
+        AppConfig.MOD_COMP_TOOLS
     ]
 
     public static getModulesMenu():Option[]  {
@@ -49,14 +49,14 @@ export class AppConfig {
         if (name === AppConfig.MOD_DBMODEL_TOOLS.name) {
             navigationPath = AppConfig.MOD_DBMODEL_TOOLS.path;
         }
-        else if (name === AppConfig.MOD_CREATE_PROJECTS.name) {
-            navigationPath = AppConfig.MOD_CREATE_PROJECTS.path;
+        else if (name === AppConfig.MOD_APPLICATIONS_TOOLS.name) {
+            navigationPath = AppConfig.MOD_APPLICATIONS_TOOLS.path;
         }
-        else if (name === AppConfig.MOD_APP_MOTORS.name  ) {
-            navigationPath = AppConfig.MOD_APP_MOTORS.path;
+        else if (name === AppConfig.MOD_MOTORS_TOOLS.name  ) {
+            navigationPath = AppConfig.MOD_MOTORS_TOOLS.path;
         }
-        else if (name === AppConfig.MOD_CREATE_COMP.name) {
-            navigationPath = AppConfig.MOD_CREATE_COMP.path;
+        else if (name === AppConfig.MOD_COMP_TOOLS.name) {
+            navigationPath = AppConfig.MOD_COMP_TOOLS.path;
         }   
         return navigationPath;
     }

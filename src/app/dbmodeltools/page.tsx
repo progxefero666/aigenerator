@@ -9,13 +9,13 @@ import { AppThemeModule } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 import { PagePrimaryBarProps } from "@/app_front/apptypes";
 import PageOutputMonitor from "./outputmonitor";
-import { CodeGenStyle } from "../../app_front/codegen/cgstyle";
+import { CodeGenStyle } from "../../codegen/cgstyle";
 import PageInputEditor from "./inputeditor";
 import { Button } from "@/libcomp/button";
-import { DbModelToolsControl, ModuleDbModelToolsConfig } from "@/app_front/codegen/cgcontroller";
+import { ModuleDbModelToolsConfig } from "@/app_front/mod_dbmodtools/mod_config";
 import { CodeFormats } from "@/app_front/codegen/cgconstants";
 import { useRouter } from "next/navigation";
-import { AppConfig } from "@/app_front/appconfig";
+import { AppConfig } from "@/app_front/home/appconfig";
 
 
 /**
@@ -41,16 +41,8 @@ export default function PageDbModelTools() {
     const [outputFormat, setOutputFormat] = useState<string>(CodeFormats.TYPESCRIPT);
     const [code, setCode] = useState<string|null>(null);
     const [section, setSection] = useState<string>(ModuleDbModelToolsConfig.MENU_ACT_OPTION.name);
-    const moduleControl = useRef<DbModelToolsControl>(null); 
 
 
-    useEffect(() => {
-        const init=():void=>{
-              moduleControl.current = 
-                new DbModelToolsControl(ModuleDbModelToolsConfig.MENU_ACT_OPTION.name);    
-        } 
-        init();
-    }, []);
 
     const chargeSection = (name: string): void => { 
         if(name == ModuleDbModelToolsConfig.OPT_CREATE_MODELS.name){
@@ -167,3 +159,14 @@ function PageSecondaryBar({ actsection }: PageSecondaryBarProp) {
     )
 
 }//end comp
+
+    /*
+    const moduleControl = useRef<DbModelToolsControl>(null); 
+    useEffect(() => {
+        const init=():void=>{
+              moduleControl.current = 
+                new DbModelToolsControl(ModuleDbModelToolsConfig.MENU_ACT_OPTION.name);    
+        } 
+        init();
+    }, []);
+    */

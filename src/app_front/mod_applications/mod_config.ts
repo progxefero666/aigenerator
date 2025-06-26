@@ -3,12 +3,10 @@
 import { Option } from "@/lib/model/base/option";
 
 
-//"typescript"
-
 /**
  * CodeGen Main App Controller
  */
-export class ModuleDbModelToolsConfig {
+export class ModuleApplicationsConfig {
     
     public static readonly TYPESCRIPT_FORMATS:string = ".ts,.tsx"
     public static readonly SQL_FORMATS:string = ".sql,.txt"
@@ -27,12 +25,12 @@ export class ModuleDbModelToolsConfig {
         ("create_folders", "Entity Folder", "create folders");
 
     public static readonly MENU: Option[]=[
-        ModuleDbModelToolsConfig.OPT_CREATE_MODELS,
-        ModuleDbModelToolsConfig.OPT_CREATES_SERVICES,
-        ModuleDbModelToolsConfig.OPT_MODEL_CARDS,
-        ModuleDbModelToolsConfig.OPT_MODEL_FOLDER,
+        ModuleApplicationsConfig.OPT_CREATE_MODELS,
+        ModuleApplicationsConfig.OPT_CREATES_SERVICES,
+        ModuleApplicationsConfig.OPT_MODEL_CARDS,
+        ModuleApplicationsConfig.OPT_MODEL_FOLDER,
     ];
-    public static readonly MENU_ACT_OPTION: Option = ModuleDbModelToolsConfig.MENU[0];
+    public static readonly MENU_ACT_OPTION: Option = ModuleApplicationsConfig.MENU[0];
 
     //module messages
     public static readonly MSG_EXPORT_SUCCESS: string = "!! export file success. !!";
@@ -40,15 +38,3 @@ export class ModuleDbModelToolsConfig {
 }//end class
 
 
-/**
- * class CodeGen Control
- */
-export class DbModelToolsControl {
-
-    public section: string;
-
-    constructor(section: string ) {
-        this.section = section;
-    }
-
-}//end class

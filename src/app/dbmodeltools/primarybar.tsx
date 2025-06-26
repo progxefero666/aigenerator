@@ -6,10 +6,6 @@ import { Option } from "@/lib/model/base/option";
 import { AppConstants } from "@/app_front/appconstants";
 import { AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
-
-import { DbModelToolsControl, ModuleDbModelToolsConfig } from "@/app_front/codegen/cgcontroller";
-import { CodeGenStyle } from "@/app_front/codegen/cgstyle";
-import { AppModule } from "@/lib/arquitect/model/appmodule";
 import { PagePrimaryBarProps } from "@/app_front/apptypes";
 
 

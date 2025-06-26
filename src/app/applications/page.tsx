@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Option } from "@/lib/model/base/option";
 import { AppThemeLayout } from "@/app_front/apptheme";
-import { AppConfig } from "@/app_front/appconfig";
+import { AppConfig } from "@/app_front/home/appconfig";
 import { AppConstants } from "@/app_front/appconstants";
 
 

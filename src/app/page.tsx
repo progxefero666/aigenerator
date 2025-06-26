@@ -8,7 +8,7 @@ import { AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 import { Search } from "@/libcomp/search";
 import { AppConstants, AppMessages, AppLayoutConst } from "@/app_front/appconstants";
-import { AppConfig } from "@/app_front/appconfig";
+import { AppConfig } from "@/app_front/home/appconfig";
 
 import { PagePrimaryBarProps,PageSecondaryBarProps } from "@/app_front/apptypes";
 

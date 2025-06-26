@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { AppCard, AppTheme } from "@/app_front/apptheme";
-import { CodeGenStyle } from "@/app_front/codegen/cgstyle";
+import { CodeGenStyle } from "@/codegen/cgstyle";
 
 
 /**

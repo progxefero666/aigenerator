@@ -4,7 +4,7 @@ import { Option } from "@/lib/model/base/option";
 import { PagePrimaryBarProps } from "@/app_front/apptypes";
 import { AppThemeLayout } from "@/app_front/apptheme";
 import { useRouter } from "next/navigation";
-import { AppConfig } from "@/app_front/appconfig";
+import { AppConfig } from "@/app_front/home/appconfig";
 import { AppLayoutConst } from "@/app_front/appconstants";
 
 
