@@ -10,7 +10,8 @@ import { Search } from "@/libcomp/search";
 import { AppConstants } from "@/app_front/appconstants";
 import { Module_template_Config } from "./module/modconfig";
 import { AppConfig } from "@/app_front/appconfig";
-import { PagePrimaryBar } from "./codegen/primarybar";
+import { PagePrimaryBar } from "@/app/desktop/primarybar";
+
 
 
 /**

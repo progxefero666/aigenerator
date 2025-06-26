@@ -12,17 +12,17 @@ import { CodeGenStyle } from "@/app_front/codegen/cgstyle";
 import { AppModule } from "@/lib/arquitect/model/appmodule";
 
 interface PagePrimaryBarProp {
-    modules: AppModule[];
-    actmodule: string;
-    chargemodule: (section:string) => void
+    sections: Option[];
+    actsection: string;
+    chargesection: (section:string) => void
 }
-export function PagePrimaryBar({modules, chargemodule, actmodule}: PagePrimaryBarProp) {
+export function PagePrimaryBar({sections,chargesection,actsection}: PagePrimaryBarProp) {
 
     const [alertMessage, setAlertMessage] = useState<string>(AppConstants.NOT_DEF);
 
     //CodeGenCfg.TYPESCRIPT_FORMATS
     const loadsection = (name: string): void => {
-        chargemodule(name);
+        chargesection(name);
         if (name === CodeGenSections.OPT_CREATE_MODELS.name) {
 
         }
@@ -34,8 +34,8 @@ export function PagePrimaryBar({modules, chargemodule, actmodule}: PagePrimaryBa
     return (
         <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
             <TwDaisyMenu onselection={loadsection}
-                options={modules}
-                optactname={actmodule}
+                options={sections}
+                optactname={actsection}
                 optcolor={AppThemeMenus.MENU_OPT_COLOR}
                 optactcolor={AppThemeMenus.MENU_OPT_ACT_COLOR} />
         </div>

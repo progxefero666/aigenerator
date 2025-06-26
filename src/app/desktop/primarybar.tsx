@@ -13,16 +13,18 @@ import { useEffect } from "react";
 interface PagePrimaryBarProps {
     modules: AppModule[];
     actmodule?: string;
-    //defmodulename?: () => void;
+    chargemodule: (name: string) => void
 }
-function PagePrimaryBar({ modules, actmodule }: PagePrimaryBarProps) {
+export function PagePrimaryBar({ modules,chargemodule, actmodule }: PagePrimaryBarProps) {
     const router = useRouter();
 
     useEffect(() => {
     }, []);
 
     const onModuleSelected = (name: string) => {
-  
+        if (name === AppConfig.INDEX.name) {
+            router.push("./"); 
+        }
         if (name === AppConfig.MOD_DBMODEL_TOOLS.name) {
             //router.push("./aichatbot"); 
             router.push("./codegen"); 

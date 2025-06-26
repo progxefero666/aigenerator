@@ -44,8 +44,8 @@ export default function CodeGenerator() {
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
             <div className={CodeGenStyle.BODY_STYLE}>
-                <PagePrimaryBar     modules={codeGenControl.sections}
-                                    actmodule={section} chargemodule={chargeSection} />
+                <PagePrimaryBar     sections={codeGenControl.sections}
+                                    actsection={section} chargesection={chargeSection} />
 
                 <PageInputEditor    section={section} run = {runGeneration}/>                
                 <PageOutputMonitor  key={code} format={section} code={code} />
