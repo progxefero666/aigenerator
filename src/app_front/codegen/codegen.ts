@@ -275,25 +275,6 @@ export class CodeGenSql {
 export class CodeGenTsFilesContent {
 
     /**
-     * gen File Content Entity Type
-     * @param tableModel 
-     */
-    public static genFileContentEntityType(tableModel: ModelTable): string {
-        let content: string = "";        
-        const typeName = CodeGenUtil.capitalize(tableModel.name);
-        const fileName = `type_${tableModel.name.toLowerCase()}.ts`;        
-        content += `//${fileName}\n\n`;        
-        content += `export type ${typeName} = {\n`;        
-        //properties
-        for (const field of tableModel.fields) {
-            const tsType = CodeGenSql.mapSqlTypeToTypeScript(field.type);
-            content += `    ${field.name}: ${tsType};\n`;
-        }        
-        content += `};\n`;        
-        return content;
-    }
-
-    /**
      * gen File Content Entity Class
      * @param tableModel 
      */    
@@ -424,8 +405,7 @@ export class CodeGenTsFilesContent {
         }
         
         return content;
-    }
-
+    }//end
 
     public static getDefaultValue(field: ModelField, tsType: string): string {    
         if (field.pk || field.name.toLowerCase() === 'id') {return 'null';}        
@@ -525,5 +505,23 @@ export class CodeGenTsFilesContent {
         return code;
     }//end
 
+    /*
+    public static genFileContentEntityType(tableModel: ModelTable): string {
+        let content: string = "";        
+        const typeName = CodeGenUtil.capitalize(tableModel.name);
+        const fileName = `type_${tableModel.name.toLowerCase()}.ts`;        
+        content += `//${fileName}\n\n`;        
+        content += `export type ${typeName} = {\n`;        
+        //properties
+        for (const field of tableModel.fields) {
+            const tsType = CodeGenSql.mapSqlTypeToTypeScript(field.type);
+            content += `    ${field.name}: ${tsType};\n`;
+        }        
+        content += `};\n`;        
+        return content;
+    }
+    */
+
 
 }//end class ModelUtil
+
