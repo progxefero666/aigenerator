@@ -1,15 +1,19 @@
 //src\app_front\codegen\cgcontroller.ts
 
 import { Option } from "@/lib/model/base/option";
+
+
+//"typescript"
+
 /**
  * CodeGen Main App Controller
  */
-export class CodeGenSections {
+export class ModuleDbModelToolsConfig {
     
     public static readonly TYPESCRIPT_FORMATS:string = ".ts,.tsx"
-
     public static readonly SQL_FORMATS:string = ".sql,.txt"
 
+    //module sections
     public static readonly OPT_CREATE_MODELS: Option = new Option
         ("create_models", "Table Models", "create models");
 
@@ -23,38 +27,28 @@ export class CodeGenSections {
         ("create_folders", "Entity Folder", "create folders");
 
     public static readonly MENU: Option[]=[
-        CodeGenSections.OPT_CREATE_MODELS,
-        CodeGenSections.OPT_CREATES_SERVICES,
-        CodeGenSections.OPT_MODEL_CARDS,
-        CodeGenSections.OPT_MODEL_FOLDER,
+        ModuleDbModelToolsConfig.OPT_CREATE_MODELS,
+        ModuleDbModelToolsConfig.OPT_CREATES_SERVICES,
+        ModuleDbModelToolsConfig.OPT_MODEL_CARDS,
+        ModuleDbModelToolsConfig.OPT_MODEL_FOLDER,
     ];
+    public static readonly MENU_ACT_OPTION: Option = ModuleDbModelToolsConfig.MENU[0];
 
-    public static readonly MENU_ACT_OPTION: Option = CodeGenSections.MENU[0];
-    public static test(): void {
-        return ;
-    }
-
-}//end class
-
-/**
- * class CodeGen Messages
- */
-export class CodeGenMessages {
-
+    //module messages
     public static readonly MSG_EXPORT_SUCCESS: string = "!! export file success. !!";
 
 }//end class
 
+
 /**
  * class CodeGen Control
  */
-export class CodeGenControl {
+export class DbModelToolsControl {
 
-    public sections: Option[] = CodeGenSections.MENU;
-    public currentSection: string;
+    public section: string;
 
-    constructor(initSection?: string ) {
-        this.currentSection = initSection ? initSection : CodeGenSections.MENU_ACT_OPTION.name;
+    constructor(section: string ) {
+        this.section = section;
     }
 
 }//end class

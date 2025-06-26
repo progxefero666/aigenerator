@@ -1,0 +1,1 @@
+//src\app_front\codegen\cgconstants.ts

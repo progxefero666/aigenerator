@@ -1,19 +1,19 @@
 //src\app\codegen\page.tsx
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Option } from "@/lib/model/base/option";
 import { AppConstants, AppUiConst } from "@/app_front/appconstants";
 import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
 import { AppThemeModule } from "@/app_front/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
-//page layout jsx components
+
 import PageOutputMonitor from "./outputmonitor";
 import { CodeGenStyle } from "../../app_front/codegen/cgstyle";
 import PageInputEditor from "./inputeditor";
 import { Button } from "@/libcomp/button";
-import { CodeGenControl, CodeGenSections } from "@/app_front/codegen/cgcontroller";
-import { PagePrimaryBar } from "./primarybar";
+import { DbModelToolsControl, ModuleDbModelToolsConfig } from "@/app_front/codegen/cgcontroller";
+
 
 /**
  * Page Index JSX Client
@@ -26,15 +26,36 @@ import { PagePrimaryBar } from "./primarybar";
  */
 export const CODEGEN_PATH: string = "./codegen";
 
-const codeGenControl: CodeGenControl = new CodeGenControl();
+//const codeGenControl: DbModelToolsControl = new DbModelToolsControl();
 
 export default function PageDbModelTools() {
 
-    const [section, setSection] = useState<string>(codeGenControl.currentSection);
-    const chargeSection = (section: string): void => { setSection(section); }
+    const [outputFormat, setOutputFormat] = useState<string>("typescript");
+
+    const moduleControl = useRef<DbModelToolsControl>(null);    
 
     const [code, setCode] = useState<string|null>(null);
+    const [section, setSection] = useState<string>(ModuleDbModelToolsConfig.MENU_ACT_OPTION.name);
     
+    useEffect(() => {
+        const init=():void=>{
+              moduleControl.current = 
+                new DbModelToolsControl(ModuleDbModelToolsConfig.MENU_ACT_OPTION.name);    
+        } 
+        init();
+    }, []);
+
+    const chargeSection = (name: string): void => { 
+        if(name == ModuleDbModelToolsConfig.OPT_CREATE_MODELS.name){
+        }
+        else if(name == ModuleDbModelToolsConfig.OPT_CREATES_SERVICES.name) {
+        }
+        else if(name == ModuleDbModelToolsConfig.OPT_MODEL_CARDS.name) {
+        }        
+        else if(name == ModuleDbModelToolsConfig.OPT_MODEL_FOLDER.name) {
+        }        
+        setSection(section); 
+    }
 
     const runGeneration = (data:string) => {        
         setCode(data);
@@ -44,8 +65,10 @@ export default function PageDbModelTools() {
         <div id="cont_root" className={AppThemeLayout.LAYOUT_STYLE} >
             <PageHeader />
             <div className={CodeGenStyle.BODY_STYLE}>
-                <PagePrimaryBar     sections={codeGenControl.sections}
-                                    actsection={section} chargesection={chargeSection} />
+                <PagePrimaryBar    
+                    sections={ModuleDbModelToolsConfig.MENU}
+                    chargesection={chargeSection}
+                    actsection={section}  />
 
                 <PageInputEditor    section={section} run = {runGeneration}/>                
                 <PageOutputMonitor  key={code} format={section} code={code} />
@@ -99,6 +122,24 @@ function PageHeader({ value }: PageHeaderProp) {
 
 }//end
 
+interface PagePrimaryBarProp {
+    sections: Option[];
+    actsection: string;
+    chargesection: (section:string) => void
+}
+function PagePrimaryBar({sections,chargesection,actsection}: PagePrimaryBarProp) {
+
+    return (
+        <div className={AppThemeLayout.LAYOUT_PRIMARY_BAR}>
+            <TwDaisyMenu onselection={chargesection}
+                options={sections}
+                optactname={actsection}
+                optcolor={AppThemeMenus.MENU_OPT_COLOR}
+                optactcolor={AppThemeMenus.MENU_OPT_ACT_COLOR} />
+        </div>
+    )
+
+}//end comp
 
 interface PageSecondaryBarProp {
     section: string;

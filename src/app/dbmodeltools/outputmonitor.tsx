@@ -3,20 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { AppConstants } from "@/app_front/appconstants";
 import { renderAlert } from "@/twdaisy/twdaisycomp";
-import { AppTheme, AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
+import { AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
 import { CodeGenStyle } from "../../app_front/codegen/cgstyle";
-import CardOutputCode from "./cards/codegencard";
-
+import CardOutputCode from "../../app_front/comp/codegencard";
 import { BARCFG_EXPORT, BARCFG_COPY } from "@/app_front/uimodel/uimodelbars";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
-import { AppEditorMessages } from "./appeditor";
 import { InputText } from "@/libcomp/inputtext";
-import { CodeGenSections } from "@/app_front/codegen/cgcontroller";
-
-
-//const style_header: string = "w-full h-auto flex flex-row items-center pb-1 justify-between rounded-lg border border-sky-500";
-
-
 
 
 /**
