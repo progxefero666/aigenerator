@@ -6,7 +6,7 @@ import { Option } from "@/lib/model/base/option";
 import { AppConstants, AppLayoutConst, AppUiConst } from "@/app_front/appconstants";
 import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/app_ui/apptheme";
 import { AppThemeModule } from "@/app_front/app_ui/apptheme";
-import TwDaisyMenu from "@/twdaisy/twdaisymenu";
+import TwDaisyMenu from "@/libcomp/thememenu";
 import { PagePrimaryBarProps } from "@/app_front/apptypes";
 import PageOutputMonitor from "./outputmonitor";
 import { CodeGenStyle } from "../../codegen/cgstyle";

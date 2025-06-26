@@ -7,7 +7,7 @@ import { Option } from "@/lib/model/base/option";
 import { AppConstants, AppLayoutConst } from "@/app_front/appconstants";
 import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/app_ui/apptheme";
 import { Search } from "@/libcomp/search";
-import TwDaisyMenu from "@/twdaisy/twdaisymenu";
+import TwDaisyMenu from "@/libcomp/thememenu";
 
 import { useState, useEffect, useRef } from "react";
 import { Module_template_Config } from "./modconfig";

@@ -2,7 +2,7 @@
 
 
 import { Option } from "@/lib/model/base/option";
-import { renderOption } from "@/twdaisy/twdaisycomp";
+import { renderOption } from "@/libcomp/themecomps";
 
 /**
  * comp: JSX Menu

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AppConstants } from "@/app_front/appconstants";
-import { renderAlert } from "@/twdaisy/twdaisycomp";
+import { renderAlert } from "@/libcomp/themecomps";
 import { AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_front/app_ui/apptheme";
 import { CodeGenStyle } from "../../codegen/cgstyle";
 import CardOutputCode from "../../codegen/codegencard";

@@ -7,7 +7,7 @@ import { ModelTable }   from "@/codegen/cgmodel";
 import { CodeGenStyle }   from "@/codegen/cgstyle";
 import { CodeGenTsFilesContent, 
         CodeGenSql }    from "@/codegen/codegen";
-import { renderAlert }  from "@/twdaisy/twdaisycomp";
+import { renderAlert }  from "@/libcomp/themecomps";
 import { InputFiles }   from "@/libcomp/inputfiles";
 import { Button }       from "@/libcomp/button";
 import { CodeGenServices } from "@/codegen/services/cgservices";

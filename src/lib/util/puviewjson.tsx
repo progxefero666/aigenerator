@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { createRoot } from "react-dom/client";
-import { AppUI } from '@/style/appui';
+import { AppUI } from '@/app_front/app_ui/appui';
 
 
 import ReactJsonPretty from 'react-json-pretty';

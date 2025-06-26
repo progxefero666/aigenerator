@@ -1,6 +1,6 @@
 //src\libcomp\button.tsx
 
-import { TwDaisyCompBase } from "@/twdaisy/twdaisycomp"
+import { TwDaisyCompBase } from "@/libcomp/themecomps"
 
 
 

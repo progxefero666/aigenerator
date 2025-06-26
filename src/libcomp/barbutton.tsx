@@ -1,6 +1,6 @@
 //src\libcomp\xuicomp\base\barbutton.tsx
 
-import { renderBarButtons } from "@/twdaisy/twdaisycomp";
+import { renderBarButtons } from "@/libcomp/themecomps";
 
 
 
