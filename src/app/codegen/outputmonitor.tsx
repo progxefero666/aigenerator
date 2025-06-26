@@ -87,7 +87,7 @@ export default function PageOutputMonitor({ format, code, fileName }: PageOutput
 
                 <div className={style_header_title}>
                     <div className="w-full mr-2 pl-1">
-                        <p className={AppThemeTexts.TEXT_SMALL_SIZE}>
+                        <p className={AppThemeTexts.TEXT_SEC_STYLE}>
                             generated code
                         </p>
                     </div>
