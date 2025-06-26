@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { AppConstants } from "@/app_front/appconstants";
 import { renderAlert } from "@/twdaisy/twdaisycomp";
-import { AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_front/apptheme";
+import { AppThemeBars, AppThemeLayout, AppThemeTexts } from "@/app_front/app_ui/apptheme";
 import { CodeGenStyle } from "../../codegen/cgstyle";
-import CardOutputCode from "../../app_front/comp/codegencard";
-import { BARCFG_EXPORT, BARCFG_COPY } from "@/app_front/appbars";
+import CardOutputCode from "../../codegen/codegencard";
+import { BARCFG_EXPORT, BARCFG_COPY } from "@/app_front/app_ui/appbars";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 import { InputText } from "@/libcomp/inputtext";
 import { CodeFormats } from "@/codegen/cgconstants";

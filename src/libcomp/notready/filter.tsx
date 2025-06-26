@@ -4,7 +4,7 @@
 import { useState } from "react";
 
 
-import { ThemeColors } from "@/app_front/apptheme";
+import { ThemeColors } from "@/app_front/app_ui/apptheme";
 import { Button } from "../button";
 
 

@@ -1,7 +1,7 @@
 //src\app\appeditor\cards\appcard.tsx
 
 import React, { useEffect, useRef, useState } from "react";
-import { AppCard, AppTheme } from "@/app_front/apptheme";
+import { AppCard, AppTheme } from "@/app_front/app_ui/apptheme";
 import { CodeGenStyle } from "@/codegen/cgstyle";
 
 

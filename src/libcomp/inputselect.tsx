@@ -1,6 +1,6 @@
 //src\libcomp\inputselect.tsx
 
-import { AppTheme } from "@/app_front/apptheme";
+import { AppTheme } from "@/app_front/app_ui/apptheme";
 import { forwardRef, useEffect, useState } from "react";
 
 

@@ -5,13 +5,13 @@ import { useRouter } from "next/router";
 import { Option } from "@/lib/model/base/option";
 
 import { AppConstants, AppLayoutConst } from "@/app_front/appconstants";
-import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/app_ui/apptheme";
 import { Search } from "@/libcomp/search";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 
 import { useState, useEffect, useRef } from "react";
 import { Module_template_Config } from "./modconfig";
-import { ThemeCard } from "@/app_front/comp/themecard";
+import { ThemeCard } from "@/libcomp/themecard";
 import { PagePrimaryBarProps } from "@/app_front/apptypes";
 
 /**

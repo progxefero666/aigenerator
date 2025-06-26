@@ -1,6 +1,6 @@
 //src\libcomp\inputcheck.tsx
 
-import { AppTheme } from "@/app_front/apptheme";
+import { AppTheme } from "@/app_front/app_ui/apptheme";
 import { forwardRef} from "react";
 
 interface InputCheckIfc {

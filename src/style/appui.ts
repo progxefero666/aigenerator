@@ -5,7 +5,7 @@ import { Dimension } from "@/lib/model/base/dimension";
 
 import { TechBase } from '@/lib/arquitect/tech';
 import { DeviceUtil } from "@/lib/util/devicehelper";
-import { ThemeColors } from "@/app_front/apptheme";
+import { ThemeColors } from "@/app_front/app_ui/apptheme";
 
 
 

@@ -4,11 +4,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
+import { AppThemeLayout, AppThemeMenus } from "@/app_front/app_ui/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 import { Search } from "@/libcomp/search";
 import { AppConstants, AppMessages, AppLayoutConst } from "@/app_front/appconstants";
-import { AppConfig } from "@/app_front/home/appconfig";
+import { AppConfig } from "@/app_front/app_index/appconfig";
 
 import { PagePrimaryBarProps,PageSecondaryBarProps } from "@/app_front/apptypes";
 

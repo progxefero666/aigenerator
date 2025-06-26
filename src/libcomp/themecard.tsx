@@ -5,7 +5,7 @@ import { Button } from "@/libcomp/button";
 import { BarButtons, BarButtonsCfg } from "@/libcomp/barbutton";
 import { AppUiConst } from "@/app_front//appconstants";
 import { AppCard, AppThemeBars, AppThemeButtons, AppThemeCard, AppThemeTexts }
-    from "@/app_front/apptheme";
+    from "@/app_front/app_ui/apptheme";
 
 /**
  * JSX Theme Card Component Base

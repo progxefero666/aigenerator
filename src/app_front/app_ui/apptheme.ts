@@ -1,6 +1,6 @@
 //src\app_front\apptheme.ts
 
-import { AppConstants } from "./appconstants";
+import { AppConstants } from "../appconstants";
 
 /**
  * Tailwind and DaisyUI lib

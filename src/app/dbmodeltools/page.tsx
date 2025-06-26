@@ -4,8 +4,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Option } from "@/lib/model/base/option";
 import { AppConstants, AppLayoutConst, AppUiConst } from "@/app_front/appconstants";
-import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/apptheme";
-import { AppThemeModule } from "@/app_front/apptheme";
+import { AppTheme, AppThemeLayout, AppThemeMenus } from "@/app_front/app_ui/apptheme";
+import { AppThemeModule } from "@/app_front/app_ui/apptheme";
 import TwDaisyMenu from "@/twdaisy/twdaisymenu";
 import { PagePrimaryBarProps } from "@/app_front/apptypes";
 import PageOutputMonitor from "./outputmonitor";
@@ -15,7 +15,7 @@ import { Button } from "@/libcomp/button";
 import { ModuleDbModelToolsConfig } from "@/app_front/mod_dbmodtools/mod_config";
 import { CodeFormats } from "@/codegen/cgconstants";
 import { useRouter } from "next/navigation";
-import { AppConfig } from "@/app_front/home/appconfig";
+import { AppConfig } from "@/app_front/app_index/appconfig";
 
 
 /**

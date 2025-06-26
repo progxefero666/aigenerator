@@ -1,6 +1,6 @@
 //src\libcomp\xuicomp\base\fieldwrapper.tsx
 
-import { AppTheme } from "@/app_front/apptheme";
+import { AppTheme } from "@/app_front/app_ui/apptheme";
 
 
 //cell_style?: string;
