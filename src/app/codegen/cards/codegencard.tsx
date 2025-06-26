@@ -2,38 +2,32 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { AppCard, AppTheme } from "@/app_front/apptheme";
-
-const style_component: string 
-= "w-full flex flex-col bg-base-100 p-[10px] rounded-lg border border-zinc-500";
+import { CodeGenStyle } from "@/app_front/codegen/cgstyle";
 
 
 /**
  * src\app_front\manapplications\appeditorcfg.ts
  */
-export interface CodeGenCardProp {  
+export interface CardOutputCodeProp {  
     code: string;
     execexport?: (code:string) => void;
 }
-export default function CodeGenCard({code,execexport}: CodeGenCardProp) {
-
-    //const [barConfig, setBarConfig] = useState<BarButtonsCfg>(BARCFG_EXPORT);
-    //const [collapse, setCollapse]   = useState<boolean>(false);    
-    //const onCollapse = () => {setCollapse(!collapse)};
+export default function CardOutputCode({code,execexport}: CardOutputCodeProp) {
     
     const onClick = (opId?:string) => {
         execexport
     };
 
+    const codeStyle =
+            {whiteSpace: 'pre-wrap',
+             fontFamily: 'monospace',
+             fontSize: '14px',
+             lineHeight: '1.4' };
+
     return (
-        <div className={style_component}>
-            
+        <div className={CodeGenStyle.style_component}>            
             <div className={AppCard.CARD_DATA_STYLE}>
-                <code style={{ 
-                    whiteSpace: 'pre-wrap',
-                    fontFamily: 'monospace',
-                    fontSize: '14px',
-                    lineHeight: '1.4'
-                }}>
+                <code style={codeStyle}>
                     {code}
                 </code>                
             </div>
@@ -41,38 +35,3 @@ export default function CodeGenCard({code,execexport}: CodeGenCardProp) {
     )
 
 } //end component
-
-
-/*
-    const renderHeader = () => {
-        return (
-            <div className={style_header}>
-     
-                <div className={style_header_title}>
-                    <div>
-                        {collapse ?
-                            <Button onclick={onCollapse} 
-                                    color="btn-primary"
-                                    iconcolor={AppUiConst.ICON_COLLAPSE_COLOR}
-                                    icon={AppUiConst.ICON_COLLAPSE_ON} />
-                            :
-                            <Button onclick={onCollapse} 
-                                    color="btn-primary"
-                                    iconcolor={AppUiConst.ICON_COLLAPSE_COLOR}                           
-                                    icon={AppUiConst.ICON_COLLAPSE_OFF} />
-                        }
-                    </div>
-                    <div className={style_title}>
-                        <p className={AppTheme.TEXT_H3_SIZE}>Result</p>                                  
-                    </div>
-                </div>
-
-     
-                <BarButtons classname={CodeGenCfg.style_barbuttons}
-                            barconfig={barConfig}
-                            onclick={onClick} />
-            </div>
-        )
-    };
-   {renderHeader()}
-*/

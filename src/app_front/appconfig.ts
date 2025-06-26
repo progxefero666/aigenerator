@@ -7,18 +7,18 @@ import { AppModule } from "@/lib/arquitect/model/appmodule";
  */
 export class AppConfig {
     
-    public static readonly MOD_SQLTOOLS: AppModule    = new AppModule("sql_tools","Sql Tools");
-    public static readonly MOD_CODE_TYPESCRIPT: AppModule   = new AppModule("code_typescript","Class files");
-    public static readonly MOD_COMPONENTS: AppModule  = new AppModule("gen_components","Gen. Comp.");
+    public static readonly INDEX: AppModule = new AppModule("desktop","Home");
 
-    public static readonly MOD_TEMPLATE: AppModule    = new AppModule("module_template","module");
-
+    public static readonly MOD_DBMODEL_TOOLS: AppModule = new AppModule("ts_models_tools","Db Model Tools");
+    public static readonly MOD_APP_FOLDERS: AppModule = new AppModule("create_motors_folders","App. Modules");
+    public static readonly MOD_CREATE_COMP: AppModule = new AppModule("create_components","Comp. Creator");
+  
     public static readonly MODULES: AppModule[] = [
-        AppConfig.MOD_SQLTOOLS,
-        AppConfig.MOD_CODE_TYPESCRIPT,
-        AppConfig.MOD_COMPONENTS,
-        AppConfig.MOD_TEMPLATE
+        AppConfig.INDEX,
+        AppConfig.MOD_DBMODEL_TOOLS,
+        AppConfig.MOD_APP_FOLDERS,
+        AppConfig.MOD_CREATE_COMP
     ]
-    public static readonly ACTIVE_MOD: AppModule = AppConfig.MODULES[0];
+
 
 }//export class AppConfig
